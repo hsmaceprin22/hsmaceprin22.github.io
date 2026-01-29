@@ -1,0 +1,714 @@
+/* =====================================================
+   H-SMA-CE TOUR GUIDE SYSTEM - FIXED VERSION
+   ===================================================== */
+
+/* CSS Variables */
+:root {
+    --tour-primary: #163860;
+    --tour-secondary: #c9a227;
+    --tour-overlay: rgba(0, 0, 0, 0.75);
+    --tour-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    --tour-radius: 16px;
+}
+
+/* =====================================================
+   AVATAR CONTAINER
+   ===================================================== */
+.tour-avatar-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.tour-avatar-container.tour-active {
+    bottom: 30px;
+    right: 30px;
+}
+
+/* Avatar wrapper */
+.tour-avatar {
+    width: 110px;
+    height: 150px;
+    cursor: pointer;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
+    position: relative;
+    pointer-events: auto;
+}
+
+.tour-avatar:hover {
+    transform: scale(1.05);
+}
+
+.tour-avatar:active {
+    transform: scale(0.95);
+}
+
+.tour-avatar svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* Shadow under avatar */
+.tour-avatar::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 12px;
+    background: radial-gradient(ellipse, rgba(0,0,0,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+/* =====================================================
+   FLOATING CONTROLS - FIX: visibility hidden quando non visibile
+   ===================================================== */
+.tour-floating-controls {
+    position: absolute;
+    bottom: 165px;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-end;
+    opacity: 0;
+    visibility: hidden; /* ← FIX: nasconde completamente */
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.tour-floating-controls.visible {
+    opacity: 1;
+    visibility: visible; /* ← FIX: mostra quando attivo */
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.tour-floating-info {
+    background: white;
+    padding: 14px 18px;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18), 0 2px 8px rgba(0, 0, 0, 0.1);
+    max-width: 340px;
+    min-width: 280px;
+    text-align: right;
+    /* FIX: pointer-events ereditato dal parent */
+}
+
+.tour-floating-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--tour-primary);
+    margin-bottom: 4px;
+}
+
+.tour-floating-content {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.5;
+}
+
+.tour-floating-content strong {
+    color: var(--tour-primary);
+}
+
+.tour-floating-nav {
+    display: flex;
+    gap: 6px;
+    justify-content: flex-end;
+    /* FIX: pointer-events ereditato dal parent */
+}
+
+.tour-floating-nav .tour-btn {
+    padding: 10px 14px;
+    font-size: 13px;
+}
+
+.tour-floating-nav .tour-btn-skip {
+    padding: 10px 12px;
+}
+
+.tour-floating-step {
+    font-size: 11px;
+    color: #888;
+    margin-top: 8px;
+}
+
+/* =====================================================
+   WELCOME BUBBLE - FIX: z-index più alto
+   ===================================================== */
+.tour-welcome-bubble {
+    position: absolute;
+    bottom: 160px;
+    right: 0;
+    background: white;
+    padding: 16px 20px;
+    border-radius: var(--tour-radius);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18), 0 2px 8px rgba(0, 0, 0, 0.1);
+    max-width: 260px;
+    opacity: 0;
+    visibility: hidden; /* ← FIX: usa visibility */
+    transform: translateY(10px) scale(0.95);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    pointer-events: none;
+    z-index: 10; /* ← FIX: sopra floating controls */
+}
+
+.tour-welcome-bubble.visible {
+    opacity: 1;
+    visibility: visible; /* ← FIX */
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+/* FIX: La freccia deve stare DIETRO il contenuto */
+.tour-welcome-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    right: 30px;
+    width: 16px;
+    height: 16px;
+    background: white;
+    transform: rotate(45deg);
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
+    pointer-events: none;
+    z-index: -1; /* ← FIX: dietro i pulsanti */
+}
+
+/* FIX: Testo con z-index basso */
+.tour-welcome-text {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 12px;
+    line-height: 1.5;
+    position: relative;
+    z-index: 1;
+}
+
+.tour-welcome-text strong {
+    color: var(--tour-primary);
+}
+
+/* FIX: Pulsanti con z-index alto */
+.tour-welcome-buttons {
+    display: flex;
+    gap: 8px;
+    position: relative;
+    z-index: 5;
+}
+
+/* =====================================================
+   BUTTONS - Completamente cliccabili
+   ===================================================== */
+.tour-btn {
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    /* FIX: Assicura area cliccabile */
+    min-height: 36px;
+    position: relative;
+}
+
+.tour-btn-primary {
+    background: linear-gradient(135deg, var(--tour-primary), #1e4a7a);
+    color: white;
+}
+
+.tour-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(22, 56, 96, 0.3);
+}
+
+.tour-btn-secondary {
+    background: #f0f0f0;
+    color: #666;
+}
+
+.tour-btn-secondary:hover {
+    background: #e0e0e0;
+}
+
+/* =====================================================
+   TOUR OVERLAY & SPOTLIGHT
+   ===================================================== */
+.tour-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9990;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.tour-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* Spotlight highlight on target element */
+.tour-spotlight {
+    position: absolute;
+    border-radius: 8px;
+    box-shadow: 0 0 0 9999px var(--tour-overlay);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+}
+
+/* =====================================================
+   TOUR TOOLTIP (Explanation Box)
+   ===================================================== */
+.tour-tooltip {
+    position: fixed;
+    background: white;
+    border-radius: var(--tour-radius);
+    box-shadow: var(--tour-shadow);
+    max-width: 360px;
+    width: 90vw;
+    z-index: 9998;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.tour-tooltip.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.tour-tooltip-header {
+    background: linear-gradient(135deg, var(--tour-primary), #1e4a7a);
+    color: white;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.tour-tooltip-step {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    color: white;
+}
+
+.tour-tooltip-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0;
+    color: white !important;
+}
+
+.tour-tooltip-body {
+    padding: 20px;
+}
+
+.tour-tooltip-content {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.tour-tooltip-content strong {
+    color: var(--tour-primary);
+}
+
+/* Navigation buttons */
+.tour-tooltip-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.tour-tooltip-nav .tour-btn {
+    flex: 1;
+}
+
+.tour-btn-skip {
+    background: transparent;
+    color: #999;
+    font-size: 12px;
+    padding: 8px 12px;
+}
+
+.tour-btn-skip:hover {
+    color: #666;
+    background: #f5f5f5;
+}
+
+.tour-btn-next {
+    background: linear-gradient(135deg, var(--tour-primary), #1e4a7a);
+    color: white;
+}
+
+.tour-btn-prev {
+    background: #f0f0f0;
+    color: #555;
+}
+
+.tour-btn-finish {
+    background: linear-gradient(135deg, #2d8659, #38a169);
+    color: white;
+}
+
+/* Progress dots */
+.tour-progress {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    padding: 12px 20px;
+    border-top: 1px solid #f0f0f0;
+}
+
+.tour-progress-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ddd;
+    transition: all 0.3s ease;
+}
+
+.tour-progress-dot.active {
+    background: var(--tour-primary);
+    transform: scale(1.2);
+}
+
+.tour-progress-dot.completed {
+    background: var(--tour-secondary);
+}
+
+/* =====================================================
+   POINTING ARROW
+   ===================================================== */
+.tour-arrow {
+    position: fixed;
+    z-index: 9997;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease;
+}
+
+.tour-arrow.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.tour-arrow svg {
+    width: 60px;
+    height: 60px;
+}
+
+@keyframes arrow-bounce {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(10px); }
+}
+
+@keyframes arrow-bounce-down {
+    0%, 100% { transform: rotate(90deg) translateY(0); }
+    50% { transform: rotate(90deg) translateY(-10px); }
+}
+
+@keyframes arrow-bounce-up {
+    0%, 100% { transform: rotate(-90deg) translateY(0); }
+    50% { transform: rotate(-90deg) translateY(-10px); }
+}
+
+.tour-arrow.arrow-right svg {
+    animation: arrow-bounce 1s ease-in-out infinite;
+}
+
+.tour-arrow.arrow-down svg {
+    transform: rotate(90deg);
+    animation: arrow-bounce-down 1s ease-in-out infinite;
+}
+
+.tour-arrow.arrow-up svg {
+    transform: rotate(-90deg);
+    animation: arrow-bounce-up 1s ease-in-out infinite;
+}
+
+.tour-arrow.arrow-left svg {
+    transform: rotate(180deg);
+    animation: arrow-bounce 1s ease-in-out infinite reverse;
+}
+
+/* =====================================================
+   CHARACTER ANIMATIONS
+   ===================================================== */
+@keyframes wave {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-15deg); }
+    75% { transform: rotate(10deg); }
+}
+
+@keyframes talk {
+    0%, 100% { transform: scale(1, 0.5); }
+    50% { transform: scale(1.1, 1.4); }
+}
+
+.tour-avatar .arm-wave {
+    transform-origin: 65px 215px;
+    animation: wave 0.8s ease-in-out infinite;
+}
+
+.tour-avatar .mouth-talk {
+    transform-origin: 120px 150px;
+    animation: talk 0.4s ease-in-out infinite;
+}
+
+/* Idle state - gentle floating */
+.tour-avatar.idle {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+/* =====================================================
+   HIDE WHEN HAMBURGER MENU IS OPEN
+   ===================================================== */
+.tour-avatar-container.menu-open {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px);
+}
+
+/* =====================================================
+   MOBILE RESPONSIVE
+   ===================================================== */
+@media (max-width: 768px) {
+    .tour-avatar-container {
+        bottom: 15px;
+        right: 15px;
+    }
+    
+    .tour-avatar {
+        width: 70px;
+        height: 95px;
+    }
+    
+    .tour-avatar-container.tour-active .tour-avatar {
+        transform: scale(1.1);
+    }
+    
+    .tour-welcome-bubble {
+        right: -5px;
+        max-width: 220px;
+        padding: 12px 14px;
+        bottom: 105px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25), 0 4px 12px rgba(0, 0, 0, 0.15);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    
+    .tour-welcome-text {
+        font-size: 13px;
+    }
+    
+    .tour-floating-controls {
+        bottom: 110px;
+        right: -5px;
+    }
+    
+    .tour-floating-info {
+        max-width: 240px;
+        min-width: 200px;
+        padding: 10px 12px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25), 0 4px 12px rgba(0, 0, 0, 0.15);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    
+    .tour-floating-title {
+        font-size: 12px;
+    }
+    
+    .tour-floating-content {
+        font-size: 11px;
+        line-height: 1.4;
+    }
+    
+    .tour-floating-step {
+        font-size: 10px;
+    }
+    
+    .tour-floating-nav .tour-btn {
+        padding: 8px 10px;
+        font-size: 11px;
+    }
+    
+    .tour-arrow svg {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .tour-tooltip {
+        max-width: calc(100vw - 40px);
+        left: 20px !important;
+        right: 20px !important;
+        bottom: 20px !important;
+        top: auto !important;
+    }
+    
+    .tour-tooltip-content {
+        font-size: 13px;
+    }
+    
+    .tour-btn {
+        padding: 10px 14px;
+        font-size: 12px;
+    }
+}
+
+/* Tablet styles */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .tour-avatar {
+        width: 100px;
+        height: 135px;
+    }
+    
+    .tour-welcome-bubble {
+        bottom: 145px;
+        max-width: 280px;
+    }
+    
+    .tour-floating-controls {
+        bottom: 150px;
+    }
+    
+    .tour-floating-info {
+        max-width: 320px;
+        min-width: 260px;
+    }
+}
+
+/* Very small screens */
+@media (max-width: 380px) {
+    .tour-avatar-container {
+        bottom: 10px;
+        right: 10px;
+    }
+    
+    .tour-avatar {
+        width: 60px;
+        height: 80px;
+    }
+    
+    .tour-welcome-bubble {
+        bottom: 90px;
+        max-width: 180px;
+        padding: 10px 12px;
+    }
+    
+    .tour-welcome-text {
+        font-size: 12px;
+    }
+    
+    .tour-floating-controls {
+        bottom: 95px;
+        right: 0;
+    }
+    
+    .tour-floating-info {
+        max-width: 200px;
+        min-width: 160px;
+        padding: 8px 10px;
+    }
+    
+    .tour-floating-title {
+        font-size: 11px;
+    }
+    
+    .tour-floating-content {
+        font-size: 10px;
+    }
+    
+    .tour-floating-nav .tour-btn {
+        padding: 6px 8px;
+        font-size: 10px;
+    }
+}
+
+/* =====================================================
+   ACCESSIBILITY
+   ===================================================== */
+@media (prefers-reduced-motion: reduce) {
+    .tour-avatar,
+    .tour-avatar .arm-wave,
+    .tour-avatar .mouth-talk,
+    .tour-spotlight::before,
+    .tour-arrow svg {
+        animation: none;
+    }
+    
+    .tour-tooltip,
+    .tour-welcome-bubble,
+    .tour-overlay {
+        transition: opacity 0.2s ease;
+    }
+}
+
+/* Focus states for keyboard navigation */
+.tour-btn:focus {
+    outline: 2px solid var(--tour-primary);
+    outline-offset: 2px;
+}
+
+.tour-avatar:focus {
+    outline: none;
+}
+
+/* Avatar grows when tour is active */
+.tour-avatar-container.tour-active .tour-avatar {
+    transform: scale(1.15);
+}
+
+.tour-avatar-container.tour-active .tour-avatar:hover {
+    transform: scale(1.2);
+}
+
+/* =====================================================
+   HIDE DURING PRINT
+   ===================================================== */
+@media print {
+    .tour-avatar-container,
+    .tour-overlay,
+    .tour-tooltip,
+    .tour-arrow {
+        display: none !important;
+    }
+}
