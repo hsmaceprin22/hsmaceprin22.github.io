@@ -1,0 +1,2430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Journey | H-SMA-CE Project</title>
+    <meta name="description" content="Follow the H-SMA-CE research journey: from Naples to Taurasi, a path through circular economy research, workshops, and territorial engagement.">
+    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23163860'/%3E%3Ctext x='50' y='62' font-family='Georgia' font-size='32' fill='white' text-anchor='middle' font-weight='bold'%3EH%3C/text%3E%3C/svg%3E">
+    
+    <link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/tour-guide.css">
+    <style>
+        /* =====================================================
+           The Journey - Timeline Styles
+           ===================================================== */
+        
+        /* Hero Section for Journey */
+        .journey-hero {
+            padding: 180px 0 100px;
+            background: linear-gradient(135deg, var(--primary-800) 0%, var(--primary-600) 100%);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        
+        .journey-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .journey-hero .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .journey-hero h1 {
+            color: var(--white);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 16px;
+        }
+        
+        .journey-hero-subtitle {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--primary-200);
+            margin-bottom: 24px;
+        }
+        
+        .journey-hero p {
+            color: rgba(255,255,255,0.8);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+        
+        /* Journey Stats */
+        .journey-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+        
+        .journey-stat {
+            text-align: center;
+        }
+        
+        .journey-stat-number {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent-gold-light);
+            line-height: 1;
+        }
+        
+        .journey-stat-label {
+            font-size: 0.85rem;
+            color: var(--primary-200);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-top: 8px;
+        }
+        
+        /* City Legend */
+        .city-legend {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .city-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: rgba(255,255,255,0.9);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .city-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+        
+        .city-dot.napoli { background: #3a7bc8; }
+        .city-dot.messina { background: #6a9fd8; }
+        .city-dot.taurasi { background: var(--accent-gold); }
+        
+        /* =====================================================
+           Timeline Container
+           ===================================================== */
+        .journey-timeline {
+            padding: 80px 0 120px;
+            background: var(--gray-50);
+            position: relative;
+        }
+        
+        .timeline-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+        }
+        
+        /* Central Line */
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(
+                to bottom,
+                var(--primary-300),
+                var(--primary-500) 20%,
+                var(--primary-500) 80%,
+                var(--accent-gold)
+            );
+            transform: translateX(-50%);
+            border-radius: 2px;
+            z-index: 1;
+        }
+        
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: var(--primary-300);
+            border-radius: 50%;
+            border: 4px solid var(--gray-50);
+        }
+        
+        .timeline-line::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 24px;
+            background: var(--accent-gold);
+            border-radius: 50%;
+            border: 4px solid var(--gray-50);
+            box-shadow: 0 0 20px rgba(201, 162, 39, 0.5);
+        }
+        
+        /* =====================================================
+           Timeline Events
+           ===================================================== */
+        .timeline-event {
+            display: grid;
+            grid-template-columns: 1fr 80px 1fr;
+            gap: 0;
+            margin-bottom: 80px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .timeline-event:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Alternating Layout */
+        .timeline-event.left .event-content {
+            grid-column: 1;
+            text-align: right;
+        }
+        
+        .timeline-event.left .event-marker {
+            grid-column: 2;
+        }
+        
+        .timeline-event.left .event-image {
+            grid-column: 3;
+        }
+        
+        .timeline-event.right .event-image {
+            grid-column: 1;
+        }
+        
+        .timeline-event.right .event-marker {
+            grid-column: 2;
+        }
+        
+        .timeline-event.right .event-content {
+            grid-column: 3;
+            text-align: left;
+        }
+        
+        /* Event Image */
+        .event-image {
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .timeline-event.left .event-image {
+            justify-content: flex-start;
+        }
+        
+        .timeline-event.right .event-image {
+            justify-content: flex-end;
+        }
+        
+        .event-image-container {
+            width: 100%;
+            max-width: 320px;
+            aspect-ratio: 4/3;
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        
+        .event-image-container:hover {
+            transform: scale(1.03) rotate(1deg);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+        
+        .timeline-event.right .event-image-container:hover {
+            transform: scale(1.03) rotate(-1deg);
+        }
+        
+        .event-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .event-image-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--gray-400);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .event-image-placeholder.napoli {
+            background: linear-gradient(135deg, #e8f0fa 0%, #d0e2f5 100%);
+        }
+        
+        .event-image-placeholder.messina {
+            background: linear-gradient(135deg, #eef5fc 0%, #dce9f5 100%);
+        }
+        
+        .event-image-placeholder.taurasi {
+            background: linear-gradient(135deg, #fdf8e8 0%, #f5ecd0 100%);
+        }
+        
+        .event-image-placeholder svg {
+            width: 48px;
+            height: 48px;
+            opacity: 0.5;
+        }
+        
+        /* City label on image */
+        .event-image-city {
+            position: absolute;
+            bottom: 12px;
+            left: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--gray-700);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .event-image-city .city-dot {
+            width: 8px;
+            height: 8px;
+        }
+        
+        /* Event Marker */
+        .event-marker {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 24px;
+        }
+        
+        .marker-dot {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            border: 4px solid var(--gray-50);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            position: relative;
+            z-index: 3;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .marker-dot:hover {
+            transform: scale(1.15);
+            box-shadow: 0 6px 30px rgba(0,0,0,0.25);
+        }
+        
+        .marker-dot.napoli { background: #3a7bc8; }
+        .marker-dot.messina { background: #6a9fd8; }
+        .marker-dot.taurasi { background: var(--accent-gold); }
+        
+        /* Event Content Card */
+        .event-content {
+            padding: 0 20px;
+        }
+        
+        .event-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+            border: 1px solid var(--gray-100);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .event-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary-500);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .event-card.napoli::before { background: #3a7bc8; }
+        .event-card.messina::before { background: #6a9fd8; }
+        .event-card.taurasi::before { background: var(--accent-gold); }
+        
+        .event-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+        }
+        
+        .event-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        /* Event Date */
+        .event-date {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary-600);
+            margin-bottom: 12px;
+        }
+        
+        .event-date svg {
+            width: 16px;
+            height: 16px;
+        }
+        
+        /* Event Year Badge */
+        .event-year {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 50px;
+            margin-left: 8px;
+        }
+        
+        .event-year.y2024 {
+            background: var(--primary-100);
+            color: var(--primary-700);
+        }
+        
+        .event-year.y2025 {
+            background: rgba(201, 162, 39, 0.2);
+            color: var(--accent-gold-dark);
+        }
+        
+        /* Event Type Badge */
+        .event-type {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 6px 12px;
+            border-radius: 50px;
+            margin-bottom: 16px;
+        }
+        
+        .event-type.kickoff {
+            background: linear-gradient(135deg, var(--primary-500), var(--primary-400));
+            color: white;
+        }
+        
+        .event-type.dissemination {
+            background: linear-gradient(135deg, #6a9fd8, #a3c4e8);
+            color: var(--primary-800);
+        }
+        
+        .event-type.research {
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-gold-light));
+            color: var(--primary-900);
+        }
+        
+        .event-type.conference {
+            background: linear-gradient(135deg, var(--primary-700), var(--primary-500));
+            color: white;
+        }
+        
+        /* Event Title */
+        .event-card h3 {
+            font-size: 1.35rem;
+            color: var(--primary-800);
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+        
+        /* Event Location */
+        .event-location {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            margin-bottom: 16px;
+        }
+        
+        .event-location svg {
+            width: 16px;
+            height: 16px;
+            color: var(--primary-500);
+        }
+        
+        /* Event Description */
+        .event-card p {
+            font-size: 0.95rem;
+            color: var(--gray-600);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        
+        /* Event CTA */
+        .event-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary-500);
+            transition: gap 0.2s ease, color 0.2s ease;
+        }
+        
+        .event-cta svg {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.2s ease;
+        }
+        
+        .event-card:hover .event-cta {
+            color: var(--primary-700);
+            gap: 12px;
+        }
+        
+        .event-card:hover .event-cta svg {
+            transform: translateX(4px);
+        }
+        
+        /* =====================================================
+           Final Destination Card
+           ===================================================== */
+        .journey-destination {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary-800) 0%, var(--primary-600) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .journey-destination::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M20 20c0-11.046-8.954-20-20-20v20h20z'/%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .destination-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .destination-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--accent-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 2rem;
+            box-shadow: 0 0 40px rgba(201, 162, 39, 0.4);
+        }
+        
+        .destination-content h2 {
+            color: var(--white);
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+        
+        .destination-content p {
+            color: var(--primary-200);
+            font-size: 1.1rem;
+            margin-bottom: 32px;
+        }
+        
+        .destination-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 32px;
+            background: var(--white);
+            color: var(--primary-700);
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+        
+        .destination-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(255,255,255,0.2);
+        }
+        
+        /* =====================================================
+           Event Modal
+           ===================================================== */
+        .event-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(10, 22, 40, 0.95);
+            /* backdrop-filter removed for better performance */
+            z-index: 2000;
+            overflow-y: auto;
+            padding: 40px 20px;
+        }
+        
+        .event-modal.active {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+        
+        .event-modal-content {
+            background: var(--white);
+            border-radius: 24px;
+            max-width: 1000px;
+            width: 100%;
+            position: relative;
+            margin: auto;
+            animation: modalSlideIn 0.25s ease-out;
+            will-change: transform, opacity;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .event-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 44px;
+            height: 44px;
+            background: var(--gray-100);
+            border: none;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            transition: all 0.2s ease;
+        }
+        
+        .event-modal-close:hover {
+            background: var(--primary-100);
+            transform: rotate(90deg);
+        }
+        
+        .event-modal-header {
+            padding: 40px 40px 24px;
+            border-bottom: 1px solid var(--gray-100);
+        }
+        
+        .event-modal-header .event-type {
+            margin-bottom: 16px;
+        }
+        
+        .event-modal-header h2 {
+            font-size: 1.75rem;
+            color: var(--primary-800);
+            margin-bottom: 16px;
+            padding-right: 50px;
+        }
+        
+        .event-modal-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+        
+        .event-modal-meta span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+            color: var(--gray-600);
+        }
+        
+        .event-modal-meta svg {
+            width: 18px;
+            height: 18px;
+            color: var(--primary-500);
+        }
+        
+        .event-modal-body {
+            padding: 32px 40px 40px;
+        }
+        
+        /* NEW: Modal Body Layout with Poster */
+        .modal-body-layout {
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            gap: 40px;
+            align-items: start;
+        }
+        
+        .modal-body-content {
+            flex: 1;
+        }
+        
+        .modal-body-poster {
+            position: sticky;
+            top: 20px;
+        }
+        
+        .poster-container {
+            background: var(--gray-50);
+            border-radius: 16px;
+            padding: 16px;
+            border: 1px solid var(--gray-100);
+        }
+        
+        .poster-container h4 {
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--primary-600);
+            margin-bottom: 12px;
+            margin-top: 0;
+            text-align: center;
+        }
+        
+        .poster-image {
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .poster-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+        
+        .poster-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .poster-placeholder {
+            aspect-ratio: 1/1.414;
+            background: linear-gradient(135deg, var(--gray-100) 0%, var(--gray-200) 100%);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            color: var(--gray-400);
+        }
+        
+        .poster-placeholder svg {
+            width: 48px;
+            height: 48px;
+            opacity: 0.5;
+        }
+        
+        .poster-placeholder span {
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .event-modal-body h4 {
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--primary-600);
+            margin-bottom: 16px;
+            margin-top: 28px;
+        }
+        
+        .event-modal-body h4:first-child,
+        .modal-body-content h4:first-child {
+            margin-top: 0;
+        }
+        
+        .event-modal-body p {
+            color: var(--gray-700);
+            line-height: 1.8;
+            margin-bottom: 16px;
+            text-align: justify;
+        }
+        
+        .event-modal-body ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .event-modal-body li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--gray-100);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            color: var(--gray-700);
+        }
+        
+        .event-modal-body li svg {
+            flex-shrink: 0;
+            margin-top: 3px;
+            color: var(--primary-500);
+        }
+        
+        /* Funding Note Style */
+        .funding-note {
+            margin-top: 24px;
+            padding: 16px;
+            background: var(--gray-50);
+            border-radius: 12px;
+            border-left: 4px solid var(--primary-500);
+            font-size: 0.85rem;
+            color: var(--gray-600);
+            line-height: 1.6;
+        }
+        
+        .funding-note strong {
+            color: var(--primary-700);
+        }
+        
+        /* Modal Gallery */
+        .modal-gallery {
+            margin-top: 32px;
+            padding-top: 32px;
+            border-top: 1px solid var(--gray-100);
+        }
+        
+        .modal-gallery h4 {
+            margin-top: 0 !important;
+        }
+        
+        .modal-gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+        
+        .modal-gallery-item {
+            aspect-ratio: 4/3;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            background: var(--gray-100);
+        }
+        
+        .modal-gallery-item:hover {
+            transform: scale(1.03);
+        }
+        
+        .modal-gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .gallery-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--gray-100), var(--gray-200));
+            color: var(--gray-400);
+        }
+        
+        .gallery-placeholder svg {
+            width: 32px;
+            height: 32px;
+        }
+        
+        /* =====================================================
+           Lightbox
+           ===================================================== */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.95);
+            z-index: 3000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        
+        .lightbox.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 8px;
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+        }
+        
+        .lightbox.active img {
+            transform: scale(1);
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 40px;
+            color: white;
+            cursor: pointer;
+            z-index: 3001;
+        }
+        
+        .lightbox-close:hover {
+            color: #ccc;
+        }
+        
+        /* =====================================================
+           Responsive
+           ===================================================== */
+        @media (max-width: 900px) {
+            .timeline-line {
+                left: 40px;
+            }
+            
+            .timeline-event {
+                grid-template-columns: 80px 1fr;
+                grid-template-rows: auto auto;
+                gap: 20px 0;
+            }
+            
+            .timeline-event.left .event-content,
+            .timeline-event.right .event-content {
+                grid-column: 2;
+                grid-row: 1;
+                text-align: left;
+            }
+            
+            .timeline-event.left .event-marker,
+            .timeline-event.right .event-marker {
+                grid-column: 1;
+                grid-row: 1;
+            }
+            
+            .timeline-event.left .event-image,
+            .timeline-event.right .event-image {
+                grid-column: 2;
+                grid-row: 2;
+                justify-content: flex-start;
+                padding-left: 20px;
+            }
+            
+            .event-image-container {
+                max-width: 280px;
+            }
+            
+            .event-card {
+                padding: 24px;
+            }
+            
+            .modal-body-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-body-poster {
+                position: static;
+                order: -1;
+                max-width: 300px;
+                margin: 0 auto 24px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .journey-hero {
+                padding: 140px 0 60px;
+            }
+            
+            .journey-stats {
+                gap: 40px;
+            }
+            
+            .journey-stat-number {
+                font-size: 2.5rem;
+            }
+            
+            .city-legend {
+                gap: 20px;
+            }
+            
+            .timeline-line {
+                left: 24px;
+            }
+            
+            .timeline-event {
+                grid-template-columns: 60px 1fr;
+            }
+            
+            .marker-dot {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            
+            .event-card h3 {
+                font-size: 1.15rem;
+            }
+            
+            .event-image-container {
+                max-width: 100%;
+            }
+            
+            .event-modal-content {
+                border-radius: 16px;
+            }
+            
+            .event-modal-header,
+            .event-modal-body {
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+            
+            .modal-gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .journey-stats {
+                flex-direction: column;
+                gap: 24px;
+            }
+            
+            .city-legend {
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+            }
+        }
+		
+    </style>
+</head>
+<body>
+
+<!-- Top Logo Bar -->
+<div class="top-logo-bar">
+    <div class="top-logo-bar-container">
+        <img src="images/logos/logo1.png" alt="Logo 1">
+        <span class="logo-divider"></span>
+        <img src="images/logos/logo2.png" alt="Logo 2">
+        <span class="logo-divider"></span>
+        <img src="images/logos/logo3.png" alt="Logo 3">
+        <span class="logo-divider"></span>
+        <img src="images/logos/logo4.png" alt="Logo 4">
+        <img src="images/logos/logo5.png" alt="Logo 5">
+    </div>
+</div>
+
+<!-- Navigation -->
+<nav class="navbar" id="navbar">
+    <div class="nav-container">
+        <a href="index.html" class="logo">
+            <div class="logo-main">
+                <span class="logo-text">H-SMA-CE</span>
+                <span class="logo-badge">PRIN 2022</span>
+            </div>
+            <div class="logo-codes">
+                <span class="code-item">Project: 2022JZLL7J;</span>
+                <span class="code-item">CUP UniMe: J53D23009390006</span>
+                <span class="code-divider">-</span>
+                <span class="code-item">CUP UniOr: C53D23004860006</span>
+            </div>
+        </a>
+        
+        <ul class="nav-links" id="navLinks">
+            <button class="nav-close" id="navClose">&times;</button>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#project">The Project</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle">
+                    Research Activities
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </a>
+                <div class="dropdown-menu">
+                    <a href="ra1.html">RA1 — Context Analysis</a>
+                    <a href="ra2.html">RA2 — Circular Scenario</a>
+                    <a href="ra3.html">RA3 — Method & Modelling</a>
+                    <a href="ra4.html">RA4 — DSS Development</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle active">
+                    Dissemination
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </a>
+                <div class="dropdown-menu">
+                    <a href="publications.html">Publications</a>
+                    <a href="conferences.html">Conferences</a>
+                    <a href="events.html" class="active">Events & Missions</a>
+                </div>
+            </li>
+            <li><a href="dss.html">DSS Demo</a></li>
+            <li><a href="special-issue.html">Special Issue</a></li>
+        </ul>
+        
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</nav>
+
+<!-- Journey Hero -->
+<header class="journey-hero">
+    <div class="container">
+        <nav class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span>/</span>
+            <span>Events and Missions</span>
+        </nav>
+        
+        <h1>Events and Missions</h1>
+        <p class="journey-hero-subtitle">From Research to Territory</p>
+        <p>Follow the H-SMA-CE path through Southern Italy: a two-year journey 
+		of discovery, research, and collaboration for the circular economy 
+		transition in historical small towns.</p>
+        
+            
+        </div>
+</header>
+
+<!-- Timeline Section -->
+<section class="journey-timeline">
+    <div class="timeline-container">
+        <div class="timeline-line"></div>
+        
+        <!-- Event 1: Kick-off Naples -->
+        <div class="timeline-event left">
+            <div class="event-content">
+                <div class="event-card napoli" data-modal="modal-kickoff">
+                    <span class="event-date">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                            <line x1="16" y1="2" x2="16" y2="6"/>
+                            <line x1="8" y1="2" x2="8" y2="6"/>
+                            <line x1="3" y1="10" x2="21" y2="10"/>
+                        </svg>
+                        23-26 January 2024
+                        <span class="event-year y2024">2024</span>
+                    </span>
+                    <span class="event-type kickoff">🚀 Kick-off</span>
+                    <h3>Project Launch Meeting</h3>
+                    <span class="event-location">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        Naples — Palazzo Giusso
+                    </span>
+                    <p>The research teams from Messina and Naples met to define project objectives, methodologies, and work packages.</p>
+                    <span class="event-cta">
+                        Explore this event
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                            <polyline points="12 5 19 12 12 19"/>
+                        </svg>
+                    </span>
+                </div>
+            </div>
+            <div class="event-marker">
+                <div class="marker-dot napoli">🚀</div>
+            </div>
+            <div class="event-image">
+                <div class="event-image-container">
+                    <img src="images/giusso.jpg" alt="Kick-off Meeting Naples - Palazzo Giusso">
+                    <span class="event-image-city">
+                        <span class="city-dot napoli"></span>
+                        Naples
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Event 2: Dissemination Week Messina Feb 2024 -->
+        <div class="timeline-event right">
+            <div class="event-image">
+                <div class="event-image-container">
+                    <img src="images/economia.jpg" alt="Dissemination Week - University of Messina">
+                    <span class="event-image-city">
+                        <span class="city-dot messina"></span>
+                        Messina
+                    </span>
+                </div>
+            </div>
+            <div class="event-marker">
+                <div class="marker-dot messina">📢</div>
+            </div>
+            <div class="event-content">
+                <div class="event-card messina" data-modal="modal-diss-feb24">
+                    <span class="event-date">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                            <line x1="16" y1="2" x2="16" y2="6"/>
+                            <line x1="8" y1="2" x2="8" y2="6"/>
+                            <line x1="3" y1="10" x2="21" y2="10"/>
+                        </svg>
+                        26-29 February 2024
+                        <span class="event-year y2024">2024</span>
+                    </span>
+                    <span class="event-type dissemination">📢 Dissemination</span>
+                    <h3>First Dissemination Week</h3>
+                    <span class="event-location">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        Messina — University of Messina
+                    </span>
+                    <p>Intensive working sessions focusing on the UNDERSTANDING phase (RQ1-RQ2) and RA1 Context Analysis, with international guest speakers on innovation management.</p>
+                    <span class="event-cta">
+                        Explore this event
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                            <polyline points="12 5 19 12 12 19"/>
+                        </svg>
+                    </span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Event 3: Research on Field Jan 2025 -->
+        <div class="timeline-event left">
+            <div class="event-content">
+                <div class="event-card taurasi" data-modal="modal-research-jan25">
+                    <span class="event-date">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                            <line x1="16" y1="2" x2="16" y2="6"/>
+                            <line x1="8" y1="2" x2="8" y2="6"/>
+                            <line x1="3" y1="10" x2="21" y2="10"/>
+                        </svg>
+                        29-31 January 2025
+                        <span class="event-year y2025">2025</span>
+                    </span>
+                    <span class="event-type research">🔬 Research on Field</span>
+                    <span class="event-type conference">🎓 Workshop</span>
+                    <h3>Naples-Taurasi Research Mission</h3>
+                    <span class="event-location">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        Taurasi & Naples
+                    </span>
+                    <p>Our first immersive field mission: workshops at Palazzo Giusso followed by territorial exploration in Taurasi with stakeholder meetings and data collection.</p>
+                    <span class="event-cta">
+                        Explore this event
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                            <polyline points="12 5 19 12 12 19"/>
+                        </svg>
+                    </span>
+                </div>
+            </div>
+            <div class="event-marker">
+                <div class="marker-dot taurasi">🔬</div>
+            </div>
+            <div class="event-image">
+                <div class="event-image-container">
+                    <img src="images/taurasi/taurasi2.jpg" alt="Taurasi Research Mission January 2025">
+                    <span class="event-image-city">
+                        <span class="city-dot taurasi"></span>
+                        Taurasi
+                    </span>
+                </div>
+            </div>
+        </div>
+        <!-- Event 4: Dissemination Week Messina June 2025 -->
+        <div class="timeline-event right">
+            <div class="event-image">
+                <div class="event-image-container">
+                    <img src="images/photos/economia2.jpg" alt="Dissemination Week June 2025">
+                    <span class="event-image-city">
+                        <span class="city-dot messina"></span>
+                        Messina
+                    </span>
+                </div>
+            </div>
+            <div class="event-marker">
+                <div class="marker-dot messina">📢</div>
+            </div>
+            <div class="event-content">
+                <div class="event-card messina" data-modal="modal-diss-jun25">
+                    <span class="event-date">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                            <line x1="16" y1="2" x2="16" y2="6"/>
+                            <line x1="8" y1="2" x2="8" y2="6"/>
+                            <line x1="3" y1="10" x2="21" y2="10"/>
+                        </svg>
+                        24-26 June 2025
+                        <span class="event-year y2025">2025</span>
+                    </span>
+                    <span class="event-type dissemination">📢 Dissemination</span>
+                    <h3>Mid-Project Dissemination Week</h3>
+                    <span class="event-location">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        Messina — University of Messina
+                    </span>
+                    <p>Progress review sessions presenting UNDERSTANDING and EVALUATING phase results, with international guest speakers from Polish universities.</p>
+                    <span class="event-cta">
+                        Explore this event
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                            <polyline points="12 5 19 12 12 19"/>
+                        </svg>
+                    </span>
+                </div>
+            </div>
+        </div>
+        
+       <!-- Event 5: Research on Field Sept 2025 -->
+        <div class="timeline-event left">
+            <div class="event-content">
+                <div class="event-card taurasi" data-modal="modal-research-sep25">
+                    <span class="event-date">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                            <line x1="16" y1="2" x2="16" y2="6"/>
+                            <line x1="8" y1="2" x2="8" y2="6"/>
+                            <line x1="3" y1="10" x2="21" y2="10"/>
+                        </svg>
+                        15-18 September 2025
+                        <span class="event-year y2025">2025</span>
+                    </span>
+                    <span class="event-type research">🔬 Research on Field</span>
+                    <span class="event-type conference">🎓 Workshop</span>
+                    <h3>From Research to Territory for the Circular Economy in Taurasi</h3>
+                    <span class="event-location">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        Taurasi & Naples
+                    </span>
+                    <p>Mid-project workshop presenting RA2 and RA3 results. Direct engagement with Taurasi municipal administration to define the RA4 approach for DSS development.</p>
+                    <span class="event-cta">
+                        Explore this event
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                            <polyline points="12 5 19 12 12 19"/>
+                        </svg>
+                    </span>
+                </div>
+            </div>
+            <div class="event-marker">
+                <div class="marker-dot taurasi">🔬</div>
+            </div>
+            <div class="event-image">
+                <div class="event-image-container">
+                    <img src="images/photos/taurasi 2/7.jpg" alt="Taurasi Workshop September 2025">
+                    <span class="event-image-city">
+                        <span class="city-dot taurasi"></span>
+                        Taurasi
+                    </span>
+                </div>
+            </div>
+        </div>
+
+       <!-- Event 6: Workshop Dec 2025 -->
+        <div class="timeline-event right">
+            <div class="event-image">
+                <div class="event-image-container">
+                    <img src="images/events/mission3-hsmace.png" alt="Workshop December 2025">
+                    <span class="event-image-city">
+                        <span class="city-dot napoli"></span>
+                        Naples
+                    </span>
+                </div>
+            </div>
+            <div class="event-marker">
+                <div class="marker-dot napoli">🎓</div>
+            </div>
+            <div class="event-content">
+                <div class="event-card napoli" data-modal="modal-final">
+                    <span class="event-date">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                            <line x1="16" y1="2" x2="16" y2="6"/>
+                            <line x1="8" y1="2" x2="8" y2="6"/>
+                            <line x1="3" y1="10" x2="21" y2="10"/>
+                        </svg>
+                        12 December 2025
+                        <span class="event-year y2025">2025</span>
+                    </span>
+                    <span class="event-type conference">🎓 Workshop</span>
+                    <h3>H-SMA-CE: A Decision Support System for Circular Economy Transition</h3>
+                    <span class="event-location">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        Naples — Palazzo Giusso
+                    </span>
+                    <p>Presenting the Decision Support System prototype and research findings, followed by a roundtable on sustainable development strategies for Italian inner areas.</p>
+                    <span class="event-cta">
+                        Explore this event
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                            <polyline points="12 5 19 12 12 19"/>
+                        </svg>
+                    </span>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</section>
+
+<!-- Journey Destination -->
+<section class="journey-destination">
+    <div class="container">
+        <div class="destination-content">
+            <div class="destination-icon">🏛️</div>
+            <h2>The Destination: Decision Support System</h2>
+            <p>Our journey concludes with a concrete outcome: a Decision Support System designed to guide historical small towns toward circular economy transition, tested and validated in the beautiful borgo of Taurasi.</p>
+            <a href="dss.html" class="destination-btn">
+                Explore the DSS
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="5" y1="12" x2="19" y2="12"/>
+                    <polyline points="12 5 19 12 12 19"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- =====================================================
+     MODALS
+     ===================================================== -->
+
+<!-- Modal: Kick-off -->
+<div class="event-modal" id="modal-kickoff">
+    <div class="event-modal-content">
+        <button class="event-modal-close">&times;</button>
+        <div class="event-modal-header">
+            <span class="event-type kickoff">🚀 Kick-off Meeting</span>
+            <h2>Project Launch Meeting</h2>
+            <div class="event-modal-meta">
+                <span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                        <line x1="16" y1="2" x2="16" y2="6"/>
+                        <line x1="8" y1="2" x2="8" y2="6"/>
+                        <line x1="3" y1="10" x2="21" y2="10"/>
+                    </svg>
+                    23-26 January 2024
+                </span>
+                <span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                        <circle cx="12" cy="10" r="3"/>
+                    </svg>
+                    Palazzo Giusso, Naples
+                </span>
+            </div>
+        </div>
+        <div class="event-modal-body">
+            <div class="modal-body-layout">
+                <div class="modal-body-content">
+                    <h4>About this Milestone</h4>
+                    <p>
+                        The kick-off meeting marked the official beginning of the H-SMA-CE project. The research teams from the University of Messina (RU1) and the University of Naples "L'Orientale" (RU2) gathered at Palazzo Giusso for three intensive days of planning and coordination.
+                    </p>
+                    
+                    <h4>Key Activities</h4>
+                    <ul>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <div>Presentation of research objectives and expected outcomes</div>
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <div>Definition of work packages and task assignments</div>
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <div>Introduction of team members and role assignments</div>
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <div>Planning the first field visit to Taurasi</div>
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <div>Agreement on communication protocols and reporting structure</div>
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <div>Definition of recruitment procedures</div>
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <div>Journal Special Issue planning</div>
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <div>Identification of relevant Conferences for dissemination of intermediate results</div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="modal-body-poster">
+                    <div class="poster-container">
+                        <h4>Event Poster</h4>
+                        <div class="poster-image">
+                          <img src="images/events/thumbs/kickoff-poster.jpg" data-full="images/events/posters/kickoff-poster.jpg" alt="Kick-off Meeting Poster" loading="lazy">
+							
+                        </div>
+                    </div>
+                </div>
+            </div>
+                                  
+            <div class="modal-gallery">
+                <h4>Photo Gallery</h4>
+                <div class="modal-gallery-grid">
+                    <div class="modal-gallery-item">
+                        <img src="images/events/thumbs/kickoff_1.jpg" data-full="images/events/kickoff_1.jpg" alt="kickoff" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal: Dissemination Feb 2024 -->
+<div class="event-modal" id="modal-diss-feb24">
+    <div class="event-modal-content">
+        <button class="event-modal-close">&times;</button>
+        <div class="event-modal-header">
+            <span class="event-type dissemination">📢 Dissemination Week</span>
+            <h2>First Dissemination Week — Intermediate Results Meeting</h2>
+            <div class="event-modal-meta">
+                <span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                        <line x1="16" y1="2" x2="16" y2="6"/>
+                        <line x1="8" y1="2" x2="8" y2="6"/>
+                        <line x1="3" y1="10" x2="21" y2="10"/>
+                    </svg>
+                    26-29 February 2024
+                </span>
+                <span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                        <circle cx="12" cy="10" r="3"/>
+                    </svg>
+                    Department of Economics, University of Messina
+                </span>
+            </div>
+        </div>
+        <div class="event-modal-body">
+            <div class="modal-body-layout">
+                <div class="modal-body-content">
+                    <h4>Presentation</h4>
+                    <p>
+                        The dissemination week meetings focused on topics related to the phase: <strong>a) UNDERSTANDING (RQ1 – RQ2)</strong> of the First Year period (1st Semester), specifically regarding <strong>RA 1) Context Analysis</strong>.
+                    </p>
+                    <p>
+                        The fundamental objective was to identify operational actions with an in-depth analysis for the attribution of each of the four functional-operational dimensions. The UNIME Research Unit (RU1), also serving as the lead for the technological-innovative and environmental dimension, invited international guest speakers.
+                    </p>
+                    <p>
+                        During the four days of work, the focus was on: evaluation of technological distribution, mapping of digital flows, data collection methods for small smart cities, identification of digital services, mapping of human-less processes, and related topics.
+                    </p>
+                    
+                    <h4>Expected Contributions</h4>
+                    <ul>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <div>
+                                <strong>Metabolic Mapping:</strong> Environmental dimensions analysis of USS contexts through documentary data collection for the construction of a representative (static) functional schema/model. (Prof. Giuseppe Ioppolo, Prof. Grazia Calabrò, Prof. Katarzyna Szopik-Depczyńska, Dr. Carlotta D'Alessandro)
+                            </div>
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <div>
+                                <strong>Empirical Analysis:</strong> Socio-relational methods and tools — the quantitative approach for defining a questionnaire and survey criteria. (Prof. Giuseppe Caristi, Prof. David Barilla)
+                            </div>
+                        </li>
+                    </ul>
+                    
+                    <h4>Programme</h4>
+                    <p>
+                        The dissemination week meetings consisted of working groups, dissemination activities, and discussion sessions, from Monday to Thursday, 09:00 - 13:00 and 14:30 - 17:30.
+                    </p>
+                    
+                    <h4>Speakers</h4>
+                    <ul>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="8" r="4"/>
+                                <path d="M20 21a8 8 0 1 0-16 0"/>
+                            </svg>
+                            <div><strong>Prof. Giuseppe Ioppolo</strong> — PI – RU1, Department of Economics, University of Messina</div>
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="8" r="4"/>
+                                <path d="M20 21a8 8 0 1 0-16 0"/>
+                            </svg>
+                            <div><strong>Prof. Grazia Calabrò</strong> — Member RU1, Department of Economics, University of Messina</div>
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="8" r="4"/>
+                                <path d="M20 21a8 8 0 1 0-16 0"/>
+                            </svg>
+                            <div><strong>Prof. Giuseppe Caristi</strong> — Member RU1, Department of Economics, University of Messina</div>
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="8" r="4"/>
+                                <path d="M20 21a8 8 0 1 0-16 0"/>
+                            </svg>
+                            <div><strong>Prof. Katarzyna Szopik-Depczyńska</strong> — Department of Corporate Management, Institute of Management, University of Szczecin, Poland (Guest Speaker)</div>
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="8" r="4"/>
+                                <path d="M20 21a8 8 0 1 0-16 0"/>
+                            </svg>
+                            <div><strong>Prof. David Barilla</strong> — Guest Speaker, Department of Economics, University of Messina</div>
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="8" r="4"/>
+                                <path d="M20 21a8 8 0 1 0-16 0"/>
+                            </svg>
+                            <div><strong>Dr. Carlotta D'Alessandro</strong> — Guest Speaker, Department of Economics, University of Messina</div>
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="8" r="4"/>
+                                <path d="M20 21a8 8 0 1 0-16 0"/>
+                            </svg>
+                            <div><strong>Prof. Roberta Arbolino</strong> — Co-PI and Head of Local Unit (RU2 – University of Naples "L'Orientale") via online connection</div>
+                        </li>
+                    </ul>
+                    
+                                   </div>
+                
+                <div class="modal-body-poster">
+                    <div class="poster-container">
+                        <h4>Event Poster</h4>
+                        <div class="poster-image">
+                            <img src="images/events/thumbs/diss-feb24-poster.jpg" data-full="images/events/posters/diss-feb24-poster.jpg" alt="Dissemination Week Feb 2024 Poster" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-gallery">
+                <h4>Photo Gallery</h4>
+                <div class="modal-gallery-grid">
+                    <div class="modal-gallery-item">
+                        <img src="images/events/thumbs/dissem_1.jpg" data-full="images/events/dissem_1.jpg" alt="dissem1" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal: Research Jan 2025 -->
+<div class="event-modal" id="modal-research-jan25">
+    <div class="event-modal-content">
+        <button class="event-modal-close">&times;</button>
+        <div class="event-modal-header">
+            <span class="event-type research">🔬 Research on Field</span>
+            <span class="event-type conference">🎓 Workshop</span>
+            <h2>Project Progress Status: A Decision Support System for Circular Economy Transition</h2>
+            <div class="event-modal-meta">
+                <span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                        <line x1="16" y1="2" x2="16" y2="6"/>
+                        <line x1="8" y1="2" x2="8" y2="6"/>
+                        <line x1="3" y1="10" x2="21" y2="10"/>
+                    </svg>
+                    29-31 January 2025
+                </span>
+                <span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                        <circle cx="12" cy="10" r="3"/>
+                    </svg>
+                    Taurasi (AV) & Naples
+                </span>
+            </div>
+        </div>
+        <div class="event-modal-body">
+            <div class="modal-body-layout">
+                <div class="modal-body-content">
+                    <h4>About this Milestone</h4>
+                    <p>
+                        A comprehensive three-day research mission bringing together the H-SMA-CE project team with local stakeholders and municipal representatives to advance the circular economy transition framework for Historical Small Towns.
+                    </p>
+                    
+                    <h4>Programme</h4>
+                    <ul>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                <line x1="16" y1="2" x2="16" y2="6"/>
+                                <line x1="8" y1="2" x2="8" y2="6"/>
+                                <line x1="3" y1="10" x2="21" y2="10"/>
+                            </svg>
+                            <div>
+                                <strong>Wednesday, 29 January</strong><br>
+                                Workshop on project progress status at Palazzo Giusso, Naples. Presentations by Prof. Arbolino, Prof. Ioppolo, and Prof. Lopes with participation from Taurasi municipal representatives.
+                            </div>
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                <line x1="16" y1="2" x2="16" y2="6"/>
+                                <line x1="8" y1="2" x2="8" y2="6"/>
+                                <line x1="3" y1="10" x2="21" y2="10"/>
+                            </svg>
+                            <div>
+                                <strong>Thursday, 30 January</strong><br>
+                                Field visit to Taurasi. Meeting with municipal administration to discuss circular economy implementation strategies and data collection activities.
+                            </div>
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                <line x1="16" y1="2" x2="16" y2="6"/>
+                                <line x1="8" y1="2" x2="8" y2="6"/>
+                                <line x1="3" y1="10" x2="21" y2="10"/>
+                            </svg>
+                            <div>
+                                <strong>Friday, 31 January</strong><br>
+                                Follow-up workshop at Palazzo Giusso, Naples. Discussion of findings from Taurasi visit and planning of next research phases.
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="modal-body-poster">
+                    <div class="poster-container">
+                        <h4>Event Poster</h4>
+                        <div class="poster-image">
+                            
+                           <img src="images/events/thumbs/research-jan25-poster.jpg" data-full="images/events/posters/research-jan25-poster.jpg" alt="Research Mission Jan 2025 Poster" loading="lazy">
+						   
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-gallery">
+                <h4>Photo Gallery</h4>
+                <div class="modal-gallery-grid">
+                    <div class="modal-gallery-item">
+                        <img src="images/events/mission1-photo1.jpg" alt="Mission January 2025 - Photo 1">
+                    </div>
+                    <div class="modal-gallery-item">
+                        <img src="images/events/mission1-photo2.jpg" alt="Mission January 2025 - Photo 2">
+                    </div>
+                    <div class="modal-gallery-item">
+                        <img src="images/events/mission1-photo3.jpg" alt="Mission January 2025 - Photo 3">
+                    </div>
+                    <div class="modal-gallery-item">
+                        <img src="images/events/mission1-photo4.jpg" alt="Mission January 2025 - Photo 4">
+                    </div>
+                    <div class="modal-gallery-item">
+                        <img src="images/photos/thumbs/taurasi 1/1.jpg" data-full="images/photos/taurasi 1/1.jpg" alt="Taurasi January 2025 - Photo 5" loading="lazy">
+                    </div>
+                    <div class="modal-gallery-item">
+                        <img src="images/photos/thumbs/taurasi 1/2.jpg" data-full="images/photos/taurasi 1/2.jpg" alt="Taurasi January 2025 - Photo 6" loading="lazy">
+                    </div>
+                    <div class="modal-gallery-item">
+                        <img src="images/photos/thumbs/taurasi 1/3.jpg" data-full="images/photos/taurasi 1/3.jpg" alt="Taurasi January 2025 - Photo 7" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal: Dissemination June 2025 -->
+<div class="event-modal" id="modal-diss-jun25">
+    <div class="event-modal-content">
+        <button class="event-modal-close">&times;</button>
+        <div class="event-modal-header">
+            <span class="event-type dissemination">📢 Dissemination Week</span>
+            <h2>Mid-Project Dissemination Week — Intermediate Results Meeting</h2>
+            <div class="event-modal-meta">
+                <span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                        <line x1="16" y1="2" x2="16" y2="6"/>
+                        <line x1="8" y1="2" x2="8" y2="6"/>
+                        <line x1="3" y1="10" x2="21" y2="10"/>
+                    </svg>
+                    24-26 June 2025
+                </span>
+                <span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                        <circle cx="12" cy="10" r="3"/>
+                    </svg>
+                    Department of Economics, University of Messina
+                </span>
+            </div>
+        </div>
+        <div class="event-modal-body">
+            <div class="modal-body-layout">
+                <div class="modal-body-content">
+                    <h4>Presentation</h4>
+                    <p>
+                        The dissemination week meetings focused on topics related to the previous phases: <strong>a) UNDERSTANDING (RQ1 – RQ2) – Intermediates of EVALUATING (RQ3)</strong>. The primary objective was to highlight the results achieved and the current status of the project.
+                    </p>
+                    <p>
+                        The UNIME Research Unit (RU1), also serving as the lead for the technological-innovative and environmental dimension, invited <strong>Professor Katarzyna Szopik-Depczyńska, PhD DSc</strong>, from the Department of Corporate Management, Institute of Management, University of Szczecin, Poland, as an international guest speaker and expert in innovation management.
+                    </p>
+                    
+                    <h4>Scientific Results Presented</h4>
+                    <p>
+                        During the three days of work, the focus was on presenting the scientific results produced, with particular emphasis on the paper accepted on June 16, 2025:
+                    </p>
+                    <ul>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14 2 14 8 20 8"/>
+                                <line x1="16" y1="13" x2="8" y2="13"/>
+                                <line x1="16" y1="17" x2="8" y2="17"/>
+                            </svg>
+                            <div>
+                                <strong>sustainability-3676172:</strong> "Unveiling Taurasi's Hidden Potential: A Framework for Sustainable Development and Circular Economy Transition in Historic Small Towns"<br>
+                                <em>Authors: Cristina Ciliberto, Grazia Calabrò, Giuseppe Caristi, Roberta Arbolino, Giuseppe Ioppolo</em>
+                            </div>
+                        </li>
+                    </ul>
+                    <p>
+                        Furthermore, the results presented in 2025 at <strong>FEMIB-PORTO</strong>, <strong>RIFORUM-BARCELONA</strong>, and <strong>DTS-PARIS</strong> were discussed.
+                    </p>
+                    
+                    <h4>Programme</h4>
+                    <p>
+                        The dissemination week meetings consisted of working groups, dissemination activities, and discussion sessions, from Tuesday to Thursday, 09:00 - 13:00 and 14:30 - 17:30.
+                    </p>
+                    
+                    <h4>Speakers</h4>
+                    <ul>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="8" r="4"/>
+                                <path d="M20 21a8 8 0 1 0-16 0"/>
+                            </svg>
+                            <div><strong>Prof. Giuseppe Ioppolo</strong> — PI – RU1, Department of Economics, University of Messina</div>
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="8" r="4"/>
+                                <path d="M20 21a8 8 0 1 0-16 0"/>
+                            </svg>
+                            <div><strong>Prof. Grazia Calabrò</strong> — Member RU1, Department of Economics, University of Messina</div>
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="8" r="4"/>
+                                <path d="M20 21a8 8 0 1 0-16 0"/>
+                            </svg>
+                            <div><strong>Prof. Giuseppe Caristi</strong> — Member RU1, Department of Economics, University of Messina</div>
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="8" r="4"/>
+                                <path d="M20 21a8 8 0 1 0-16 0"/>
+                            </svg>
+                            <div><strong>Prof. Katarzyna Szopik-Depczyńska</strong> — Department of Corporate Management, Institute of Management, University of Szczecin, Poland (Guest Speaker)</div>
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="8" r="4"/>
+                                <path d="M20 21a8 8 0 1 0-16 0"/>
+                            </svg>
+                            <div><strong>Prof. Katarzyna Cheba</strong> — West Pomeranian University of Technology Szczecin, Faculty of Economics, Poland (Guest Speaker)</div>
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="8" r="4"/>
+                                <path d="M20 21a8 8 0 1 0-16 0"/>
+                            </svg>
+                            <div><strong>Prof. Agnieszka Brelik</strong> — West Pomeranian University of Technology Szczecin, Faculty of Economics, Poland (Guest Speaker)</div>
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="8" r="4"/>
+                                <path d="M20 21a8 8 0 1 0-16 0"/>
+                            </svg>
+                            <div><strong>Prof. David Barilla</strong> — Guest Speaker, Department of Economics, University of Messina</div>
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="8" r="4"/>
+                                <path d="M20 21a8 8 0 1 0-16 0"/>
+                            </svg>
+                            <div><strong>Prof. Roberta Arbolino</strong> — Co-PI and Head of Local Unit (RU2 – University of Naples "L'Orientale") via online connection</div>
+                        </li>
+                    </ul>
+                    
+                    <p style="font-style: italic; color: var(--gray-500); margin-top: 16px;">
+                        Note: Light lunches and dinners were provided for speakers only.
+                    </p>
+                    
+                                 </div>
+                
+                <div class="modal-body-poster">
+                    <div class="poster-container">
+                        <h4>Event Poster</h4>
+                        <div class="poster-image">
+                            <img src="images/events/thumbs/diss-jun25-poster.jpg" data-full="images/events/posters/diss-jun25-poster.jpg" alt="Dissemination Week Jun 2025 Poster" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-gallery">
+                <h4>Photo Gallery</h4>
+                <div class="modal-gallery-grid">
+                    <div class="modal-gallery-item">
+                        <img src="images/photos/thumbs/diss2/1.jpg" data-full="images/photos/diss2/1.jpg" alt="Dissemination Week June 2025 - Photo 1" loading="lazy">
+                    </div>
+                    <div class="modal-gallery-item">
+                        <img src="images/photos/thumbs/diss2/2.jpg" data-full="images/photos/diss2/2.jpg" alt="Dissemination Week June 2025 - Photo 2" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal: Research Sept 2025 -->
+<div class="event-modal" id="modal-research-sep25">
+    <div class="event-modal-content">
+        <button class="event-modal-close">&times;</button>
+        <div class="event-modal-header">
+            <span class="event-type research">🔬 Research on Field</span>
+            <span class="event-type conference">🎓 Workshop</span>
+            <h2>From Research to Territory for Circular Economy</h2>
+            <div class="event-modal-meta">
+                <span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                        <line x1="16" y1="2" x2="16" y2="6"/>
+                        <line x1="8" y1="2" x2="8" y2="6"/>
+                        <line x1="3" y1="10" x2="21" y2="10"/>
+                    </svg>
+                    15-18 September 2025
+                </span>
+                <span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                        <circle cx="12" cy="10" r="3"/>
+                    </svg>
+                    Taurasi (AV) & Naples
+                </span>
+            </div>
+        </div>
+        <div class="event-modal-body">
+            <div class="modal-body-layout">
+                <div class="modal-body-content">
+                    <h4>About this Milestone</h4>
+                    <p>
+                        Mid-project workshop designed to verify the progress status of the H-SMA-CE project, present results from Research Activities RA2 (Understanding-Evaluating) and RA3 (Evaluating), and define the approach for RA4 (Simulating). The mission included direct engagement with the Taurasi municipal administration and local stakeholders.
+                    </p>
+                    
+                    <h4>Main Objectives</h4>
+                    <ul>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <div>
+                                <strong>Assessment & Dissemination</strong><br>
+                                Verify project progress and present results from RA2 and RA3 research activities.
+                            </div>
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <div>
+                                <strong>Research Units Coordination</strong><br>
+                                Joint meeting between RU1 (Messina) and RU2 (L'Orientale) to define RA4 (Simulating) approach.
+                            </div>
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <div>
+                                <strong>Territorial Dialogue</strong><br>
+                                Meeting with representatives of the Taurasi municipality to discuss implementation strategies.
+                            </div>
+                        </li>
+                    </ul>
+                    
+                    <h4>Speakers</h4>
+                    <p>
+                        Prof. Giuseppe Ioppolo, Prof.ssa Grazia Calabrò, Prof. Giuseppe Caristi, Prof.ssa Roberta Arbolino, Prof. Antonio Lopes, Dott.ssa Luisa De Simone, Dott.ssa Ilaria Russo, and representatives from Taurasi Municipality.
+                    </p>
+                </div>
+                
+                <div class="modal-body-poster">
+                    <div class="poster-container">
+                        <h4>Event Poster</h4>
+                        <div class="poster-image">
+                            <img src="images/events/thumbs/research-sep25-poster.jpg" data-full="images/events/posters/research-sep25-poster.jpg" alt="Research Mission Sep 2025 Poster" loading="lazy"> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-gallery">
+                <h4>Photo Gallery</h4>
+                <div class="modal-gallery-grid">
+                    <div class="modal-gallery-item">
+                        <img src="images/events/thumbs/mission2-photo1.jpg" data-full="images/events/mission2-photo1.jpg" alt="Mission September 2025 - Photo 1" loading="lazy">
+                    </div>
+                    <div class="modal-gallery-item">
+                        <img src="images/events/thumbs/mission2-photo2.jpg" data-full="images/events/mission2-photo2.jpg" alt="Mission September 2025 - Photo 2" loading="lazy">
+                    </div>
+                    <div class="modal-gallery-item">
+                        <img src="images/events/thumbs/mission2-photo3.jpg" data-full="images/events/mission2-photo3.jpg" alt="Mission September 2025 - Photo 3" loading="lazy">
+                    </div>
+                    <div class="modal-gallery-item">
+                        <img src="images/events/thumbs/mission2-photo4.jpg" data-full="images/events/mission2-photo4.jpg" alt="Mission September 2025 - Photo 4" loading="lazy">
+                    </div>
+                    <div class="modal-gallery-item">
+                        <img src="images/photos/thumbs/taurasi 2/1.jpg" data-full="images/photos/taurasi 2/1.jpg" alt="Taurasi September 2025 - Photo 5" loading="lazy">
+                    </div>
+                    <div class="modal-gallery-item">
+                        <img src="images/photos/thumbs/taurasi 2/2.jpg" data-full="images/photos/taurasi 2/2.jpg" alt="Taurasi September 2025 - Photo 6" loading="lazy">
+                    </div>
+                    <div class="modal-gallery-item">
+                        <img src="images/photos/thumbs/taurasi 2/3.jpg" data-full="images/photos/taurasi 2/3.jpg" alt="Taurasi September 2025 - Photo 7" loading="lazy">
+                    </div>
+                    <div class="modal-gallery-item">
+                        <img src="images/photos/thumbs/taurasi 2/4.jpg" data-full="images/photos/taurasi 2/4.jpg" alt="Taurasi September 2025 - Photo 8" loading="lazy">
+                    </div>
+                    <div class="modal-gallery-item">
+                        <img src="images/photos/thumbs/taurasi 2/5.jpg" data-full="images/photos/taurasi 2/5.jpg" alt="Taurasi September 2025 - Photo 9" loading="lazy">
+                    </div>
+                    <div class="modal-gallery-item">
+                        <img src="images/photos/thumbs/taurasi 2/6.jpg" data-full="images/photos/taurasi 2/6.jpg" alt="Taurasi September 2025 - Photo 10" loading="lazy">
+                    </div>
+                    <div class="modal-gallery-item">
+                        <img src="images/photos/thumbs/taurasi 2/7.jpg" data-full="images/photos/taurasi 2/7.jpg" alt="Taurasi September 2025 - Photo 11" loading="lazy">
+                    </div>
+                    <div class="modal-gallery-item">
+                        <img src="images/photos/thumbs/taurasi 2/8.jpg" data-full="images/photos/taurasi 2/8.jpg" alt="Taurasi September 2025 - Photo 12" loading="lazy">
+                    </div>
+                    <div class="modal-gallery-item">
+                        <img src="images/photos/thumbs/taurasi 2/9.jpg" data-full="images/photos/taurasi 2/9.jpg" alt="Taurasi September 2025 - Photo 13" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal: Workshop -->
+<div class="event-modal" id="modal-final">
+    <div class="event-modal-content">
+        <button class="event-modal-close">&times;</button>
+        <div class="event-modal-header">
+            <span class="event-type conference">🎓 Workshop</span>
+            <h2>H-SMA-CE: A Decision Support System for Circular Economy Transition</h2>
+            <div class="event-modal-meta">
+                <span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                        <line x1="16" y1="2" x2="16" y2="6"/>
+                        <line x1="8" y1="2" x2="8" y2="6"/>
+                        <line x1="3" y1="10" x2="21" y2="10"/>
+                    </svg>
+                    12 December 2025
+                </span>
+                <span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                        <circle cx="12" cy="10" r="3"/>
+                    </svg>
+                    Palazzo Giusso, Naples
+                </span>
+            </div>
+        </div>
+        <div class="event-modal-body">
+            <div class="modal-body-layout">
+                <div class="modal-body-content">
+                    <h4>About this Milestone</h4>
+                    <p>
+                        A key milestone of the H-SMA-CE journey: presenting the Decision Support System prototype and research findings on circular economy transition in Historical Small Towns.
+                    </p>
+                    
+                    <h4>Programme</h4>
+                    <ul>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                            <div><strong>14:30</strong> — Opening Session: Institutional greetings</div>
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                            <div><strong>14:45</strong> — RA4 - DSS Development: Preliminary results of the electronic spreadsheet-based support for decision-making</div>
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                            <div><strong>15:30</strong> — Applying the DSS: Testing the tool to simulate circular scenarios in the Taurasi Borgo</div>
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                            <div><strong>16:30</strong> — Roundtable: Circular villages - sustainable development strategies for Italian inner areas</div>
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                            <div><strong>17:00</strong> — Closing remarks and greetings</div>
+                        </li>
+                    </ul>
+                    
+                    <h4>Speakers</h4>
+                    <p>
+                        Prof. Giuseppe Ioppolo, Prof.ssa Roberta Arbolino, Prof.ssa Grazia Calabrò (online), Prof. Giuseppe Caristi (online), Prof. Antonio Lopes
+                    </p>
+                </div>
+                
+                <div class="modal-body-poster">
+                    <div class="poster-container">
+                        <h4>Event Poster</h4>
+                        <div class="poster-image">
+                            <img src="images/events/thumbs/workshop-dic-poster.jpg" data-full="images/events/posters/workshop-dic-poster.jpg" alt="Workshop Dic Poster" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-gallery">
+                <h4>Photo Gallery</h4>
+                <div class="modal-gallery-grid">
+                    <div class="modal-gallery-item">
+                        <img src="images/events/thumbs/dic1.jpg" data-full="images/events/dic1.jpg" alt="Workshop December 2025" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+    <span class="lightbox-close">&times;</span>
+    <img src="" alt="Enlarged image" id="lightbox-img">
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo-text">H-SMA-CE</div>
+                <p>
+                    Decision Support System for Circular Economy Transition in Historical Small Towns.
+                    A PRIN 2022 research project.
+                </p>
+                <div class="footer-funding">
+                    <div class="footer-funding-text">
+                        Funded by the European Union – NextGenerationEU under the Italian Ministry of University and Research (MUR) as part of the PRIN 2022 program.
+                    </div>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-title">Research</h4>
+                <ul class="footer-links">
+                    <li><a href="ra1.html">RA1 – Context Analysis</a></li>
+                    <li><a href="ra2.html">RA2 – Circular Scenario</a></li>
+                    <li><a href="ra3.html">RA3 – Method & Modelling</a></li>
+                    <li><a href="ra4.html">RA4 – DSS Development</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-title">Resources</h4>
+                <ul class="footer-links">
+                    <li><a href="publications.html">Publications</a></li>
+                    <li><a href="conferences.html">Conferences</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="dss.html">DSS Tool</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-title">Contact</h4>
+                <ul class="footer-links">
+                    <li><a href="contacts.html">Contact Us</a></li>
+                    <li><a href="index.html#team">Research Team</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024-2027 H-SMA-CE Project. All rights reserved.</p>
+            <div class="footer-legal">
+                <a href="privacy.html">Privacy Policy</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+    // Event Card Click -> Open Modal
+    document.querySelectorAll('.event-card').forEach(card => {
+        card.addEventListener('click', function() {
+            const modalId = this.getAttribute('data-modal');
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        });
+    });
+
+    // Modal Close Button
+    document.querySelectorAll('.event-modal-close').forEach(btn => {
+        btn.addEventListener('click', function() {
+            this.closest('.event-modal').classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
+
+    // Modal Background Click Close
+    document.querySelectorAll('.event-modal').forEach(modal => {
+        modal.addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    });
+
+    // Escape Key Close
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            document.querySelectorAll('.event-modal.active').forEach(modal => {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+            document.getElementById('lightbox').classList.remove('active');
+        }
+    });
+
+    // Lightbox for Gallery Images
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxClose = document.querySelector('.lightbox-close');
+
+    function openLightbox(src) {
+        // Reset image to prevent showing previous image while loading
+        lightboxImg.style.opacity = '0';
+        lightboxImg.src = '';
+        lightboxImg.onload = function() {
+            lightboxImg.style.opacity = '1';
+        };
+        lightboxImg.src = src;
+        lightbox.classList.add('active');
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        lightboxImg.src = '';
+        lightboxImg.style.opacity = '0';
+    }
+
+    document.querySelectorAll('.modal-gallery-item img').forEach(img => {
+        img.addEventListener('click', function(e) {
+            e.stopPropagation();
+            // Use full resolution image if available, otherwise use src
+            openLightbox(this.dataset.full || this.src);
+        });
+    });
+
+    // Lightbox for Poster Images
+    document.querySelectorAll('.poster-image img').forEach(img => {
+        img.addEventListener('click', function(e) {
+            e.stopPropagation();
+            // Use full resolution image if available, otherwise use src
+            openLightbox(this.dataset.full || this.src);
+        });
+    });
+
+    lightboxClose.addEventListener('click', closeLightbox);
+
+    lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) {
+            closeLightbox();
+        }
+    });
+
+    // Scroll Animation for Timeline Events
+    const observerOptions = {
+        threshold: 0.2,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.timeline-event').forEach((event, index) => {
+        event.style.opacity = '0';
+        event.style.transform = 'translateY(30px)';
+        event.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+        observer.observe(event);
+    });
+</script>
+
+<!-- Tour Guide: Define steps for this page BEFORE loading the script -->
+    <script>
+        window.TOUR_STEPS = [
+            {
+                target: '.journey-hero',
+                title: 'Events & Missions 🗺️',
+                content: 'Welcome! Follow the <strong>H-SMA-CE journey</strong> through Southern Italy: from Naples to Taurasi, a path of research and territorial engagement.',
+                showArrow: false
+            },
+            {
+                target: '.timeline-line',
+                title: 'The Timeline',
+                content: 'This visual timeline traces our <strong>two-year research journey</strong> — from the project kick-off in January 2024 to the final workshop in December 2025.',
+                showArrow: false
+            },
+            {
+                target: '.timeline-event',
+                title: 'Interactive Events',
+                content: '<strong>Click any event card</strong> to explore details: workshop programmes, speaker lists, photo galleries, and event posters.',
+                showArrow: false
+            },
+            {
+                target: '.journey-destination',
+                title: 'The Destination',
+                content: 'Our journey leads to a concrete outcome: a <strong>Decision Support System</strong> for circular economy transition, tested in Taurasi.',
+                showArrow: false
+            },
+            {
+                target: '#navLinks',
+                title: 'Explore More',
+                content: 'Visit <strong>Conferences</strong> for our scientific presentations, or try the <strong>DSS Demo</strong> to see the tool in action. Enjoy! 🎉',
+                showArrow: true
+            }
+        ];
+    </script>
+    <script src="js/tour-guide.js"></script>
+
+</body>
+</html>

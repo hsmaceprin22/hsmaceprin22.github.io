@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publications | H-SMA-CE Project</title>
+    <meta name="description" content="Scientific publications and research outputs from the H-SMA-CE PRIN 2022 project on Circular Economy in Historical Small Towns.">
+    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23163860'/%3E%3Ctext x='50' y='62' font-family='Georgia' font-size='32' fill='white' text-anchor='middle' font-weight='bold'%3EH%3C/text%3E%3C/svg%3E">
+    
+    <link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/tour-guide.css">
+    <style>
+        /* Cross-link styles */
+        .cross-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--primary-50);
+            padding: 14px 18px;
+            border-radius: 10px;
+            margin-top: 20px;
+            border: 1px solid var(--primary-100);
+            text-decoration: none;
+            color: var(--primary-700);
+            transition: all 0.2s;
+        }
+        .cross-link:hover {
+            background: var(--primary-100);
+            border-color: var(--primary-200);
+            transform: translateX(4px);
+        }
+        .cross-link svg {
+            flex-shrink: 0;
+            color: var(--primary-500);
+        }
+        .cross-link-content {
+            flex: 1;
+        }
+        .cross-link-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--primary-500);
+            margin-bottom: 2px;
+        }
+        .cross-link-title {
+            font-weight: 600;
+            color: var(--primary-800);
+        }
+        .cross-link-arrow {
+            color: var(--primary-400);
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-logo-bar">
+    <div class="top-logo-bar-container">
+        <img src="images/logos/logo1.png" alt="Logo 1">
+        <span class="logo-divider"></span>
+        <img src="images/logos/logo2.png" alt="Logo 2">
+        <span class="logo-divider"></span>
+        <img src="images/logos/logo3.png" alt="Logo 3">
+		<span class="logo-divider"></span>
+        <img src="images/logos/logo4.png" alt="Logo 4">
+        <img src="images/logos/logo5.png" alt="Logo 5">
+    </div>
+</div>
+
+    <!-- =====================================================
+   NAVBAR CORRETTA - La X è FUORI da nav-links
+   Sostituisci la sezione nav nel tuo index.html
+   ===================================================== -->
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-main">
+                    <span class="logo-text">H-SMA-CE</span>
+                    <span class="logo-badge">PRIN 2022</span>
+                </div>
+                <div class="logo-codes">
+                    <span class="code-item">Project: 2022JZLL7J;</span>
+                    <span class="code-item">CUP UniMe: J53D23009390006</span>
+                    <span class="code-divider">-</span>
+                    <span class="code-item">CUP UniOr: C53D23004860006</span>
+                </div>
+            </a>
+            
+            <!-- MENU LINKS - senza il pulsante X dentro -->
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="#project">The Project</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">
+                        Research Activities
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="ra1.html">RA1 – Context Analysis</a>
+                        <a href="ra2.html">RA2 – Circular Scenario</a>
+                        <a href="ra3.html">RA3 – Method & Modelling</a>
+                        <a href="ra4.html">RA4 – DSS Development</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">
+                        Dissemination
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="publications.html">Publications</a>
+                        <a href="conferences.html">Conferences</a>
+                        <a href="events.html">Events & Missions</a>
+                    </div>
+                </li>
+                <li><a href="dss.html">DSS Demo</a></li>
+                <li><a href="special-issue.html">Special Issue</a></li> 
+            </ul>
+            
+            <!-- PULSANTE X - FUORI da nav-links, così non scorre -->
+            <button class="nav-close" id="navClose" aria-label="Close menu">&times;</button>
+            
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <nav class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <span>Publications</span>
+            </nav>
+            <h1>Publications</h1>
+            <p>Scientific contributions, journal articles, and conference proceedings from our research</p>
+        </div>
+    </header>
+
+    <!-- Publications Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header text-left" style="max-width: 100%; margin-bottom: 40px;">
+                <h2 class="section-title text-left">Journal Articles</h2>
+            </div>
+            
+            <div class="cards-grid">
+			
+			
+                <!-- Publication 1 - Sustainability -->
+                <article class="card publication-card clickable-card" data-modal="pub-modal-1">
+                    <div class="card-body">
+                        <span class="card-tag">Journal Article • Open Access</span>
+                        <h3 class="card-title">
+                            Unveiling Taurasi's Hidden Potential: A Wine Culture-Centered Framework for Sustainable Development and Circular Economy Transition in Historic Small Towns
+                        </h3>
+                        <p class="publication-authors">
+                            Ciliberto, C., Calabrò, G., Caristi, G., Arbolino, R., & Ioppolo, G.
+                        </p>
+                        <p class="publication-venue">
+                            <strong>Sustainability</strong>, 17(13), 5704 • 2025
+                        </p>
+                        <p class="card-text">
+                            This study presents a novel methodological framework for analyzing circular economy potential in historic small towns...
+                        </p>
+                        <div class="card-click-hint">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"/>
+                                <path d="m21 21-4.35-4.35"/>
+                                <path d="M11 8v6M8 11h6"/>
+                            </svg>
+                            Click to read full abstract
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conference Papers Section -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="section-header text-left" style="max-width: 100%; margin-bottom: 40px;">
+                <span class="section-badge">Conference Papers</span>
+                <h2 class="section-title text-left">Conference Proceedings</h2>
+            </div>
+            
+            <div class="cards-grid">
+			
+			 <!-- Conference Paper 3 - RIF -->
+                <article class="card publication-card clickable-card" data-modal="pub-modal-5">
+                    <div class="card-body">
+                        <span class="card-tag">Conference Paper • Forthcoming</span>
+                        <h3 class="card-title">
+                            Smart Transition in Historical Small Towns: First Insights from a Digital Material Flow Assessment in the Italian Case Study of Taurasi
+                        </h3>
+                        <p class="publication-authors">
+                            Ciliberto, C., Calabrò, G., Caristi, G., & Ioppolo, G.
+                        </p>
+                        <p class="publication-venue">
+                            <strong>Research and Innovation Forum 2025</strong><br>
+                            Competitiveness, growth and well-being through technology, innovation and education • April 24-25, 2025
+                        </p>
+                        <p class="card-text">
+                           This study investigates the integration of digital flows within Material
+Flow Analysis applied to Historical Small Towns (HSTs), using Taurasi, Italy as
+a case study. The research examines how digital technologies can promot
+                        </p>
+                        <div class="card-click-hint">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"/>
+                                <path d="m21 21-4.35-4.35"/>
+                                <path d="M11 8v6M8 11h6"/>
+                            </svg>
+                            Click to read full abstract
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Conference Paper 4 - DTS -->
+                <article class="card publication-card clickable-card" data-modal="pub-modal-6">
+                    <div class="card-body">
+                        <span class="card-tag">Conference Paper • Forthcoming</span>
+                        <h3 class="card-title">
+                            Digital Transformation for Circular Economy: Business Process Innovation in Historic Small Towns - The Taurasi Case Study
+                        </h3>
+                        <p class="publication-authors">
+                            Ciliberto, C., Calabrò, G., Caristi, G., & Ioppolo, G.
+                        </p>
+                        <p class="publication-venue">
+                            <strong>Digital Transformation Society International Conference (DTS 2025)</strong><br>
+                            Paris, France • May 22-23, 2025
+                        </p>
+                        <p class="card-text">
+                           The main objective of this research work is to study, through the case study of Taurasi in Italy, the application of digital transformation solutions in small towns for circular economy...
+                        </p>
+                        <div class="card-click-hint">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"/>
+                                <path d="m21 21-4.35-4.35"/>
+                                <path d="M11 8v6M8 11h6"/>
+                            </svg>
+                            Click to read full abstract
+                        </div>
+                    </div>
+                </article>
+                <!-- MCDM Paper -->
+                <article class="card publication-card clickable-card" data-modal="pub-modal-2">
+                    <div class="card-body">
+                        <span class="card-tag">Conference Paper • Forthcoming</span>
+                        <h3 class="card-title">
+                            A Multi-Criteria Decision-Making Analysis of Waste Management Practices in Historical Small Towns: The Taurasi Case Study
+                        </h3>
+                        <p class="publication-authors">
+                            Ioppolo, G., & Calabrò, G.
+                        </p>
+                        <p class="publication-venue">
+                            <strong>Atti della Accademia Peloritana dei Pericolanti</strong> - Classe di Scienze Fisiche, Matematiche e Naturali • Ongoing
+                        </p>
+                        <p class="card-text">
+                            This study employs multi-criteria decision making (MCDM) methodology to evaluate waste management alternatives for historical small towns (HSTs), using Taurasi, Italy as a representative case study
+                        </p>
+                        <div class="card-click-hint">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"/>
+                                <path d="m21 21-4.35-4.35"/>
+                                <path d="M11 8v6M8 11h6"/>
+                            </svg>
+                            Click to read full abstract
+                        </div>
+                    </div>
+                </article>
+				
+				 <!-- Conference Paper 2 - FEMIB -->
+                <article class="card publication-card clickable-card" data-modal="pub-modal-4">
+                    <div class="card-body">
+                        <span class="card-tag">Conference Paper</span>
+                        <h3 class="card-title">
+                            Analysing Italian Historical Small Towns: A Cultural and Geographic Mosaic of Identity
+                        </h3>
+                        <p class="publication-authors">
+                            Ciliberto, C., Ioppolo, G., Caristi, G., & Calabrò, G.
+                        </p>
+                        <p class="publication-venue">
+                            <strong>7th International Conference on Finance, Economics, Management and IT Business (FEMIB 2025)</strong><br>
+                            Porto, Portugal • April 5-6, 2025
+                        </p>
+                        <p class="card-text">
+                            The recent increase in the Tourism sector has underlined its economic centrality, contributing to 9,1% of global GDP in 2023. The European Union holds a significant position, counting more than 
+                        </p>
+                        <div class="card-click-hint">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"/>
+                                <path d="m21 21-4.35-4.35"/>
+                                <path d="M11 8v6M8 11h6"/>
+                            </svg>
+                            Click to read full abstract
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Conference Paper 1 - Lecce -->
+                <article class="card publication-card clickable-card" data-modal="pub-modal-3">
+                    <div class="card-body">
+                        <span class="card-tag">Conference Paper</span>
+                        <h3 class="card-title">
+                            Sustainable Circularity: Tracing Taurasi's Historical Small Town Resilience
+                        </h3>
+                        <p class="publication-authors">
+                            Ciliberto, C., Calabrò, G., Caristi, G., & Ioppolo, G.
+                        </p>
+                        <p class="publication-venue">
+                            <strong>XXXII Congresso Nazionale di Scienze Merceologiche</strong><br>
+                            Lecce, Italy • September 19-20, 2024
+                        </p>
+                        <p class="card-text">
+                            Historical Small Towns, often overlooked in discussions of sustainability and resilience, serve as reservoirs of
+historical knowledge and repositories of cultural practices. This paper delves into the case study of Taurasi, a small town
+nestled in the hills of southern Italy, to unravel the intricate relationship between historical narratives, resilience, and
+circularity. By employing a circularity framework, this study aims to explore how historical practices in Taurasi can
+inform present-day efforts towards sustainable development. Furthermore, resilience emerges as a central theme in
+understanding Taurasi's historical trajectory.
+                        </p>
+                        <div class="card-click-hint">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"/>
+                                <path d="m21 21-4.35-4.35"/>
+                                <path d="M11 8v6M8 11h6"/>
+                            </svg>
+                            Click to read full abstract
+                        </div>
+                    </div>
+                </article>
+                
+               
+                
+               
+            </div>
+        </div>
+    </section>
+
+    <!-- Publication Modals -->
+    
+    <!-- Modal 1 - Sustainability Journal -->
+    <div class="detail-modal" id="pub-modal-1">
+        <div class="detail-modal-content">
+            <button class="detail-modal-close">&times;</button>
+            <div class="detail-modal-header">
+                <span class="card-tag">Journal Article • Open Access</span>
+                <h2>Unveiling Taurasi's Hidden Potential: A Wine Culture-Centered Framework for Sustainable Development and Circular Economy Transition in Historic Small Towns</h2>
+                <p class="publication-authors">
+                    Ciliberto, C., Calabrò, G., Caristi, G., Arbolino, R., & Ioppolo, G.
+                </p>
+                <p class="publication-venue">
+                    <strong>Sustainability</strong>, 17(13), 5704 • 2025
+                </p>
+            </div>
+            <div class="detail-modal-body">
+                <h4>Abstract</h4>
+                <p>This study presents a novel methodological framework for analyzing circular economy potential in historic small towns (HSTs), integrating urban metabolism (UM) approaches with place-based development strategies. Using Taurasi in Southern Italy as a representative case, we employ a mixed-methods approach that combines material flow analysis with qualitative assessment of local economic circuits and cultural assets. The methodology systematically identifies intervention points across material, energy, and information flows, revealing how traditional practices, particularly wine production, create existing circular patterns that can be strengthened through strategic planning. Our analysis demonstrates that HSTs possess distinct sustainability advantages derived from their spatial characteristics, embedded cultural knowledge, and heritage-economy integration. The framework produces a comprehensive metabolic profile that extends beyond simple material accounting to capture the multilayer nature of HST systems, including both tangible flows and intangible heritage-related processes. Results for Taurasi identify the local wine sector as the primary driver of circular economy potential, functioning as a nexus connecting agricultural resources, cultural heritage, and economic development. The proposed methodology offers replicable assessment protocols for HSTs across Southern Europe facing similar development challenges, contributing both to circular economy implementation science and to broader debates concerning sustainable development in peripheral territories.</p>
+               
+                <div class="publication-links">
+                    <a href="downloads/presentations/sustainability.pdf" class="publication-link doi" download style="background: var(--primary-600); color: white;">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7 10 12 15 17 10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        Download Paper (PDF)
+                    </a>
+                    <a href="https://doi.org/10.3390/su17135704" class="publication-link doi" target="_blank">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                            <polyline points="15 3 21 3 21 9"/>
+                            <line x1="10" y1="14" x2="21" y2="3"/>
+                        </svg>
+                        View on DOI
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2 - MCDM Paper -->
+    <div class="detail-modal" id="pub-modal-2">
+        <div class="detail-modal-content">
+            <button class="detail-modal-close">&times;</button>
+            <div class="detail-modal-header">
+                <span class="card-tag">Conference Paper • In Progress</span>
+                <h2>A Multi-Criteria Decision-Making Analysis of Waste Management Practices in Historical Small Towns: The Taurasi Case Study</h2>
+                <p class="publication-authors">
+                    Ioppolo, G., & Calabrò, G.
+                </p>
+                <p class="publication-venue">
+                    <strong>Atti della Accademia Peloritana dei Pericolanti</strong> - Classe di Scienze Fisiche, Matematiche e Naturali • Ongoing
+                </p>
+            </div>
+            <div class="detail-modal-body">
+                <h4>Abstract</h4>
+                <p>This study employs multi-criteria decision making (MCDM) methodology to evaluate waste management alternatives for historical small towns (HSTs), using Taurasi, Italy as a representative case study. HSTs face distinctive challenges implementing sustainable waste systems due to spatial constraints, heritage preservation requirements, and limited administrative resources. The research applies Analytic Hierarchy Process (AHP) to determine criteria weights across environmental, economic, heritage compatibility, and social dimensions, followed by TOPSIS analysis to evaluate four waste management alternatives: Enhanced Organic Management, Viticultural Waste Valorization, Collection System Adaptation, and Inter-municipal Collaboration. Results identify Enhanced Organic Management as the highest-ranked alternative (proximity coefficient 0.697), followed by Viticultural Waste Valorization (0.643), though sensitivity analysis reveals significant ranking variations across different weighting scenarios. The analysis illuminates fundamental tensions between environmental performance and heritage compatibility, with approaches demonstrating superior resource recovery frequently presenting greater challenges regarding historical landscape integration. Integration potential analysis suggests complementary implementation pathways combining Collection System Adaptation's heritage compatibility with the resource recovery advantages of organic-focused approaches. This research contributes methodologically to circular economy implementation in heritage contexts through a structured evaluation framework specifically calibrated to HST characteristics, providing practical guidance for municipal administrators, waste management companies, and heritage preservation authorities navigating sustainability transitions while preserving historical character.</p>
+               <div class="publication-links">
+                    <span class="publication-link pdf">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                        In Preparation
+                    </span>
+                </div>
+                
+                <!-- Cross-link to Conference -->
+                <a href="conferences.html#conf-modal-1" class="cross-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                        <circle cx="12" cy="10" r="3"/>
+                    </svg>
+                    <div class="cross-link-content">
+                        <div class="cross-link-label">Presented at</div>
+                        <div class="cross-link-title">APPLMATH 2025 — Messina, Italy</div>
+                    </div>
+                    <svg class="cross-link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9 18 15 12 9 6"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+   <!-- Modal 3 - Scienze Merceologiche -->
+<div class="detail-modal" id="pub-modal-3">
+    <div class="detail-modal-content">
+        <button class="detail-modal-close">&times;</button>
+        <div class="detail-modal-header">
+            <span class="card-tag">Conference Paper</span>
+            <h2>Sustainable Circularity: Tracing Taurasi's Historical Small Town Resilience</h2>
+            <p class="publication-authors">
+                Ciliberto, C., Calabrò, G., Caristi, G., & Ioppolo, G.
+            </p>
+            <p class="publication-venue">
+                <strong>XXXII Congresso Nazionale di Scienze Merceologiche</strong><br>
+                "Resilienza e sostenibilità nel cambiamento globale"<br>
+                Lecce, Italy • September 19-20, 2024
+            </p>
+        </div>
+        <div class="detail-modal-body">
+            <h4>Abstract</h4>
+            <p>Historical Small Towns, often overlooked in discussions of sustainability and resilience, serve as reservoirs of
+historical knowledge and repositories of cultural practices. This paper delves into the case study of Taurasi, a small town
+nestled in the hills of southern Italy, to unravel the intricate relationship between historical narratives, resilience, and
+circularity. By employing a circularity framework, this study aims to explore how historical practices in Taurasi can
+inform present-day efforts towards sustainable development. Furthermore, resilience emerges as a central theme in
+understanding Taurasi's historical trajectory</p>
+            <div class="publication-links">
+                <span class="publication-link pdf">ISBN: 979-12-985593-1-8</span>
+            </div>
+            
+            <!-- Cross-link to Conference -->
+            <a href="conferences.html#conf-modal-5" class="cross-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                </svg>
+                <div class="cross-link-content">
+                    <div class="cross-link-label">Presented at</div>
+                    <div class="cross-link-title">XXXII Congresso Scienze Merceologiche — Lecce, Italy</div>
+                </div>
+                <svg class="cross-link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 18 15 12 9 6"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+</div>
+
+    <!-- Modal 4 - FEMIB -->
+    <div class="detail-modal" id="pub-modal-4">
+        <div class="detail-modal-content">
+            <button class="detail-modal-close">&times;</button>
+            <div class="detail-modal-header">
+                <span class="card-tag">Conference Paper</span>
+                <h2>Analysing Italian Historical Small Towns: A Cultural and Geographic Mosaic of Identity</h2>
+                <p class="publication-authors">
+                    Ciliberto, C., Ioppolo, G., Caristi, G., & Calabrò, G.
+                </p>
+                <p class="publication-venue">
+                    <strong>7th International Conference on Finance, Economics, Management and IT Business (FEMIB 2025)</strong><br>
+                    Porto, Portugal • April 5-6, 2025
+                </p>
+            </div>
+            <div class="detail-modal-body">
+                <h4>Abstract</h4>
+                <p>The recent increase in the Tourism sector has underlined its economic centrality, contributing to 9,1% of global GDP in 2023. The European Union holds a significant position, counting more than 50% of international arrivals. This, in turn, can be translated into considerable economic effects that positively affect the member states. Among such states, Italy has been ranked in the top five international destinations, registering over 57 million tourist inflows. Such an increase has been driven by affluence in major cities and the modern trend of rediscovering historical small towns (HST). This research aims to analyse the components of this trend, underscoring the geographical position and features of the HSTs throughout the Italian territory. Moreover, a descriptive analysis with quantitative data and a SWOT analysis will be conducted to assess their distribution through the Italian territory and their strengths, weaknesses, opportunities, and threats. Preliminary findings reveal that regions such as Central Italy host the highest concentration of villages, while climate change and depopulation threaten their viability. By analysing these HSTs, the study aims to inform strategic planning for sustainable tourism development, enhancing local identities and preserving cultural heritage while positioning these areas as viable alternatives in the global tourism landscape.</p>
+                <div class="publication-links">
+                    <a href="https://doi.org/10.5220/0013426600003956" class="publication-link doi" target="_blank">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                            <polyline points="15 3 21 3 21 9"/>
+                            <line x1="10" y1="14" x2="21" y2="3"/>
+                        </svg>
+                        View on DOI
+                    </a>
+                    <span class="publication-link pdf">ISBN: 978-989-758-748-1 • ISSN: 2184-5891</span>
+                </div>
+                
+                <!-- Cross-link to Conference -->
+                <a href="conferences.html#conf-modal-4" class="cross-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                        <circle cx="12" cy="10" r="3"/>
+                    </svg>
+                    <div class="cross-link-content">
+                        <div class="cross-link-label">Presented at</div>
+                        <div class="cross-link-title">FEMIB 2025 — Porto, Portugal</div>
+                    </div>
+                    <svg class="cross-link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9 18 15 12 9 6"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 5 - RIF -->
+    <div class="detail-modal" id="pub-modal-5">
+        <div class="detail-modal-content">
+            <button class="detail-modal-close">&times;</button>
+            <div class="detail-modal-header">
+                <span class="card-tag">Conference Paper • Forthcoming</span>
+                <h2>Smart Transition in Historical Small Towns: First Insights from a Digital Material Flow Assessment in the Italian Case Study of Taurasi</h2>
+                <p class="publication-authors">
+                    Ciliberto, C., Calabrò, G., Caristi, G., & Ioppolo, G.
+                </p>
+                <p class="publication-venue">
+                    <strong>Research and Innovation Forum 2025</strong><br>
+                    Competitiveness, growth and well-being through technology, innovation and education<br>
+                    April 24-25, 2025
+                </p>
+            </div>
+            <div class="detail-modal-body">
+                <h4>Abstract</h4>
+                <p>This study investigates the integration of digital flows within Material Flow Analysis applied to Historical Small Towns (HSTs), using Taurasi, Italy as a case study. The research examines how digital technologies can promote responsible consumption while preserving the unique fabric of HSTs through Industry 5.0 principles and redefined Urban Metabolism (UM) frameworks. The methodology combines Strategic Environmental Assessment (SEA) with the DPSIR framework adapted for analyzing digital flows within traditional material systems. This methodology incorporates quantitative analysis of digital infrastructure alongside qualitative assessment through stakeholder engagement and expert consultation. Implementation of the MFA methodology in Taurasi reveals that digitization initiates a "smart metabolism" system that optimizes resource utilization while preserving heritage values. This integration yielded measurable outcomes, including a 15% reduction in energy consumption through smart monitoring systems, enhanced preservation of historical structures via sensor networks, and increased community participation in digital platforms. The study advances UM theory by demonstrating how digital and material flows can effectively coexist and interact within historical urban environments. The findings suggest that HSTs should develop strategic approaches to digital transformation that not only overcome geographical limitations but also support evidence-based decision-making. Such strategies should prioritize heritage-sensitive digital projects and community engagement to ensure technological advancement complements rather than compromises historical character. This research presents a novel application of MFA that systematically incorporates both physical and digital flows within urban systems. The proposed interoperable framework connects material metabolism with digital transformation concepts, offering a new paradigm for balancing technological innovation and heritage conservation in HSTs.</p>
+                <div class="publication-links">
+                    <span class="publication-link pdf">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                        Springer Proceedings (Forthcoming)
+                    </span>
+                </div>
+                
+                <!-- Cross-link to Conference -->
+                <a href="conferences.html#conf-modal-3" class="cross-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                        <circle cx="12" cy="10" r="3"/>
+                    </svg>
+                    <div class="cross-link-content">
+                        <div class="cross-link-label">Presented at</div>
+                        <div class="cross-link-title">Research and Innovation Forum 2025</div>
+                    </div>
+                    <svg class="cross-link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9 18 15 12 9 6"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 6 - DTS -->
+    <div class="detail-modal" id="pub-modal-6">
+        <div class="detail-modal-content">
+            <button class="detail-modal-close">&times;</button>
+            <div class="detail-modal-header">
+                <span class="card-tag">Conference Paper • Forthcoming</span>
+                <h2>Digital Transformation for Circular Economy: Business Process Innovation in Historic Small Towns - The Taurasi Case Study</h2>
+                <p class="publication-authors">
+                    Ciliberto, C., Calabrò, G., Caristi, G., & Ioppolo, G.
+                </p>
+                <p class="publication-venue">
+                    <strong>Digital Transformation Society International Conference (DTS 2025)</strong><br>
+                    Paris, France • May 22-23, 2025
+                </p>
+            </div>
+            <div class="detail-modal-body">
+                <h4>Abstract</h4>
+                <p>The main objective of this research work is to study, through the case study of Taurasi in Italy, the application of digital transformation solutions in small towns for circular economy. Ancient cities have cultural heritage that needs to be conserved so that they meet the major drawback of resource protection, economic development, and environmental sustainability. Qualitative analysis and document review are conducted to identify how modern technologies can be used for circular economy and to preserve peculiar cultural heritage of the town. The study indicates that the efficient implementation of modern technologies in the context of old towns can only be completed if a "heritage-sensitive digital integration approach" is balanced manner between novity and tradition. Key findings show that digital platforms and IoT solutions improve Taurasi's waste management (regarding wine production) and, resource efficiency, and enhance community engagement, and the safeguard of the town's heritage. Some crucial factors for success, like the setting up of a digital innovation hub, the gradual adoption of technology, or active participation of the stakeholders are identified. However, challenges such as cultural resistance, disorganized infrastructures, and lack of skills have to be handled. This study helps to understand how digital technologies could be used to improve circular economy practices in the historical contexts, providing significant insights for policymakers in similar settings. Its originality lies in the fact that it explores the integration of digital transformation and circular economy in historic small towns through a "heritage-sensitive digital integration approach" linking together both technological and cultural domains.</p>
+                
+                <div class="publication-links">
+                    <span class="publication-link pdf">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                        Springer Proceedings (Forthcoming)
+                    </span>
+                </div>
+                
+                <!-- Cross-link to Conference -->
+                <a href="conferences.html#conf-modal-2" class="cross-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                        <circle cx="12" cy="10" r="3"/>
+                    </svg>
+                    <div class="cross-link-content">
+                        <div class="cross-link-label">Presented at</div>
+                        <div class="cross-link-title">DTS 2025 — Paris, France</div>
+                    </div>
+                    <svg class="cross-link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9 18 15 12 9 6"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo-text">H-SMA-CE</div>
+                    <p>
+                        Decision Support System for Circular Economy Transition in Historical Small Towns.
+                        A PRIN 2022 research project.
+                    </p>
+                    <div class="footer-funding">
+                        <div class="footer-funding-text">
+                            Funded by the European Union – NextGenerationEU under the Italian Ministry of University and Research (MUR) as part of the PRIN 2022 program.
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">Research</h4>
+                    <ul class="footer-links">
+                        <li><a href="ra1.html">RA1 – Context Analysis</a></li>
+                        <li><a href="ra2.html">RA2 – Circular Scenario</a></li>
+                        <li><a href="ra3.html">RA3 – Method & Modelling</a></li>
+                        <li><a href="ra4.html">RA4 – DSS Development</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="publications.html">Publications</a></li>
+                        <li><a href="conferences.html">Conferences</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="dss.html">DSS Tool</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">Contact</h4>
+                    <ul class="footer-links">
+                        <li><a href="contacts.html">Contact Us</a></li>
+                        <li><a href="index.html#team">Research Team</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024-2027 H-SMA-CE Project. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="privacy.html">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Open modal from URL hash
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.location.hash) {
+                const modalId = window.location.hash.substring(1);
+                const modal = document.getElementById(modalId);
+                if (modal && modal.classList.contains('detail-modal')) {
+                    setTimeout(function() {
+                        modal.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                    }, 100);
+                }
+            }
+        });
+    </script>
+	<!-- Tour Guide: Define steps for this page BEFORE loading the script -->
+    <script>
+        window.TOUR_STEPS = [
+            {
+                target: '.page-header',
+                title: 'Publications Page 📚',
+                content: 'Welcome! Here you\'ll find all <strong>scientific outputs</strong> from the H-SMA-CE project: journal articles, conference papers, and proceedings.',
+                showArrow: false
+            },
+            {
+                target: '.section:first-of-type .cards-grid',
+                title: 'Journal Articles',
+                content: 'Our <strong>peer-reviewed publications</strong> in international journals, including our flagship paper in <em>Sustainability</em> on Taurasi\'s circular economy potential.',
+                showArrow: false
+            },
+            {
+                target: '.section-light .cards-grid',
+                title: 'Conference Papers',
+                content: 'Papers presented at <strong>international conferences</strong> — from FEMIB in Porto to DTS in Paris and RIF in Barcelona.',
+                showArrow: false
+            },
+            {
+                target: '.publication-card',
+                title: 'Interactive Cards',
+                content: '<strong>Click any publication</strong> to read the full abstract, access DOI links, and find cross-references to related conference presentations.',
+                showArrow: false
+            },
+            {
+                target: '#navLinks',
+                title: 'Explore More',
+                content: 'Visit <strong>Conferences</strong> to see where we presented, or check <strong>Events</strong> for our research missions in Taurasi. Enjoy! 🎉',
+                showArrow: true
+            }
+        ];
+    </script>
+    <script src="js/tour-guide.js"></script>
+</body>
+</html>

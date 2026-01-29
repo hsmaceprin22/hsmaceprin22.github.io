@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Team | H-SMA-CE Project</title>
+    <meta name="description" content="Meet the multidisciplinary research team behind the H-SMA-CE PRIN 2022 project on Circular Economy for Historical Small Towns.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23163860'/%3E%3Ctext x='50' y='62' font-family='Georgia' font-size='32' fill='white' text-anchor='middle' font-weight='bold'%3EH%3C/text%3E%3C/svg%3E">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/tour-guide.css">
+    
+    <style>
+        /* Team Page Specific Styles */
+        
+        .team-intro {
+            max-width: 800px;
+            margin: 0 auto 60px;
+            text-align: center;
+        }
+        
+        .team-intro p {
+            font-size: 1.1rem;
+            color: var(--gray-600);
+            line-height: 1.9;
+        }
+        
+        /* Research Unit Section */
+        .research-unit {
+            margin-bottom: 80px;
+        }
+        
+        .research-unit:last-child {
+            margin-bottom: 0;
+        }
+        
+        .unit-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 40px;
+            padding-bottom: 24px;
+            border-bottom: 2px solid var(--gray-200);
+            text-align: center;
+        }
+        
+        .unit-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--white);
+            box-shadow: var(--shadow-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            padding: 12px;
+        }
+        
+        .unit-logo img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .unit-info {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .unit-badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 6px 14px;
+            border-radius: 50px;
+            margin-bottom: 8px;
+        }
+        
+        .unit-badge.lead {
+            background: var(--accent-gold);
+            color: var(--white);
+        }
+        
+        .unit-badge.partner {
+            background: var(--primary-100);
+            color: var(--primary-700);
+        }
+        
+        .unit-badge.external {
+            background: var(--gray-200);
+            color: var(--gray-700);
+        }
+        
+        .unit-info h2 {
+            font-size: 1.75rem;
+            color: var(--primary-800);
+            margin-bottom: 4px;
+        }
+        
+        .unit-info h2::after {
+            display: none;
+        }
+        
+        .unit-info p {
+            font-size: 0.95rem;
+            color: var(--gray-500);
+            margin: 0;
+        }
+        
+        .unit-cup {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+            margin-top: 8px;
+        }
+        
+        .unit-cup strong {
+            color: var(--gray-600);
+        }
+        
+        /* Team Member Full Card */
+        .team-member-full {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 40px;
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--gray-100);
+            transition: all var(--transition-medium);
+        }
+        
+        .team-member-full:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+        }
+        
+        .team-member-full:last-child {
+            margin-bottom: 0;
+        }
+        
+        .member-photo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .member-photo-large {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--primary-100);
+            box-shadow: var(--shadow-lg);
+            background: var(--gray-200);
+        }
+        
+        .member-role-badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--white);
+            background: var(--primary-600);
+            padding: 6px 16px;
+            border-radius: 50px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        
+        .member-role-badge.pi {
+            background: var(--accent-gold);
+        }
+        
+        .member-role-badge.copi {
+            background: var(--primary-500);
+        }
+        
+        .member-details {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .member-details h3 {
+            font-size: 1.5rem;
+            color: var(--primary-800);
+            margin-bottom: 8px;
+        }
+        
+        .member-position {
+            font-size: 1.05rem;
+            color: var(--primary-600);
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .member-affiliation {
+            font-size: 0.9rem;
+            color: var(--gray-500);
+            margin-bottom: 20px;
+        }
+        
+        .member-bio {
+            color: var(--gray-700);
+            line-height: 1.8;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+        
+        .member-expertise {
+            margin-top: auto;
+        }
+        
+        .member-expertise h4 {
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--primary-600);
+            margin-bottom: 12px;
+        }
+        
+        .expertise-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .expertise-tag {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--primary-700);
+            background: var(--primary-50);
+            padding: 6px 14px;
+            border-radius: 50px;
+            border: 1px solid var(--primary-100);
+        }
+        
+        .member-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--gray-100);
+        }
+        
+        .member-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary-600);
+            padding: 8px 16px;
+            background: var(--gray-50);
+            border-radius: 50px;
+            transition: all var(--transition-fast);
+        }
+        
+        .member-link:hover {
+            background: var(--primary-50);
+            color: var(--primary-700);
+        }
+        
+        /* External Consultant Card - Special */
+        .consultant-card {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 50px;
+            background: linear-gradient(135deg, var(--primary-50) 0%, var(--white) 100%);
+            border-radius: 24px;
+            padding: 50px;
+            box-shadow: var(--shadow-lg);
+            border: 2px solid var(--primary-100);
+        }
+        
+        .consultant-card .member-photo-large {
+            width: 200px;
+            height: 200px;
+            border: 6px solid var(--white);
+        }
+        
+        /* Team Stats */
+        .team-stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            padding: 40px;
+            background: var(--primary-700);
+            border-radius: 16px;
+            margin-top: 60px;
+        }
+        
+        .team-stat-item {
+            text-align: center;
+            color: var(--white);
+        }
+        
+        .team-stat-number {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 4px;
+        }
+        
+        .team-stat-label {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 900px) {
+            .team-member-full {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .member-photo-container {
+                align-items: center;
+            }
+            
+            .member-bio {
+                text-align: center;
+            }
+            
+            .expertise-tags {
+                justify-content: center;
+            }
+            
+            .member-links {
+                justify-content: center;
+            }
+            
+            .consultant-card {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .team-member-full {
+                padding: 28px;
+            }
+            
+            .member-photo-large {
+                width: 140px;
+                height: 140px;
+            }
+            
+            .member-details h3 {
+                font-size: 1.25rem;
+            }
+            
+            .team-stats-bar {
+                flex-wrap: wrap;
+                gap: 30px;
+                padding: 30px 20px;
+            }
+            
+            .team-stat-number {
+                font-size: 2rem;
+            }
+            
+            .consultant-card {
+                padding: 30px;
+            }
+            
+            .consultant-card .member-photo-large {
+                width: 160px;
+                height: 160px;
+            }
+        }
+		
+		/* Team Section Separator for team.html */
+.team-section-separator {
+    width: 100%;
+    margin: 40px 0 30px;
+    padding-top: 30px;
+    border-top: 2px dashed var(--gray-300);
+    text-align: center;
+}
+
+.team-section-separator-title {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--primary-600);
+    background: var(--gray-50);
+    padding: 8px 20px;
+    border-radius: 50px;
+    position: relative;
+    top: -45px;
+    margin-bottom: -30px;
+}
+
+/* Scroll margin per anchor links con navbar fissa */
+.team-member-full[id] {
+    scroll-margin-top: 120px;
+}
+    </style>
+</head>
+<body>
+
+<div class="top-logo-bar">
+    <div class="top-logo-bar-container">
+        <img src="images/logos/logo1.png" alt="Logo 1">
+        <span class="logo-divider"></span>
+        <img src="images/logos/logo2.png" alt="Logo 2">
+        <span class="logo-divider"></span>
+        <img src="images/logos/logo3.png" alt="Logo 3">
+        <span class="logo-divider"></span>
+        <img src="images/logos/logo4.png" alt="Logo 4">
+        <img src="images/logos/logo5.png" alt="Logo 5">
+    </div>
+</div>
+
+<!-- =====================================================
+   NAVBAR CORRETTA - La X è FUORI da nav-links
+   Sostituisci la sezione nav nel tuo index.html
+   ===================================================== -->
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-main">
+                    <span class="logo-text">H-SMA-CE</span>
+                    <span class="logo-badge">PRIN 2022</span>
+                </div>
+                <div class="logo-codes">
+                    <span class="code-item">Project: 2022JZLL7J;</span>
+                    <span class="code-item">CUP UniMe: J53D23009390006</span>
+                    <span class="code-divider">-</span>
+                    <span class="code-item">CUP UniOr: C53D23004860006</span>
+                </div>
+            </a>
+            
+            <!-- MENU LINKS - senza il pulsante X dentro -->
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="#project">The Project</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">
+                        Research Activities
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="ra1.html">RA1 – Context Analysis</a>
+                        <a href="ra2.html">RA2 – Circular Scenario</a>
+                        <a href="ra3.html">RA3 – Method & Modelling</a>
+                        <a href="ra4.html">RA4 – DSS Development</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">
+                        Dissemination
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="publications.html">Publications</a>
+                        <a href="conferences.html">Conferences</a>
+                        <a href="events.html">Events & Missions</a>
+                    </div>
+                </li>
+                <li><a href="dss.html">DSS Demo</a></li>
+                <li><a href="special-issue.html">Special Issue</a></li> 
+            </ul>
+            
+            <!-- PULSANTE X - FUORI da nav-links, così non scorre -->
+            <button class="nav-close" id="navClose" aria-label="Close menu">&times;</button>
+            
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+<!-- Page Header -->
+<header class="page-header">
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span>›</span>
+            <span>Research Team</span>
+        </div>
+        <h1>Research Team</h1>
+        <p>Meet the multidisciplinary team driving innovation in circular economy for historical small towns</p>
+    </div>
+</header>
+
+<!-- Main Content -->
+<main>
+    <!-- Team Introduction -->
+    <section class="section">
+        <div class="container">
+            <div class="team-intro">
+                <p>
+                    The H-SMA-CE project brings together a distinguished group of researchers from two Italian universities, 
+                    combining expertise in commodity science, economics, policy analysis, and sustainable development. 
+                    Our interdisciplinary approach enables comprehensive investigation of circular economy transitions 
+                    in historical contexts, bridging academic research with practical policy applications.
+                </p>
+            </div>
+            
+            <!-- Research Unit 1 - Messina (Lead) -->
+<div class="research-unit" id="ru1">
+    <div class="unit-header">
+        <div class="unit-logo">
+            <img src="images/logos/unime-logo.png" alt="University of Messina">
+        </div>
+        <div class="unit-info">
+            <span class="unit-badge lead">Lead Partner • RU1</span>
+            <h2>University of Messina</h2>
+            <p>Department of Economics</p>
+            <p class="unit-cup"><strong>CUP:</strong> J53D23009390006</p>
+        </div>
+    </div>
+    
+    <!-- Prof. Giuseppe Ioppolo -->
+<article class="team-member-full" id="ioppolo">
+    <div class="member-photo-container">
+        <img src="images/team/ioppolo.jpg" alt="Prof. Giuseppe Ioppolo" class="member-photo-large">
+        <span class="member-role-badge pi">Principal Investigator</span>
+    </div>
+    <div class="member-details">
+        <h3>Prof. Giuseppe Ioppolo</h3>
+            <p class="member-position">Full Professor of Commodity Science</p>
+            <p class="member-affiliation">Department of Economics, University of Messina</p>
+            <p class="member-bio">
+                Giuseppe Ioppolo is a Civil Engineer for Environment with a focus on sustainability and environmental Management, he is a Full Professor of Commodities Science, and a Lecturer in the Technology of Production Cycles and TQM, Department of Economics, University of Messina. He is a member of the Doctoral School of Economics, Management, and Statistics. He is Delegate of the Rector for Relations with Local Enterprises. As Editor-in-Chief of the journal Sustainability, one of the leading international journals on the topic of sustainability, he has served as a referee for Italy and Europe in numerous scientific committees at international conferences. As a Visiting Professor, he has lectured at Tsinghua University (Beijing, China), BJTU MBA (Beijing, China), Tokyo University (Tokyo, Japan), and Santa Barbara University (California, USA). He is the PI for several international programs and is particularly active in China. He has participated in national and international research programs such as Interreg and Horizon. Finally, he has carried out process coordination activities in engineering and spatial planning projects, both in Italy (such as the Aeolian Islands, Sardinia, Valle d'Agrò, etc.) and abroad (Tunisia, Croatia, etc.).</p>
+            <div class="member-expertise">
+                <h4>Research Expertise</h4>
+                <div class="expertise-tags">
+                    <span class="expertise-tag">Circular Economy</span>
+                    <span class="expertise-tag">Industrial Ecology</span>
+                    <span class="expertise-tag">Sustainable Development</span>
+                    <span class="expertise-tag">Environmental Management</span>
+                    <span class="expertise-tag">Regional Planning</span>
+                </div>
+            </div>
+            <div class="member-links">
+                <a href="https://orcid.org/0000-0003-0262-8435" target="_blank" class="member-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.684 3.965h1.369v9.293H6.685V8.343zm3.857 0h1.369v1.369h.019c.281-.525.966-1.078 1.988-1.078 2.128 0 2.522 1.397 2.522 3.216v5.786h-1.369v-5.131c0-1.225-.019-2.803-1.706-2.803-1.706 0-1.969 1.331-1.969 2.709v5.225h-1.369V8.343h1.515z"/>
+                    </svg>
+                    ORCID
+                </a>
+                <a href="https://www.scopus.com/authid/detail.uri?authorId=36097581800&source=sd-apx" target="_blank" class="member-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-1.243 18.266c-3.349 0-5.066-1.878-5.066-4.442h2.592c0 1.313.801 2.181 2.474 2.181 1.424 0 2.263-.693 2.263-1.724 0-1.169-.976-1.537-2.591-1.906-2.379-.531-4.458-1.206-4.458-3.912 0-2.256 1.812-3.899 4.783-3.899 3.037 0 4.771 1.643 4.771 4.005h-2.592c0-1.031-.651-1.768-2.179-1.768-1.312 0-2.129.575-2.129 1.531 0 1.031.963 1.375 2.479 1.706 2.654.581 4.608 1.281 4.608 4.067 0 2.493-1.899 4.161-4.955 4.161z"/>
+                    </svg>
+                    Scopus
+                </a>
+                <a href="https://scholar.google.com/citations?user=u0gVgvQAAAAJ&hl=en" target="_blank" class="member-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/>
+                    </svg>
+                    Google Scholar
+                </a>
+            </div>
+        </div>
+    </article>
+    
+   <!-- Prof. Grazia Calabrò -->
+<article class="team-member-full" id="calabro">
+    <div class="member-photo-container">
+        <img src="images/team/calabro.jpg" alt="Prof. Grazia Calabrò" class="member-photo-large">
+    </div>
+    <div class="member-details">
+        <h3>Prof. Grazia Calabrò</h3>
+            <p class="member-position">Full Professor of Commodity Science</p>
+            <p class="member-affiliation">Department of Economics, University of Messina</p>
+            <p class="member-bio">
+                Grazia Calabrò is Full Professor of Commodity Science.
+Since 2019, she is member of evaluation Committee for extension/renewal of fixed-term researcher at the University of Messina.
+She is member of the Italian Academy of Commodity Sciences and member of the Association for Innovation and Quality in Sustainable Business (Basiq).
+She has participated in a number of different working and research groups as principal investigator and co-investigator. Since 2007, she is in the editorial board of the International Journal of Economic Practices and Theories and Calitatea-Access la Success/Quality- Access to Success. Since 2016, she is also external review of Amfiteatru Economic Journal.
+She has been invited as speaker at national and international conferences.
+She is author of more than 200 publications on national and international scientific journals, books and proceedings. The scientific and research activity mainly encompasses the following areas: Quality certification (cosmetics, air and cultural good, ethical certification); Environmental management and Certification, Circular Economy, Tourism and Environment, Food quality, safety and security.
+            </p>
+            <div class="member-expertise">
+                <h4>Research Expertise</h4>
+                <div class="expertise-tags">
+                    <span class="expertise-tag">Product Quality Assessment</span>
+                    <span class="expertise-tag">Environmental Certification</span>
+                    <span class="expertise-tag">Material Flow Analysis</span>
+                    <span class="expertise-tag">Agri-food Systems</span>
+                    <span class="expertise-tag">Territorial Valorization</span>
+                </div>
+            </div>
+            <div class="member-links">
+                <a href="https://orcid.org/0000-0001-6949-6700" target="_blank" class="member-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.684 3.965h1.369v9.293H6.685V8.343zm3.857 0h1.369v1.369h.019c.281-.525.966-1.078 1.988-1.078 2.128 0 2.522 1.397 2.522 3.216v5.786h-1.369v-5.131c0-1.225-.019-2.803-1.706-2.803-1.706 0-1.969 1.331-1.969 2.709v5.225h-1.369V8.343h1.515z"/>
+                    </svg>
+                    ORCID
+                </a>
+                <a href="https://www.scopus.com/authid/detail.uri?authorId=55002949100" target="_blank" class="member-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-1.243 18.266c-3.349 0-5.066-1.878-5.066-4.442h2.592c0 1.313.801 2.181 2.474 2.181 1.424 0 2.263-.693 2.263-1.724 0-1.169-.976-1.537-2.591-1.906-2.379-.531-4.458-1.206-4.458-3.912 0-2.256 1.812-3.899 4.783-3.899 3.037 0 4.771 1.643 4.771 4.005h-2.592c0-1.031-.651-1.768-2.179-1.768-1.312 0-2.129.575-2.129 1.531 0 1.031.963 1.375 2.479 1.706 2.654.581 4.608 1.281 4.608 4.067 0 2.493-1.899 4.161-4.955 4.161z"/>
+                    </svg>
+                    Scopus
+                </a>
+            </div>
+        </div>
+    </article>
+    
+    <!-- Prof. Giuseppe Caristi -->
+<article class="team-member-full" id="caristi">
+    <div class="member-photo-container">
+        <img src="images/team/caristi.jpg" alt="Prof. Giuseppe Caristi" class="member-photo-large">
+    </div>
+    <div class="member-details">
+        <h3>Prof. Giuseppe Caristi</h3>
+            <p class="member-position">Full Professor of Mathematical Economics</p>
+            <p class="member-affiliation">Department of Economics, University of Messina</p>
+            <p class="member-bio">
+                Giuseppe Caristi is Full Professor of Mathematical for Economics. Associate Research in CNR-IRIB Research National
+Centre of Institute Innovation Biomedical Innovation Research Institute of Italy. Editor in Chief of the International Journal of
+Mathematical Analysis and International of Contemporary Mathematical Sciences. Moreover, he serves as Editorial Board Member in
+Scientifics journal. His Main research interest are: Mathematic for Economics, Optimization Theory, Partial Differential Equations,
+Nonlinear Analysis, Applied Mathematics. The research team fully respects the gender equality principle in its composition.
+            </p>
+            <div class="member-expertise">
+                <h4>Research Expertise</h4>
+                <div class="expertise-tags">
+                    <span class="expertise-tag">Mathematical Optimization</span>
+                    <span class="expertise-tag">Multi-objective Analysis</span>
+                    <span class="expertise-tag">Statistical Modeling</span>
+                    <span class="expertise-tag">Decision Theory</span>
+                    <span class="expertise-tag">Linear Programming</span>
+                </div>
+            </div>
+            <div class="member-links">
+                <a href="https://orcid.org/0000-0003-1953-5198" target="_blank" class="member-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.684 3.965h1.369v9.293H6.685V8.343zm3.857 0h1.369v1.369h.019c.281-.525.966-1.078 1.988-1.078 2.128 0 2.522 1.397 2.522 3.216v5.786h-1.369v-5.131c0-1.225-.019-2.803-1.706-2.803-1.706 0-1.969 1.331-1.969 2.709v5.225h-1.369V8.343h1.515z"/>
+                    </svg>
+                    ORCID
+                </a>
+                <a href="https://www.scopus.com/authid/detail.uri?authorId=55899596800" target="_blank" class="member-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-1.243 18.266c-3.349 0-5.066-1.878-5.066-4.442h2.592c0 1.313.801 2.181 2.474 2.181 1.424 0 2.263-.693 2.263-1.724 0-1.169-.976-1.537-2.591-1.906-2.379-.531-4.458-1.206-4.458-3.912 0-2.256 1.812-3.899 4.783-3.899 3.037 0 4.771 1.643 4.771 4.005h-2.592c0-1.031-.651-1.768-2.179-1.768-1.312 0-2.129.575-2.129 1.531 0 1.031.963 1.375 2.479 1.706 2.654.581 4.608 1.281 4.608 4.067 0 2.493-1.899 4.161-4.955 4.161z"/>
+                    </svg>
+                    Scopus
+                </a>
+                <a href="https://scholar.google.com/citations?user=GkfXe7YAAAAJ&hl=it" target="_blank" class="member-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/>
+                    </svg>
+                    Google Scholar
+                </a>
+            </div>
+        </div>
+    </article>
+    
+    <!-- Separatore Recruited Research Staff -->
+    <div class="team-section-separator">
+        <span class="team-section-separator-title">Recruited Research Staff</span>
+    </div>
+    
+    <!-- Dr. Cristina Ciliberto -->
+<article class="team-member-full" id="ciliberto">
+    <div class="member-photo-container">
+        <img src="images/team/ciliberto.jpg" alt="Dr. Cristina Ciliberto" class="member-photo-large">
+    </div>
+    <div class="member-details">
+        <h3>Dr. Cristina Ciliberto</h3>
+            <p class="member-position">PhD in Economics, Management and Statistics</p>
+            <p class="member-affiliation">Department of Economics, University of Messina</p>
+            <p class="member-bio">
+               Cristina Ciliberto received a Ph.D. in Economics, Management and Statistics and has experience working with organizations to improve quality and process capability in different sectors. She is Expert of the Subject in Production Cycles Technology at the Faculty of Economics of the University of Messina and in Quality Management at the Faculty of Engineering of the University of Messina. She has published articles and research papers on the topics of Quality Management, Industry 4.0, Lean Production and Circular Supply Chain. She is certified Lean Six Sigma Black belt by Six Sigma Management Institute.</p>
+            <div class="member-expertise">
+                <h4>Research Expertise</h4>
+                <div class="expertise-tags">
+                    <span class="expertise-tag">Circular Economy Assessment</span>
+                    <span class="expertise-tag">Systematic Reviews</span>
+                    <span class="expertise-tag">Stakeholder Analysis</span>
+                    <span class="expertise-tag">Case Study Research</span>
+                    <span class="expertise-tag">Indicator Development</span>
+                </div>
+            </div>
+            <div class="member-links">
+                <a href="https://orcid.org/0000-0002-2776-1622" target="_blank" class="member-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.684 3.965h1.369v9.293H6.685V8.343zm3.857 0h1.369v1.369h.019c.281-.525.966-1.078 1.988-1.078 2.128 0 2.522 1.397 2.522 3.216v5.786h-1.369v-5.131c0-1.225-.019-2.803-1.706-2.803-1.706 0-1.969 1.331-1.969 2.709v5.225h-1.369V8.343h1.515z"/>
+                    </svg>
+                    ORCID
+                </a>
+                <a href="https://www.scopus.com/authid/detail.uri?authorId=57223197100" target="_blank" class="member-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-1.243 18.266c-3.349 0-5.066-1.878-5.066-4.442h2.592c0 1.313.801 2.181 2.474 2.181 1.424 0 2.263-.693 2.263-1.724 0-1.169-.976-1.537-2.591-1.906-2.379-.531-4.458-1.206-4.458-3.912 0-2.256 1.812-3.899 4.783-3.899 3.037 0 4.771 1.643 4.771 4.005h-2.592c0-1.031-.651-1.768-2.179-1.768-1.312 0-2.129.575-2.129 1.531 0 1.031.963 1.375 2.479 1.706 2.654.581 4.608 1.281 4.608 4.067 0 2.493-1.899 4.161-4.955 4.161z"/>
+                    </svg>
+                    Scopus
+                </a>
+                <a href="https://scholar.google.com/citations?user=XqzBilQAAAAJ&hl=it&oi=ao" target="_blank" class="member-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/>
+                    </svg>
+                    Google Scholar
+                </a>
+            </div>
+        </div>
+    </article>
+</div>
+            
+            <!-- Research Unit 2 - Napoli -->
+<div class="research-unit" id="ru2">
+    <div class="unit-header">
+        <div class="unit-logo">
+            <img src="images/logos/unior-logo.png" alt="University of Naples L'Orientale">
+        </div>
+        <div class="unit-info">
+            <span class="unit-badge partner">Partner • RU2</span>
+            <h2>University of Naples "L'Orientale"</h2>
+            <p>Department of Human and Social Sciences</p>
+            <p class="unit-cup"><strong>CUP:</strong> C53D23004860006</p>
+        </div>
+    </div>
+    
+    <!-- Prof. Roberta Arbolino -->
+<article class="team-member-full" id="arbolino">
+    <div class="member-photo-container">
+        <img src="images/team/arbolino.jpg" alt="Prof. Roberta Arbolino" class="member-photo-large">
+        <span class="member-role-badge copi">Co-Principal Investigator</span>
+    </div>
+    <div class="member-details">
+        <h3>Prof. Roberta Arbolino</h3>
+            <p class="member-position">Full Professor of Economic Policy</p>
+            <p class="member-affiliation">Department of Human and Social Sciences, University of Naples "L'Orientale"</p>
+            <p class="member-bio">
+               Roberta Arbolino is Full Professor of Economic Policy at the Department of Human and Social Sciences since 2023, where she teaches Economic Policy and Policies for Economic Development. Since 2024, she has served as Deputy Director of DSUS. Her main research areas include regional economics, public policy evaluation, sustainable development, and circular economy. On these topics, she has participated in several research projects as Principal Investigator and research team member; she has also published articles in international journals, including Socioeconomic Planning Sciences, International Economics, Regional Studies, Journal of Common Market Studies, Journal of Cleaner Production, and Energy Policy.</p>
+            <div class="member-expertise">
+                <h4>Research Expertise</h4>
+                <div class="expertise-tags">
+                    <span class="expertise-tag">Policy Evaluation</span>
+                    <span class="expertise-tag">Sustainable Development</span>
+                    <span class="expertise-tag">Regional Policies</span>
+                    <span class="expertise-tag">Regional Economy</span>
+                </div>
+            </div>
+            <div class="member-links">
+                <a href="https://orcid.org/0000-0001-5455-5077" target="_blank" class="member-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.684 3.965h1.369v9.293H6.685V8.343zm3.857 0h1.369v1.369h.019c.281-.525.966-1.078 1.988-1.078 2.128 0 2.522 1.397 2.522 3.216v5.786h-1.369v-5.131c0-1.225-.019-2.803-1.706-2.803-1.706 0-1.969 1.331-1.969 2.709v5.225h-1.369V8.343h1.515z"/>
+                    </svg>
+                    ORCID
+                </a>
+                <a href="https://www.scopus.com/authid/detail.uri?authorId=36462382700" target="_blank" class="member-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-1.243 18.266c-3.349 0-5.066-1.878-5.066-4.442h2.592c0 1.313.801 2.181 2.474 2.181 1.424 0 2.263-.693 2.263-1.724 0-1.169-.976-1.537-2.591-1.906-2.379-.531-4.458-1.206-4.458-3.912 0-2.256 1.812-3.899 4.783-3.899 3.037 0 4.771 1.643 4.771 4.005h-2.592c0-1.031-.651-1.768-2.179-1.768-1.312 0-2.129.575-2.129 1.531 0 1.031.963 1.375 2.479 1.706 2.654.581 4.608 1.281 4.608 4.067 0 2.493-1.899 4.161-4.955 4.161z"/>
+                    </svg>
+                    Scopus
+                </a>
+                <a href="https://scholar.google.com/citations?hl=it&user=FSHPCmYAAAAJ" target="_blank" class="member-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/>
+                    </svg>
+                    Google Scholar
+                </a>
+            </div>
+        </div>
+    </article>
+    
+    <!-- Prof. Antonio Lopes -->
+<article class="team-member-full" id="lopes">
+    <div class="member-photo-container">
+        <img src="images/team/lopes.jpg" alt="Prof. Antonio Lopes" class="member-photo-large">
+    </div>
+    <div class="member-details">
+        <h3>Prof. Antonio Lopes</h3>
+            <p class="member-position">Full Professor of Political Economy</p>
+            <p class="member-affiliation">Department of Human and Social Sciences, University of Naples "L'Orientale"</p>
+            <p class="member-bio">
+                Antonio Lopes is Full Professor of Political Economy at the Department of Human and Social Sciences of the Università degli Studi di Napoli "L'Orientale" since 2016. His main research areas include the study of development policies, the analysis of theoretical foundations of technical and allocative efficiency analysis with particular focus on econometric techniques for performance measurement, and the study of industrial policies and the role of small and medium enterprises in the development process of depressed areas. He has participated in several research projects and is the author of numerous scientific contributions in national and international scientific journals.
+            </p>
+            <div class="member-expertise">
+                <h4>Research Expertise</h4>
+                <div class="expertise-tags">
+                    <span class="expertise-tag">Industrial Policies</span>
+                    <span class="expertise-tag">Regional Development</span>
+                    <span class="expertise-tag">Local Development Policy</span>
+                                    </div>
+            </div>
+            <div class="member-links">
+                <a href="https://www.scopus.com/authid/detail.uri?authorId=59322696000" target="_blank" class="member-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-1.243 18.266c-3.349 0-5.066-1.878-5.066-4.442h2.592c0 1.313.801 2.181 2.474 2.181 1.424 0 2.263-.693 2.263-1.724 0-1.169-.976-1.537-2.591-1.906-2.379-.531-4.458-1.206-4.458-3.912 0-2.256 1.812-3.899 4.783-3.899 3.037 0 4.771 1.643 4.771 4.005h-2.592c0-1.031-.651-1.768-2.179-1.768-1.312 0-2.129.575-2.129 1.531 0 1.031.963 1.375 2.479 1.706 2.654.581 4.608 1.281 4.608 4.067 0 2.493-1.899 4.161-4.955 4.161z"/>
+                    </svg>
+                    Scopus
+                </a>
+            </div>
+        </div>
+    </article>
+    
+    <!-- Dr. Luisa De Simone -->
+<article class="team-member-full" id="desimone">
+    <div class="member-photo-container">
+        <img src="images/team/desimone.jpg" alt="Dr. Luisa De Simone" class="member-photo-large">
+    </div>
+    <div class="member-details">
+        <h3>Dr. Luisa De Simone</h3>
+            <p class="member-position">Researcher in Economic Policy</p>
+            <p class="member-affiliation">Department of Human and Social Sciences, University of Naples "L'Orientale"</p>
+            <p class="member-bio">
+                Luisa De Simone is a Fixed-Term Researcher (RTD) in Economic Policy. Her research activity is primarily focused on public policy evaluation, regional economics, sustainable development, and development economics. On these topics, she has published in prestigious international journals such as Journal of Cleaner Production, Ecological Indicators, Journal of Sustainable Tourism, Waste Management, and Journal of Environmental Management. </p>
+            <div class="member-expertise">
+                <h4>Research Expertise</h4>
+                <div class="expertise-tags">
+                    <span class="expertise-tag">Public Policy Evaluation</span>
+                    <span class="expertise-tag">Regional Economy</span>
+                    <span class="expertise-tag">Sustainable Development</span>
+                    <span class="expertise-tag">Development Economy</span>
+                </div>
+            </div>
+            <div class="member-links">
+                <a href="https://orcid.org/0000-0002-1366-8777" target="_blank" class="member-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.684 3.965h1.369v9.293H6.685V8.343zm3.857 0h1.369v1.369h.019c.281-.525.966-1.078 1.988-1.078 2.128 0 2.522 1.397 2.522 3.216v5.786h-1.369v-5.131c0-1.225-.019-2.803-1.706-2.803-1.706 0-1.969 1.331-1.969 2.709v5.225h-1.369V8.343h1.515z"/>
+                    </svg>
+                    ORCID
+                </a>
+                <a href="https://www.scopus.com/authid/detail.uri?authorId=57199841112" target="_blank" class="member-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-1.243 18.266c-3.349 0-5.066-1.878-5.066-4.442h2.592c0 1.313.801 2.181 2.474 2.181 1.424 0 2.263-.693 2.263-1.724 0-1.169-.976-1.537-2.591-1.906-2.379-.531-4.458-1.206-4.458-3.912 0-2.256 1.812-3.899 4.783-3.899 3.037 0 4.771 1.643 4.771 4.005h-2.592c0-1.031-.651-1.768-2.179-1.768-1.312 0-2.129.575-2.129 1.531 0 1.031.963 1.375 2.479 1.706 2.654.581 4.608 1.281 4.608 4.067 0 2.493-1.899 4.161-4.955 4.161z"/>
+                    </svg>
+                    Scopus
+                </a>
+                <a href="https://scholar.google.com/citations?hl=it&user=7P-Go5gAAAAJ" target="_blank" class="member-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/>
+                    </svg>
+                    Google Scholar
+                </a>
+            </div>
+        </div>
+    </article>
+    
+    <!-- Separatore Recruited Research Staff -->
+    <div class="team-section-separator">
+        <span class="team-section-separator-title">Recruited Research Staff</span>
+    </div>
+    
+    <!-- Dr. Ilaria Russo -->
+<article class="team-member-full" id="russo">
+    <div class="member-photo-container">
+        <img src="images/team/russo.jpg" alt="Dr. Ilaria Russo" class="member-photo-large">
+    </div>
+    <div class="member-details">
+        <h3>Dr. Ilaria Russo</h3>
+            <p class="member-position">PhD in Agricultural Economics</p>
+            <p class="member-affiliation">Department of Human and Social Sciences, University of Naples "L'Orientale"</p>
+            <p class="member-bio">
+                Ilaria Russo holds a PhD in Agricultural Economics with specialization in rural development and 
+                agri-food value chains. Her doctoral research examined the economic sustainability of traditional 
+                agricultural practices in Southern Italian regions, with particular attention to viticulture and 
+                olive oil production systems. Dr. Russo brings essential expertise on agricultural by-product 
+                valorization and rural circular economy to the H-SMA-CE project. Her work focuses on identifying 
+                opportunities for closing material loops within agricultural systems and integrating farming 
+                activities into broader municipal sustainability strategies. She has conducted extensive fieldwork 
+                in Taurasi, documenting current agricultural practices and assessing potential for circular 
+                economy interventions in wine production and related activities.
+            </p>
+            <div class="member-expertise">
+                <h4>Research Expertise</h4>
+                <div class="expertise-tags">
+                    <span class="expertise-tag">Agricultural Economics</span>
+                    <span class="expertise-tag">Rural Development</span>
+                    <span class="expertise-tag">Agri-food Value Chains</span>
+                    <span class="expertise-tag">Viticulture Economics</span>
+                    <span class="expertise-tag">By-product Valorization</span>
+                </div>
+            </div>
+            <div class="member-links">
+                <a href="https://orcid.org/0000-0002-3345-6819" target="_blank" class="member-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.684 3.965h1.369v9.293H6.685V8.343zm3.857 0h1.369v1.369h.019c.281-.525.966-1.078 1.988-1.078 2.128 0 2.522 1.397 2.522 3.216v5.786h-1.369v-5.131c0-1.225-.019-2.803-1.706-2.803-1.706 0-1.969 1.331-1.969 2.709v5.225h-1.369V8.343h1.515z"/>
+                    </svg>
+                    ORCID
+                </a>
+                <a href="https://www.scopus.com/authid/detail.uri?authorId=57273737200" target="_blank" class="member-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-1.243 18.266c-3.349 0-5.066-1.878-5.066-4.442h2.592c0 1.313.801 2.181 2.474 2.181 1.424 0 2.263-.693 2.263-1.724 0-1.169-.976-1.537-2.591-1.906-2.379-.531-4.458-1.206-4.458-3.912 0-2.256 1.812-3.899 4.783-3.899 3.037 0 4.771 1.643 4.771 4.005h-2.592c0-1.031-.651-1.768-2.179-1.768-1.312 0-2.129.575-2.129 1.531 0 1.031.963 1.375 2.479 1.706 2.654.581 4.608 1.281 4.608 4.067 0 2.493-1.899 4.161-4.955 4.161z"/>
+                    </svg>
+                    Scopus
+                </a>
+                <a href="https://scholar.google.com/citations?hl=it&user=xeI4EdAAAAAJ" target="_blank" class="member-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/>
+                    </svg>
+                    Google Scholar
+                </a>
+            </div>
+        </div>
+    </article>
+</div>
+            
+            
+            
+            <!-- Team Stats -->
+            <div class="team-stats-bar">
+                <div class="team-stat-item">
+                    <span class="team-stat-number">9</span>
+                    <span class="team-stat-label">Researchers</span>
+                </div>
+                <div class="team-stat-item">
+                    <span class="team-stat-number">2</span>
+                    <span class="team-stat-label">Italian Universities</span>
+                </div>
+                <div class="team-stat-item">
+                    <span class="team-stat-number">3</span>
+                    <span class="team-stat-label">Countries</span>
+                </div>
+                <div class="team-stat-item">
+                    <span class="team-stat-number">5+</span>
+                    <span class="team-stat-label">Disciplines</span>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo-text">H-SMA-CE</div>
+                <p>
+                    Decision Support System for Circular Economy Transition in Historical Small Towns.
+                    A PRIN 2022 research project.
+                </p>
+                <div class="footer-funding">
+                    <div class="footer-funding-text">
+                        Funded by the European Union – NextGenerationEU under the Italian Ministry of University and Research (MUR) as part of the PRIN 2022 program.
+                    </div>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-title">Research</h4>
+                <ul class="footer-links">
+                    <li><a href="ra1.html">RA1 – Context Analysis</a></li>
+                    <li><a href="ra2.html">RA2 – Circular Scenario</a></li>
+                    <li><a href="ra3.html">RA3 – Method & Modelling</a></li>
+                    <li><a href="ra4.html">RA4 – DSS Development</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-title">Resources</h4>
+                <ul class="footer-links">
+                    <li><a href="publications.html">Publications</a></li>
+                    <li><a href="conferences.html">Conferences</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="dss.html">DSS Tool</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-title">Contact</h4>
+                <ul class="footer-links">
+                    <li><a href="contacts.html">Contact Us</a></li>
+                    <li><a href="team.html">Research Team</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024-2027 H-SMA-CE Project. All rights reserved.</p>
+            <div class="footer-legal">
+                <a href="privacy.html">Privacy Policy</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="js/main.js"></script>
+
+<!-- Tour Guide -->
+    <script>
+        window.TOUR_STEPS = [
+            {
+                target: '.team-intro',
+                title: 'Meet the Team 👥',
+                content: 'Welcome! The H-SMA-CE project brings together <strong>9 researchers</strong> from 2 Italian universities plus international collaboration, combining expertise in economics, engineering, and sustainability.',
+                showArrow: false
+            },
+            {
+                target: '.research-unit:first-of-type',
+                title: 'RU1 — University of Messina',
+                content: 'The <strong>Lead Partner</strong> based at the Department of Economics. Led by Prof. Giuseppe Ioppolo as Principal Investigator, with expertise in industrial ecology and circular economy.',
+                showArrow: false
+            },
+            {
+                target: '.research-unit:nth-of-type(2)',
+                title: 'RU2 — University of Naples',
+                content: 'The <strong>Partner Unit</strong> at L\'Orientale University. Led by Prof. Roberta Arbolino, contributing regional economics and policy evaluation expertise.',
+                showArrow: false
+            },
+            {
+                target: '.team-member-full',
+                title: 'Researcher Profiles',
+                content: 'Each card shows <strong>full biography</strong>, research expertise, and links to ORCID, Scopus, and Google Scholar profiles. Click the links to explore their publications!',
+                showArrow: false
+            },
+            {
+                target: '.team-stats-bar',
+                title: 'Team at a Glance',
+                content: '<strong>9 researchers</strong> across <strong>2 Italian universities</strong> and <strong>3 countries</strong>, covering <strong>5+ disciplines</strong> — from economics to engineering to environmental science.',
+                showArrow: false
+            },
+            {
+                target: '#navLinks',
+                title: 'Learn More',
+                content: 'Explore our <strong>Research Activities</strong> to see what the team has accomplished, or visit <strong>Publications</strong> for our academic output! 🎓',
+                showArrow: true
+            }
+        ];
+    </script>
+    <script src="js/tour-guide.js"></script>
+</body>
+</html>

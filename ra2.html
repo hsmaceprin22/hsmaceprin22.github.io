@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RA2 — Circular Scenario | H-SMA-CE Project</title>
+    <meta name="description" content="Research Activity 2: Defining Circular Economy Scenarios through Literature Review, Best Practices and Cost-Benefit Analysis.">
+    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23163860'/%3E%3Ctext x='50' y='62' font-family='Georgia' font-size='32' fill='white' text-anchor='middle' font-weight='bold'%3EH%3C/text%3E%3C/svg%3E">
+    
+    <link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/tour-guide.css">
+    <style>
+        .ra-hero {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+            margin-bottom: 48px;
+            border-radius: 16px;
+        }
+        .ra-hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .ra-hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(22, 56, 96, 0.85) 0%, rgba(30, 64, 110, 0.7) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .ra-hero-text {
+            text-align: center;
+            color: white;
+            padding: 24px;
+        }
+        .ra-hero-text h2 {
+            font-size: 2rem;
+            margin-bottom: 8px;
+            color: white;
+        }
+        .ra-hero-text p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        .objective-card {
+            background: var(--gray-50);
+            padding: 24px;
+            border-radius: 16px;
+            border: 1px solid var(--gray-200);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .objective-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        }
+        .objective-card-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--primary-100);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+        .objective-card-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--primary-600);
+            fill: none;
+            stroke-width: 2;
+        }
+        .objective-card h4 {
+            color: var(--primary-700);
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        .objective-card p {
+            color: var(--gray-600);
+            font-size: 0.95rem;
+            margin: 0;
+            text-align: justify;
+        }
+		        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+
+        /* Styles for the Outcomes Section */
+        .outcomes-list {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .outcome-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            align-items: center;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .outcome-card:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .outcome-content h4 {
+            color: var(--primary-700);
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+        }
+
+        .outcome-content p {
+            color: var(--gray-600);
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        .outcome-visual {
+            background: var(--gray-50);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--gray-200);
+        }
+
+        .outcome-placeholder {
+            width: 100%;
+            height: 250px;
+            background-color: #e0e7ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-600);
+            font-weight: 500;
+        }
+        
+        .outcome-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .outcome-caption {
+            padding: 12px;
+            font-size: 0.85rem;
+            color: var(--gray-500);
+            text-align: center;
+            background: white;
+            border-top: 1px solid var(--gray-100);
+            font-style: italic;
+        }
+
+        /* Stile per il box info */
+        .project-info-box {
+            margin-bottom: 48px;
+            padding: 24px;
+            background: var(--primary-50);
+            border-radius: 16px;
+            border-left: 4px solid var(--primary-500);
+            width: 450px;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 100%;
+        }
+
+        @media (max-width: 1024px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            .outcome-card {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .project-info-box {
+                width: 100%;
+            }
+        }
+		
+		/* LIGHTBOX STYLES */
+.lightbox-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    cursor: zoom-out;
+}
+
+.lightbox-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox-content {
+    max-width: 90%;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+    cursor: default;
+}
+
+.lightbox-modal.active .lightbox-content {
+    transform: scale(1);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s;
+}
+
+.lightbox-close:hover {
+    color: var(--primary-200);
+}
+
+/* Rende le immagini cliccabili */
+.outcome-visual img {
+    cursor: zoom-in;
+    transition: filter 0.2s;
+}
+
+.outcome-visual img:hover {
+    filter: brightness(0.95);
+}
+    </style>
+</head>
+<body>
+    <!-- Top Logo Bar -->
+    <div class="top-logo-bar">
+    <div class="top-logo-bar-container">
+        <img src="images/logos/logo1.png" alt="Logo 1">
+        <span class="logo-divider"></span>
+        <img src="images/logos/logo2.png" alt="Logo 2">
+        <span class="logo-divider"></span>
+        <img src="images/logos/logo3.png" alt="Logo 3">
+		<span class="logo-divider"></span>
+        <img src="images/logos/logo4.png" alt="Logo 4">
+        <img src="images/logos/logo5.png" alt="Logo 5">
+    </div>
+</div>
+
+    <!-- =====================================================
+   NAVBAR CORRETTA - La X è FUORI da nav-links
+   Sostituisci la sezione nav nel tuo index.html
+   ===================================================== -->
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-main">
+                    <span class="logo-text">H-SMA-CE</span>
+                    <span class="logo-badge">PRIN 2022</span>
+                </div>
+                <div class="logo-codes">
+                    <span class="code-item">Project: 2022JZLL7J;</span>
+                    <span class="code-item">CUP UniMe: J53D23009390006</span>
+                    <span class="code-divider">-</span>
+                    <span class="code-item">CUP UniOr: C53D23004860006</span>
+                </div>
+            </a>
+            
+            <!-- MENU LINKS - senza il pulsante X dentro -->
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="#project">The Project</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">
+                        Research Activities
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="ra1.html">RA1 – Context Analysis</a>
+                        <a href="ra2.html">RA2 – Circular Scenario</a>
+                        <a href="ra3.html">RA3 – Method & Modelling</a>
+                        <a href="ra4.html">RA4 – DSS Development</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">
+                        Dissemination
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="publications.html">Publications</a>
+                        <a href="conferences.html">Conferences</a>
+                        <a href="events.html">Events & Missions</a>
+                    </div>
+                </li>
+                <li><a href="dss.html">DSS Demo</a></li>
+                <li><a href="special-issue.html">Special Issue</a></li> 
+            </ul>
+            
+            <!-- PULSANTE X - FUORI da nav-links, così non scorre -->
+            <button class="nav-close" id="navClose" aria-label="Close menu">&times;</button>
+            
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <nav class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <a href="#">Research Activities</a>
+                <span>/</span>
+                <span>RA2</span>
+            </nav>
+            <h1>RA2 — Defining "Circular Scenario"</h1>
+            <p>State-of-the-art analysis, best practices identification, and cost-benefit evaluation</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <section class="section">
+        <div class="container">
+            <div class="content-wrapper" style="max-width: 900px; margin: 0 auto;">
+                
+                <!-- Hero Image -->
+                <div class="ra-hero">
+                    <img src="images/ra/ra2.png" alt="Research and literature review representing systematic analysis">
+                    <div class="ra-hero-overlay">
+                        <div class="ra-hero-text">
+                            <h2>Understanding-Evaluating Phase</h2>
+                            <p>Systematic literature review and best practices identification</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-header text-left" style="max-width: 100%; margin-bottom: 40px;">
+                    <span class="section-badge">Research Activity 2</span>
+                    <h2 class="section-title text-left">Overview</h2>
+                </div>
+                
+                <p class="lead" style="margin-bottom: 32px; text-align: justify;">
+                    RA2 expands the analytical lens through a systematic review of academic literature and existing best practices. This "Understanding-Evaluating" phase establishes the normative framework for the project, identifying key performance indicators and estimating the costs and benefits of archetypal Circular Economy interventions.
+                </br></br>
+                    Building on the empirical foundation of RA1, this activity provides an in-depth desk research using a multidimensional and integrative approach. The analysis covers technological-innovative, environmental, economic, and socio-relational dimensions to construct the most suitable CE model ("circular scenario") applicable to Historical Small Towns.
+                </p>
+
+                <div class="project-info-box">
+                    <p style="margin: 0; color: var(--gray-700);"><strong>Duration:</strong> Year 1 — Second Semester</p>
+                    <p style="margin: 8px 0 0; color: var(--gray-700);"><strong>Status:</strong> <span style="background: #10b981; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.8rem; font-weight: 600;">Completed</span></p>
+                    <p style="margin: 8px 0 0; color: var(--gray-700);"><strong>Lead:</strong> RU1 — University of Messina (with RU2 contribution)</p>
+                </div>
+
+                <h3 style="margin-top: 48px; margin-bottom: 24px;">Key Objectives</h3>
+                
+                <div class="features-grid">
+                    <div class="objective-card">
+                        <div class="objective-card-icon">
+                            <svg viewBox="0 0 24 24"><path d="M3 21h18M3 7v1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7H3l2-4h14l2 4M5 21V10.87M19 21V10.87"/></svg>
+                        </div>
+                        <h4>HST Conceptualization</h4>
+                        <p>Definition of current Historical Small Town concept and types, establishing the theoretical foundation for understanding Italian borghi within contemporary sustainability discourse.</p>
+                    </div>
+                    <div class="objective-card">
+                        <div class="objective-card-icon">
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
+                        </div>
+                        <h4>Urban Sustainability Tools</h4>
+                        <p>Analysis of methods and tools for urban sustainability assessment, with focus on Urban Metabolism (UM) and Urban Symbiosis (US) approaches applicable to historical contexts.</p>
+                    </div>
+                    <div class="objective-card">
+                        <div class="objective-card-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
+                        </div>
+                        <h4>Circularity Measurement</h4>
+                        <p>Identification of main approaches, methods, and related indicators for measuring circularity and sustainability.</p>
+                    </div>
+                    <div class="objective-card">
+                        <div class="objective-card-icon">
+                            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        </div>
+                        <h4>Stakeholder Analysis</h4>
+                        <p>Systematic review of literature on actors involved (citizens, companies, governments) in relation to circular production and consumption issues within HST contexts.</p>
+                    </div>
+                    <div class="objective-card">
+                        <div class="objective-card-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        </div>
+                        <h4>Best Practices Catalogue</h4>
+                        <p>Identification of national and international CE best practices from comparable contexts demonstrating successful circular economy implementation.</p>
+                    </div>
+                    <div class="objective-card">
+                        <div class="objective-card-icon">
+                            <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                        </div>
+                        <h4>Circular Scenarios</h4>
+                        <p>Definition of potential scenarios that can improve the "circularity potential" of the context, exploiting its resilience and regenerative capacity.</p>
+                    </div>
+                    <div class="objective-card">
+                        <div class="objective-card-icon">
+                            <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        </div>
+                        <h4>Cost-Benefit Framework</h4>
+                        <p>Calculation of average costs and benefits from the implementation of each intervention on the reference HST (Borgo di Taurasi).</p>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 48px; margin-bottom: 32px;">Outcomes</h3>
+                
+                <div class="outcomes-list">
+                    <div class="outcome-card">
+                        <div class="outcome-content">
+                            <h4>1. HST Conceptual Framework</h4>
+                            <p>
+The research traced the conceptual evolution of HSTs over the past 15 years, identifying three distinct periods: the early 2010s conservation paradigm focused on physical preservation, the mid-2010s shift toward regeneration and place-based approaches (exemplified by Italy's SNAI), and the late 2010s emergence of dynamic conceptualizations emphasizing adaptation, resilience, and circular economy principles. Six key theoretical frameworks were identified for understanding HSTs as complex systems: Socio-Ecological Systems (SES), Complex Adaptive Systems (CAS), Resilience Theory, Living Heritage, Place-Based Theory, Network Theory and Circular Economy/UM. This analysis demonstrates a fundamental shift from viewing HSTs as static heritage objects toward recognizing them as dynamic systems capable of adaptation while maintaining historical continuity.                            </p>
+                        </div>
+                        <div class="outcome-visual">
+                             <div class="outcome-placeholder"><img src="images/ra/ra2-1.png" alt="1"></div>
+                            <div class="outcome-caption">Figure 1: Evolution of HST/Borghi Conceptual Discourse</div>
+                        </div>
+                    </div>
+
+                    <div class="outcome-card">
+                        <div class="outcome-content">
+                            <h4>2. Urban Metabolism & Symbiosis Toolkit</h4>
+                            <p>
+The systematic review identified comprehensive methodological approaches for Urban Metabolism analysis including Material Flow Analysis (MFA), 
+Substance Flow Analysis (SFA), Life Cycle Assessment (LCA), Ecological Network Analysis (ENA), Emergy Accounting (EA), Environmentally Extended Input-Output (EEIO), Urban Sustainability Indicators Framework, 
+MuSIASEM, and computational methods such as Machine Learning and Agent-Based Modeling. For Urban Symbiosis implementation, practical tools were 
+catalogued including Network Analysis platforms (Gephi, NodeXL), Resource Matching platforms, GIS-based Spatial Analysis, Stakeholder Engagement and facilitation tools, 
+and Decision Support Systems. The analysis highlighted specific adaptation requirements for HST contexts, addressing challenges of data fragmentation, 
+reduced scale, and heritage preservation constraints.                            </p>
+                        </div>
+                        <div class="outcome-visual">
+                             <div class="outcome-placeholder"><img src="images/ra/ra2-2_opt.jpg" alt="2" loading="lazy"></div>
+                            <div class="outcome-caption">Figure 2: Methods for Urban Metabolism Analysis</div>
+                        </div>
+                    </div>
+
+                    <div class="outcome-card">
+                        <div class="outcome-content">
+                            <h4>3. Circularity Indicator Framework</h4>
+                            <p>
+                                A PRISMA-ScR systematic review identified 14 circular economy indices for micro-meso level assessment. Key frameworks identified include MICE, CEI, UCDI, WCI, and the Cultural Heritage Index. A critical finding revealed that only 1 of 14 indices (Foster & Saleh, 2021) explicitly addresses cultural heritage dimensions, confirming a significant gap in mainstream CE measurement. The complementary heritage-focused review addressed this gap by identifying four categories of measurement approaches specifically designed for or adaptable to historical contexts. First, adaptations of conventional indicators uncover how established circularity metrics can be modified to accommodate historical materials, extended timeframes, and preservation constraints. Second, heritage-specific indicators provide purpose-built metrics addressing building adaptability, traditional knowledge continuity, cultural value retention, and energy-heritage balance. Third, multi-level measurement frameworks connect building, district, and territorial scales through nested indicator systems. Fourth, integration approaches offer methodologies for combining diverse metrics into comprehensive assessment frameworks that address environmental, economic, social, and cultural dimensions simultaneously.
+                            </p>
+                        </div>
+                        <div class="outcome-visual">
+                             <div class="outcome-placeholder"><img src="images/ra/ra2-3.png" alt="3"></div>
+                            <div class="outcome-caption">Figure 3: Key Indicator Frameworks for Urban Circularity</div>
+                        </div>
+                    </div>
+
+                    <div class="outcome-card">
+                        <div class="outcome-content">
+                            <h4>4. Stakeholder Role Mapping</h4>
+                            <p>
+                                The systematic review examined three primary stakeholder groups in circular economy transitions. 
+								Consumers/Citizens operate in a dual role as market actors and civic participants, facing barriers 
+								including the intention-action gap, economic constraints, and convenience priorities. Businesses/Companies 
+								fulfill essential functions in design, production, and resource management, with SMEs facing distinctive barriers 
+								regarding technical capacity and financial resources. Government/Policymakers establish framework conditions through 
+								regulatory, economic, and infrastructural interventions, with policy fragmentation identified as a persistent challenge. 
+								A typology of stakeholder relationships was developed distinguishing transactional, cooperative, collaborative, 
+								and transformative configurations, with the key finding that successful CE implementation depends fundamentally 
+								on interaction patterns between groups rather than isolated actions.
+                            </p>
+                        </div>
+                        <div class="outcome-visual">
+                             <div class="outcome-placeholder"><img src="images/ra/ra2-4.png" alt="4"></div>
+                            <div class="outcome-caption">Figure 4: Key Stakeholder Roles in CE Implementation</div>
+                        </div>
+                    </div>
+
+                    <div class="outcome-card">
+                        <div class="outcome-content">
+                            <h4>5. Best Practices Synthesis</h4>
+                            <p>The research compiled transferable best practices from comparable Italian and European contexts. 
+							Peccioli (Tuscany) demonstrates waste-to-value governance transforming a landfill into ~15 GWh annual renewable 
+							energy with revenues reinvested in cultural regeneration. Venice provides a model for heritage-adapted waste 
+							collection achieving high separate collection rates despite severe physical constraints. Magliano Alpi (Piedmont) 
+							established Italy's first Community Energy cooperative (CER) with citizen-led renewable energy sharing from public
+							buildings. Matera offers historical precedent through its sophisticated ancient rainwater harvesting system of 2,210 cisterns.
+							 For Taurasi specifically, opportunities were identified in wine and olive by-product valorization, with regulatory 
+							 pathways mapped for agronomic, 
+							energy, and industrial applications of production residues.</p>
+
+                        </div>
+                        <div class="outcome-visual">
+                             <div class="outcome-placeholder"><img src="images/ra/ra2-5.png" alt="5"></div>
+                            <div class="outcome-caption">Figure 5: Synthesis of Best Practices for CE in HSTs</div>
+                        </div>
+                    </div>
+
+                    <div class="outcome-card">
+                        <div class="outcome-content">
+                            <h4>6. Circular Scenario Design</h4>
+                            <p>
+                                The research compiled transferable best practices through national case study analysis 
+								and international literature review. Among Italian cases organized by resource domain: 
+								Peccioli (Tuscany) demonstrates waste-to-value governance through Belvedere S.p.A., 
+								transforming a landfill into ~15 GWh annual renewable energy with revenues reinvested 
+								in cultural regeneration; Matera's historical system of 2,210 bell-shaped cisterns with 
+								neighborhood management via "vicinati" serves as precedent for water-sensitive design; Magliano Alpi's 
+								Community Energy cooperative (CER) offers a PNRR-supported model for small municipalities; ReUse 
+								Italy promotes adaptive reuse of abandoned heritage buildings through international design competitions; 
+								Castel del Giudice (Molise) exemplifies PNRR-funded integrated regeneration (€20M); and Appennino Food 
+								(Valsamoggia) demonstrates private-sector circularity with water reuse and 25% renewable energy. 
+								International cases complement this catalogue: Athens developed an innovative bio-waste collection 
+								model during COVID-19 with measurable emissions reductions; Amsterdam serves as a leading example 
+								implementing waste-to-energy, urban agriculture, and sharing economies; Ulaanbaatar's SWITCH-Asia 3R4UB project created a modular urban hub fostering reuse, repair, and upcycling; and La Paz's "LaPazRecicla" project illustrates how international cooperation can catalyze waste recovery systems in developing contexts.
+                            </p>
+
+                        </div>
+                        <div class="outcome-visual">
+                             <div class="outcome-placeholder"><img src="images/ra/ra2-6.png" alt="6"></div>
+                            <div class="outcome-caption">Figure 6: Potential Circular Scenarios for Taurasi</div>
+                        </div>
+                    </div>
+
+                    <div class="outcome-card">
+                        <div class="outcome-content">
+                            <h4>7. Cost-Benefit Analysis Results</h4>
+                            <p>
+                                 comprehensive Cost-Benefit Analysis was conducted for eight Taurasi wineries 
+								 (production ranging 4,500-90,000 liters annually) across a 20-year timeframe comparing three 
+								 scenarios: Scenario 0 (baseline without CE actions), Scenario 1 (current situation), and Scenario 2 
+								 (optimized with solar panels, biodiesel, and complete by-product valorization). Financial indicators 
+								 (NPVf, IRRf, PIf) and economic indicators (NPVe, IRRe, PIe) were calculated following European Commission 
+								 guidelines with 4% financial and 5% economic discount rates. All scenarios showed positive NPV indicating 
+								 profitable investments. Scenario 2 demonstrated higher economic NPV but slightly lower IRR due to solar panel 
+								 investment costs. The gap between financial and economic indicators proved most pronounced in Scenario 2, 
+								 reflecting monetized environmental and social benefits from avoided CO₂ emissions and by-product valorization.
+                            </p>
+                        </div>
+                        <div class="outcome-visual">
+                            <div class="outcome-placeholder"><img src="images/ra/ra2-7.png" alt="7"></div>
+                            <div class="outcome-caption">Figure 7: Cost-Benefit Analysis Scenarios Comparison</div>
+                        </div>
+                    </div>
+                </div>
+
+                
+
+                <!-- Navigation between RAs -->
+                <div style="display: flex; justify-content: space-between; margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--gray-200);">
+                    <a href="ra1.html" style="text-decoration: none;">
+                        <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--gray-500);">Previous</span>
+                        <p style="margin: 4px 0 0; font-weight: 600; color: var(--primary-600);">← RA1 — Context Analysis</p>
+                    </a>
+                    <a href="ra3.html" style="text-align: right; text-decoration: none;">
+                        <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--gray-500);">Next</span>
+                        <p style="margin: 4px 0 0; font-weight: 600; color: var(--primary-600);">RA3 — Method & Modelling →</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+	
+	
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo-text">H-SMA-CE</div>
+                    <p>
+                        Decision Support System for Circular Economy Transition in Historical Small Towns.
+                        A PRIN 2022 research project.
+                    </p>
+                    <div class="footer-funding">
+                        <div class="footer-funding-text">
+                            Funded by the European Union – NextGenerationEU under the Italian Ministry of University and Research (MUR) as part of the PRIN 2022 program.
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">Research</h4>
+                    <ul class="footer-links">
+                        <li><a href="ra1.html">RA1 – Context Analysis</a></li>
+                        <li><a href="ra2.html">RA2 – Circular Scenario</a></li>
+                        <li><a href="ra3.html">RA3 – Method & Modelling</a></li>
+                        <li><a href="ra4.html">RA4 – DSS Development</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="publications.html">Publications</a></li>
+                        <li><a href="conferences.html">Conferences</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="dss.html">DSS Tool</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">Contact</h4>
+                    <ul class="footer-links">
+                        <li><a href="contacts.html">Contact Us</a></li>
+                        <li><a href="index.html#team">Research Team</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024-2027 H-SMA-CE Project. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="privacy.html">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+	<script>
+    // Crea dinamicamente il modale nel DOM
+    const lightbox = document.createElement('div');
+    lightbox.id = 'lightbox';
+    lightbox.className = 'lightbox-modal';
+    lightbox.innerHTML = `
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" src="" alt="Full screen image">
+    `;
+    document.body.appendChild(lightbox);
+
+    const lightboxImg = lightbox.querySelector('.lightbox-content');
+    const closeBtn = lightbox.querySelector('.lightbox-close');
+
+    // Seleziona tutte le immagini dentro .outcome-visual
+    const images = document.querySelectorAll('.outcome-visual img');
+
+    // Aggiungi event listener a ogni immagine
+    images.forEach(img => {
+        img.addEventListener('click', e => {
+            e.stopPropagation();
+            lightboxImg.src = img.src;
+            lightboxImg.alt = img.alt;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    // Funzione per chiudere il lightbox
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+        setTimeout(() => {
+            lightboxImg.src = '';
+        }, 300);
+    }
+
+    // Chiudi cliccando sulla X
+    closeBtn.addEventListener('click', closeLightbox);
+
+    // Chiudi cliccando sullo sfondo scuro (ma non sull'immagine)
+    lightbox.addEventListener('click', e => {
+        if (e.target !== lightboxImg) {
+            closeLightbox();
+        }
+    });
+
+    // Chiudi con il tasto ESC
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+            closeLightbox();
+        }
+    });
+</script>
+
+<!-- Tour Guide -->
+    <script>
+        window.TOUR_STEPS = [
+            {
+                target: '.ra-hero',
+                title: 'RA2 — Circular Scenario 🔄',
+                content: 'Welcome to <strong>Research Activity 2</strong>! This phase focuses on defining circular economy scenarios through literature review, best practices analysis, and cost-benefit evaluation.',
+                showArrow: false
+            },
+            {
+                target: '.features-grid',
+                title: 'Research Objectives',
+                content: 'RA2 has four key objectives: <strong>Literature Review</strong> on CE and urban metabolism, <strong>Best Practices</strong> identification, <strong>Scenario Design</strong> for Taurasi, and <strong>Cost-Benefit Analysis</strong> of interventions.',
+                showArrow: false
+            },
+            {
+                target: '.outcomes-list',
+                title: 'Research Outcomes',
+                content: 'Scroll down to explore <strong>7 detailed outcomes</strong> — from systematic literature reviews to cost-benefit analysis results. Each outcome includes visual figures you can click to enlarge.',
+                showArrow: false
+            },
+            {
+                target: '.outcome-visual',
+                title: 'Interactive Figures',
+                content: '<strong>Click any figure</strong> to view it in full screen. These visualizations summarize key research findings on CE scenarios and interventions for Taurasi.',
+                showArrow: false
+            },
+            {
+                target: '#navLinks',
+                title: 'Continue Exploring',
+                content: 'Navigate to <strong>RA1</strong> for context analysis or <strong>RA3</strong> for methodology development. Check <strong>Publications</strong> for related journal articles! 📚',
+                showArrow: true
+            }
+        ];
+    </script>
+    <script src="js/tour-guide.js"></script>
+</body>
+</html>

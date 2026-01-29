@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RA1 — Context Analysis | H-SMA-CE Project</title>
+    <meta name="description" content="Research Activity 1: Context Analysis of the Historical Small Town of Taurasi for Circular Economy Transition.">
+    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23163860'/%3E%3Ctext x='50' y='62' font-family='Georgia' font-size='32' fill='white' text-anchor='middle' font-weight='bold'%3EH%3C/text%3E%3C/svg%3E">
+    
+    <link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/tour-guide.css">
+    <style>
+        .ra-hero {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+            margin-bottom: 48px;
+            border-radius: 16px;
+        }
+        .ra-hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .ra-hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(22, 56, 96, 0.85) 0%, rgba(30, 64, 110, 0.7) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .ra-hero-text {
+            text-align: center;
+            color: white;
+            padding: 24px;
+        }
+        .ra-hero-text h2 {
+            font-size: 2rem;
+            margin-bottom: 8px;
+            color: white;
+        }
+        .ra-hero-text p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        .objective-card {
+            background: var(--gray-50);
+            padding: 24px;
+            border-radius: 16px;
+            border: 1px solid var(--gray-200);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .objective-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        }
+        .objective-card-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--primary-100);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+        .objective-card-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--primary-600);
+            fill: none;
+            stroke-width: 2;
+        }
+        .objective-card h4 {
+            color: var(--primary-700);
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        .objective-card p {
+            color: var(--gray-600);
+            font-size: 0.95rem;
+            margin: 0;
+            text-align: justify;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 2 colonne su desktop */
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+
+        /* Styles for the Outcomes Section */
+        .outcomes-list {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .outcome-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            align-items: center;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .outcome-card:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .outcome-content h4 {
+            color: var(--primary-700);
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+        }
+
+        .outcome-content p {
+            color: var(--gray-600);
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        .outcome-visual {
+            background: var(--gray-50);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--gray-200);
+        }
+
+        .outcome-placeholder {
+            width: 100%;
+            height: 250px;
+            background-color: #e0e7ff; /* Light indigo placeholder */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-600);
+            font-weight: 500;
+        }
+        
+        .outcome-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .outcome-caption {
+            padding: 12px;
+            font-size: 0.85rem;
+            color: var(--gray-500);
+            text-align: center;
+            background: white;
+            border-top: 1px solid var(--gray-100);
+            font-style: italic;
+        }
+
+        /* Regola per Tablet e Mobile (sotto 1024px) */
+        @media (max-width: 1024px) {
+            .features-grid {
+                grid-template-columns: 1fr; /* 1 colonna unica */
+            }
+            .outcome-card {
+                grid-template-columns: 1fr; /* Stack verticale su mobile */
+                gap: 16px;
+            }
+        }
+		
+		/* LIGHTBOX STYLES */
+.lightbox-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85); /* Sfondo scuro semitrasparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* Transizione dissolvenza */
+    cursor: zoom-out;
+}
+
+.lightbox-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox-content {
+    max-width: 90%;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+    cursor: default;
+}
+
+.lightbox-modal.active .lightbox-content {
+    transform: scale(1); /* Effetto zoom leggero all'apertura */
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s;
+}
+
+.lightbox-close:hover {
+    color: var(--primary-200);
+}
+
+/* Rende le immagini cliccabili */
+.outcome-visual img {
+    cursor: zoom-in;
+    transition: filter 0.2s;
+}
+
+.outcome-visual img:hover {
+    filter: brightness(0.95);
+}
+
+/* Stile per il box info (Duration, Status, Lead) */
+.project-info-box {
+    margin-bottom: 48px;
+    padding: 24px;
+    background: var(--primary-50);
+    border-radius: 16px;
+    border-left: 4px solid var(--primary-500);
+    
+    /* Regole per centratura e adattamento al contenuto */
+    width: 350px;     /* Il box si stringe attorno al testo */
+    margin-left: auto;      /* Spinge da sinistra per centrare */
+    margin-right: auto;     /* Spinge da destra per centrare */
+    max-width: 100%;        /* Evita che sbordi su schermi stretti */
+}
+
+/* Su mobile torna a larghezza piena */
+@media (max-width: 768px) {
+    .project-info-box {
+        width: 100%;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="top-logo-bar">
+    <div class="top-logo-bar-container">
+        <img src="images/logos/logo1.png" alt="Logo 1">
+        <span class="logo-divider"></span>
+        <img src="images/logos/logo2.png" alt="Logo 2">
+        <span class="logo-divider"></span>
+        <img src="images/logos/logo3.png" alt="Logo 3">
+        <span class="logo-divider"></span>
+        <img src="images/logos/logo4.png" alt="Logo 4">
+        <img src="images/logos/logo5.png" alt="Logo 5">
+    </div>
+</div>
+    <!-- =====================================================
+   NAVBAR CORRETTA - La X è FUORI da nav-links
+   Sostituisci la sezione nav nel tuo index.html
+   ===================================================== -->
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-main">
+                    <span class="logo-text">H-SMA-CE</span>
+                    <span class="logo-badge">PRIN 2022</span>
+                </div>
+                <div class="logo-codes">
+                    <span class="code-item">Project: 2022JZLL7J;</span>
+                    <span class="code-item">CUP UniMe: J53D23009390006</span>
+                    <span class="code-divider">-</span>
+                    <span class="code-item">CUP UniOr: C53D23004860006</span>
+                </div>
+            </a>
+            
+            <!-- MENU LINKS - senza il pulsante X dentro -->
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="#project">The Project</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">
+                        Research Activities
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="ra1.html">RA1 – Context Analysis</a>
+                        <a href="ra2.html">RA2 – Circular Scenario</a>
+                        <a href="ra3.html">RA3 – Method & Modelling</a>
+                        <a href="ra4.html">RA4 – DSS Development</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">
+                        Dissemination
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="publications.html">Publications</a>
+                        <a href="conferences.html">Conferences</a>
+                        <a href="events.html">Events & Missions</a>
+                    </div>
+                </li>
+                <li><a href="dss.html">DSS Demo</a></li>
+                <li><a href="special-issue.html">Special Issue</a></li> 
+            </ul>
+            
+            <!-- PULSANTE X - FUORI da nav-links, così non scorre -->
+            <button class="nav-close" id="navClose" aria-label="Close menu">&times;</button>
+            
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <nav class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <a href="#">Research Activities</a>
+                <span>/</span>
+                <span>RA1</span>
+            </nav>
+            <h1>RA1 — Context Analysis</h1>
+            <p>Understanding the socio-ecological system of Taurasi for Circular Economy transition</p>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container">
+            <div class="content-wrapper" style="max-width: 900px; margin: 0 auto;">
+                
+                <div class="ra-hero">
+                    <img src="images/ra/ra1_opt.jpg" alt="Italian hillside village representing Historical Small Towns" loading="lazy">
+                    <div class="ra-hero-overlay">
+                        <div class="ra-hero-text">
+                            <h2>Understanding Phase</h2>
+                            <p>Empirical analysis of Taurasi's socio-ecological system</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-header text-left" style="max-width: 100%; margin-bottom: 40px;">
+                    <span class="section-badge">Research Activity 1</span>
+                    <h2 class="section-title text-left">Overview</h2>
+                </div>
+                
+                <p class="lead" style="margin-bottom: 32px; text-align: justify;">
+                    RA1 grounds the research in the empirical reality of Taurasi, a representative Historical Small Town (HST) in Campania. This "Understanding" phase involves a mixed-methods investigation combining quantitative Material Flow Analysis (MFA) with qualitative stakeholder mapping and SWOT analysis to create a holistic metabolic profile of the borgo.
+                </br></br>
+                    The analysis follows four key dimensions — economic, social, environmental, and technological — defining the ecosystem's "morphological" characteristics from a "metabolic" perspective. This foundational work provides the empirical bedrock upon which the entire Decision Support System is built.
+                </p>
+
+                <div class="project-info-box">
+    <p style="margin: 0; color: var(--gray-700);"><strong>Duration:</strong> Year 1 — First Semester</p>
+    <p style="margin: 8px 0 0; color: var(--gray-700);"><strong>Status:</strong> <span style="background: #10b981; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.8rem; font-weight: 600;">Completed</span></p>
+    <p style="margin: 8px 0 0; color: var(--gray-700);"><strong>Lead:</strong> RU1 — University of Messina</p>
+</div>
+
+                <h3 style="margin-top: 48px; margin-bottom: 24px;">Key Objectives</h3>
+                
+                <div class="features-grid">
+                    <div class="objective-card">
+                        <div class="objective-card-icon">
+                            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                        </div>
+                        <h4>Stakeholder Mapping</h4>
+                        <p>Identification of actors involved and their interactions, including local authorities, waste management operators, agricultural producers, and community groups.</p>
+                    </div>
+                    <div class="objective-card">
+                        <div class="objective-card-icon">
+                            <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                        </div>
+                        <h4>Flow Identification Framework</h4>
+                        <p>Inventory of main social, economic and environmental flows, distinguishing those manageable at territorial level (meso) from local level (micro).</p>
+                    </div>
+                    <div class="objective-card">
+                        <div class="objective-card-icon">
+                            <svg viewBox="0 0 24 24"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon><line x1="8" y1="2" x2="8" y2="18"></line><line x1="16" y1="6" x2="16" y2="22"></line></svg>
+                        </div>
+                        <h4>HSTs Typology</h4>
+                        <p>Selection of the prevalent types of HST, referring to the Italian system.</p>
+                    </div>
+                    <div class="objective-card">
+                        <div class="objective-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                        </div>
+                        <h4>SWOT Analysis</h4>
+                        <p>Assessment of strengths, weaknesses, opportunities, and threats for the linear-to-circular transition in the HST context.</p>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 48px; margin-bottom: 24px;">Case Study: Taurasi</h3>
+                <p style="text-align: justify; margin-bottom: 24px;">
+                    Taurasi was selected as a representative case study due to its archetypal characteristics as an Italian borgo. It is classified as a "Hill Borgo" with deep medieval origins, a population of approximately 2,100 inhabitants, and an economic identity inextricably linked to its agricultural heritage — specifically the production of the renowned Taurasi DOCG wine.
+                </p>
+
+                <h3 style="margin-top: 48px; margin-bottom: 32px;">Outcomes</h3>
+                
+                <div class="outcomes-list">
+                    <div class="outcome-card">
+                        <div class="outcome-content">
+                            <h4>1. Stakeholder Relationship Network</h4>
+                            <p>
+                                The analysis identified Taurasi's ecosystem as a complex network where municipal governance operates efficiently for urban waste, but remains disconnected from the agricultural sector. A critical gap was found between formal waste management providers (like Irpiniambiente) and the agricultural producers (wineries), who generate the most significant waste streams for circular potential.
+                            </p>
+                        </div>
+                        <div class="outcome-visual">
+                            <div class="outcome-placeholder">
+                                <img src="images/ra/network.png" alt="network">
+                            </div>
+                            <div class="outcome-caption">Figure 1: Taurasi’s Stakeholder Relationship Network</div>
+                        </div>
+                    </div>
+
+                    <div class="outcome-card">
+                        <div class="outcome-content">
+                            <h4>2. Metabolic Flow Inventory</h4>
+                            <p>
+                                The metabolic analysis characterized Taurasi’s resource usage, showing a 67% municipal waste differentiation rate. However, the study identified substantial underutilized flows in the agricultural sector, specifically organic residue (grape pomace) and glass from the wine industry. The Sankey diagram visualization highlights these streams as the primary targets for closing local loops.
+                            </p>
+                        </div>
+                        <div class="outcome-visual">
+                            <div class="outcome-placeholder">
+                                <img src="images/ra/sankey.png" alt="sankey">
+                            </div>
+                            <div class="outcome-caption">Figure 2: Sankey Diagram of environmental flows</div>
+                        </div>
+                    </div>
+
+                    <div class="outcome-card">
+                        <div class="outcome-content">
+                            <h4>3. Typological Classification</h4>
+                            <p>
+                                A comprehensive multidimensional classification framework was developed to categorize Italian Historical Small Towns. By integrating geographic (e.g., Hill, Mountain, Coastal), historical-cultural, and economic dimensions, this system moves beyond simple population metrics. It enables the definition of tailored circular economy strategies that align with the unique morphological and productive vocation of different borgo types, distinguishing purely tourism-dependent towns from those with specialized agricultural identities like Taurasi.
+                            </p>
+                        </div>
+                        <div class="outcome-visual">
+                            <div class="outcome-placeholder">
+                                <img src="images/ra/hst.png" alt="hst">
+                            </div>
+                            <div class="outcome-caption">Figure 3: Multidimensional Typological Assessment</div>
+                        </div>
+                    </div>
+
+                    <div class="outcome-card">
+                        <div class="outcome-content">
+                            <h4>4. Strategic SWOT Matrix</h4>
+                            <p>The strategic assessment identifies Taurasi’s strong viticultural identity and relatively advanced waste differentiation system as foundational strengths for a circular transition. However, the analysis reveals critical weaknesses linked to demographic decline, economic volatility, and limited technical capacity for implementing innovations within historical constraints. Major opportunities lie in closing local loops for the significant organic and glass waste streams generated by the wine industry, supported by the ‘Bio-distretto’ framework. These potential gains are counterbalanced by threats such as substantial investment requirements versus limited municipal budgets and the complex regulatory challenges of integrating new infrastructure into a protected heritage context.</p>
+                        </div>
+                        <div class="outcome-visual">
+                            <div class="outcome-placeholder">
+                                <img src="images/ra/swot.png" alt="swot">
+                            </div>
+                            <div class="outcome-caption">Figure 4: SWOT Analysis of Taurasi HST</div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div style="display: flex; justify-content: space-between; margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--gray-200);">
+                    <div style="opacity: 0.4;">
+                        <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--gray-500);">Previous</span>
+                        <p style="margin: 4px 0 0; font-weight: 600; color: var(--gray-600);">—</p>
+                    </div>
+                    <a href="ra2.html" style="text-align: right; text-decoration: none;">
+                        <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--gray-500);">Next</span>
+                        <p style="margin: 4px 0 0; font-weight: 600; color: var(--primary-600);">RA2 — Circular Scenario →</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo-text">H-SMA-CE</div>
+                    <p>
+                        Decision Support System for Circular Economy Transition in Historical Small Towns.
+                        A PRIN 2022 research project.
+                    </p>
+                    <div class="footer-funding">
+                        <div class="footer-funding-text">
+                            Funded by the European Union – NextGenerationEU under the Italian Ministry of University and Research (MUR) as part of the PRIN 2022 program.
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">Research</h4>
+                    <ul class="footer-links">
+                        <li><a href="ra1.html">RA1 – Context Analysis</a></li>
+                        <li><a href="ra2.html">RA2 – Circular Scenario</a></li>
+                        <li><a href="ra3.html">RA3 – Method & Modelling</a></li>
+                        <li><a href="ra4.html">RA4 – DSS Development</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="publications.html">Publications</a></li>
+                        <li><a href="conferences.html">Conferences</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="dss.html">DSS Tool</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">Contact</h4>
+                    <ul class="footer-links">
+                        <li><a href="contacts.html">Contact Us</a></li>
+                        <li><a href="index.html#team">Research Team</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024-2027 H-SMA-CE Project. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="privacy.html">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+	<script>
+    // Crea dinamicamente il modale nel DOM
+    const lightbox = document.createElement('div');
+    lightbox.id = 'lightbox';
+    lightbox.className = 'lightbox-modal';
+    lightbox.innerHTML = `
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" src="" alt="Full screen image">
+    `;
+    document.body.appendChild(lightbox);
+
+    const lightboxImg = lightbox.querySelector('.lightbox-content');
+    const closeBtn = lightbox.querySelector('.lightbox-close');
+
+    // Seleziona tutte le immagini dentro .outcome-visual
+    const images = document.querySelectorAll('.outcome-visual img');
+
+    // Aggiungi event listener a ogni immagine
+    images.forEach(img => {
+        img.addEventListener('click', e => {
+            // Evita che il click si propaghi se necessario
+            e.stopPropagation();
+            
+            // Imposta la sorgente e mostra il lightbox
+            lightboxImg.src = img.src;
+            lightboxImg.alt = img.alt;
+            lightbox.classList.add('active');
+            
+            // Blocca lo scroll della pagina sotto
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    // Funzione per chiudere il lightbox
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = ''; // Riabilita lo scroll
+        
+        // Pulisce la src dopo l'animazione per evitare flickering alla riapertura
+        setTimeout(() => {
+            lightboxImg.src = '';
+        }, 300);
+    }
+
+    // Chiudi cliccando sulla X
+    closeBtn.addEventListener('click', closeLightbox);
+
+    // Chiudi cliccando sullo sfondo scuro (ma non sull'immagine)
+    lightbox.addEventListener('click', e => {
+        if (e.target !== lightboxImg) {
+            closeLightbox();
+        }
+    });
+
+    // Chiudi con il tasto ESC
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+            closeLightbox();
+        }
+    });
+</script>
+
+<!-- Tour Guide: Define steps for this page BEFORE loading the script -->
+    <script>
+        window.TOUR_STEPS = [
+            {
+                target: '.page-header',
+                title: 'RA1 — Context Analysis 🔍',
+                content: 'Welcome to <strong>Research Activity 1</strong>: the "Understanding" phase that grounds our project in the empirical reality of Taurasi.',
+                showArrow: false
+            },
+            {
+                target: '.ra-hero',
+                title: 'Understanding Phase',
+                content: 'RA1 uses <strong>mixed methods</strong>: Material Flow Analysis, stakeholder mapping, and SWOT analysis to create a holistic metabolic profile of the borgo.',
+                showArrow: false
+            },
+            {
+                target: '.project-info-box',
+                title: 'Activity Status',
+                content: 'This research activity is <strong>completed</strong>! Led by RU1 (University of Messina) during the first semester of Year 1.',
+                showArrow: false
+            },
+            {
+                target: '.features-grid',
+                title: 'Key Objectives',
+                content: 'Four main objectives: <strong>Stakeholder Mapping</strong>, Flow Identification, HST Typology classification, and SWOT Analysis.',
+                showArrow: false
+            },
+            {
+                target: '.outcomes-list',
+                title: 'Research Outcomes',
+                content: '<strong>Click on any figure</strong> to enlarge it. The outcomes include network analysis, Sankey diagrams, and strategic assessments.',
+                showArrow: false
+            },
+            {
+                target: '#navLinks',
+                title: 'Explore More',
+                content: 'Continue to <strong>RA2 — Circular Scenario</strong> to see how we defined the circular transition, or explore other Research Activities. Enjoy! 🎉',
+                showArrow: true
+            }
+        ];
+    </script>
+    <script src="js/tour-guide.js"></script>
+</body>
+</html>

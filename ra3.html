@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RA3 — Method & Modelling | H-SMA-CE Project</title>
+    <meta name="description" content="Research Activity 3: Development of Circularity Index System and Multi-Objective Optimization for CE Assessment.">
+    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23163860'/%3E%3Ctext x='50' y='62' font-family='Georgia' font-size='32' fill='white' text-anchor='middle' font-weight='bold'%3EH%3C/text%3E%3C/svg%3E">
+    
+    <link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/tour-guide.css">
+    <style>
+        .ra-hero {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+            margin-bottom: 48px;
+            border-radius: 16px;
+        }
+        .ra-hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .ra-hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(22, 56, 96, 0.85) 0%, rgba(30, 64, 110, 0.7) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .ra-hero-text {
+            text-align: center;
+            color: white;
+            padding: 24px;
+        }
+        .ra-hero-text h2 {
+            font-size: 2rem;
+            margin-bottom: 8px;
+            color: white;
+        }
+        .ra-hero-text p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        .objective-card {
+            background: var(--gray-50);
+            padding: 24px;
+            border-radius: 16px;
+            border: 1px solid var(--gray-200);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .objective-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        }
+        .objective-card-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--primary-100);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+        .objective-card-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--primary-600);
+            fill: none;
+            stroke-width: 2;
+        }
+        .objective-card h4 {
+            color: var(--primary-700);
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        .objective-card p {
+            color: var(--gray-600);
+            font-size: 0.95rem;
+            margin: 0;
+            text-align: justify;
+        }
+		        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+
+        /* Styles for the Outcomes Section */
+        .outcomes-list {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .outcome-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            align-items: center;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .outcome-card:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .outcome-content h4 {
+            color: var(--primary-700);
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+        }
+
+        .outcome-content p {
+            color: var(--gray-600);
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        .outcome-visual {
+            background: var(--gray-50);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--gray-200);
+        }
+
+        .outcome-placeholder {
+            width: 100%;
+            height: 250px;
+            background-color: #e0e7ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-600);
+            font-weight: 500;
+        }
+        
+        .outcome-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .outcome-caption {
+            padding: 12px;
+            font-size: 0.85rem;
+            color: var(--gray-500);
+            text-align: center;
+            background: white;
+            border-top: 1px solid var(--gray-100);
+            font-style: italic;
+        }
+
+        /* Stile per il box info */
+        .project-info-box {
+            margin-bottom: 48px;
+            padding: 24px;
+            background: var(--primary-50);
+            border-radius: 16px;
+            border-left: 4px solid var(--primary-500);
+            width: 450px;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 100%;
+        }
+
+        @media (max-width: 1024px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            .outcome-card {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .project-info-box {
+                width: 100%;
+            }
+        }
+		
+		/* LIGHTBOX STYLES */
+        .lightbox-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            cursor: zoom-out;
+        }
+
+        .lightbox-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 4px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+            cursor: default;
+        }
+
+        .lightbox-modal.active .lightbox-content {
+            transform: scale(1);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 1;
+            transition: color 0.2s;
+        }
+
+        .lightbox-close:hover {
+            color: var(--primary-200);
+        }
+
+        /* Rende le immagini cliccabili */
+        .outcome-visual img {
+            cursor: zoom-in;
+            transition: filter 0.2s;
+        }
+
+        .outcome-visual img:hover {
+            filter: brightness(0.95);
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Logo Bar -->
+    <div class="top-logo-bar">
+    <div class="top-logo-bar-container">
+        <img src="images/logos/logo1.png" alt="Logo 1">
+        <span class="logo-divider"></span>
+        <img src="images/logos/logo2.png" alt="Logo 2">
+        <span class="logo-divider"></span>
+        <img src="images/logos/logo3.png" alt="Logo 3">
+		<span class="logo-divider"></span>
+        <img src="images/logos/logo4.png" alt="Logo 4">
+        <img src="images/logos/logo5.png" alt="Logo 5">
+    </div>
+</div>
+    <!-- =====================================================
+   NAVBAR CORRETTA - La X è FUORI da nav-links
+   Sostituisci la sezione nav nel tuo index.html
+   ===================================================== -->
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-main">
+                    <span class="logo-text">H-SMA-CE</span>
+                    <span class="logo-badge">PRIN 2022</span>
+                </div>
+                <div class="logo-codes">
+                    <span class="code-item">Project: 2022JZLL7J;</span>
+                    <span class="code-item">CUP UniMe: J53D23009390006</span>
+                    <span class="code-divider">-</span>
+                    <span class="code-item">CUP UniOr: C53D23004860006</span>
+                </div>
+            </a>
+            
+            <!-- MENU LINKS - senza il pulsante X dentro -->
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="#project">The Project</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">
+                        Research Activities
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="ra1.html">RA1 – Context Analysis</a>
+                        <a href="ra2.html">RA2 – Circular Scenario</a>
+                        <a href="ra3.html">RA3 – Method & Modelling</a>
+                        <a href="ra4.html">RA4 – DSS Development</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">
+                        Dissemination
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="publications.html">Publications</a>
+                        <a href="conferences.html">Conferences</a>
+                        <a href="events.html">Events & Missions</a>
+                    </div>
+                </li>
+                <li><a href="dss.html">DSS Demo</a></li>
+                <li><a href="special-issue.html">Special Issue</a></li> 
+            </ul>
+            
+            <!-- PULSANTE X - FUORI da nav-links, così non scorre -->
+            <button class="nav-close" id="navClose" aria-label="Close menu">&times;</button>
+            
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <nav class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <a href="#">Research Activities</a>
+                <span>/</span>
+                <span>RA3</span>
+            </nav>
+            <h1>RA3 — Method & Modelling</h1>
+            <p>Building the Circularity Index System and Multi-Objective Optimization Model</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <section class="section">
+        <div class="container">
+            <div class="content-wrapper" style="max-width: 900px; margin: 0 auto;">
+                
+                <!-- Hero Image -->
+                <div class="ra-hero">
+ <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80" alt="Data analytics and visualization representing composite indicators">                    <div class="ra-hero-overlay">
+                        <div class="ra-hero-text">
+                            <h2>Evaluating Phase</h2>
+                            <p>Composite indicators and multi-objective optimization</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-header text-left" style="max-width: 100%; margin-bottom: 40px;">
+                    <span class="section-badge">Research Activity 3</span>
+                    <h2 class="section-title text-left">Overview</h2>
+                </div>
+                
+                <p class="lead" style="margin-bottom: 32px; text-align: justify;">
+                    RA3 represents the core analytical synthesis of the project. In this "Evaluating" phase, the empirical data from RA1 and the normative benchmarks from RA2 are integrated to construct a novel set of composite indexes for measuring circularity, along with a multi-objective optimization model to identify the most efficient pathways for CE transition.
+                </br></br>
+                    The H-SMA-CE project adopted a Composite Indicator (CI) framework following OECD (2008) standards. This approach mathematically aggregates 17 individual indicators into 6 domain scores, which combine into a single Municipal Circularity Economy Index (MCEI). This architecture provides a headline metric for benchmarking, domain-level scores for diagnostic analysis, and detailed indicators for targeted intervention planning.
+                </p>
+
+                <div class="project-info-box">
+                    <p style="margin: 0; color: var(--gray-700);"><strong>Duration:</strong> Year 2 — First Semester</p>
+                    <p style="margin: 8px 0 0; color: var(--gray-700);"><strong>Status:</strong> <span style="background: #10b981; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.8rem; font-weight: 600;">Completed</span></p>
+                    <p style="margin: 8px 0 0; color: var(--gray-700);"><strong>Lead:</strong> RU2 — University of Naples "L'Orientale"</p>
+                </div>
+
+                <h3 style="margin-top: 48px; margin-bottom: 24px;">Key Objectives</h3>
+                
+                <div class="features-grid">
+                    <div class="objective-card">
+                        <div class="objective-card-icon">
+                            <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                        </div>
+                        <h4>Indicator Framework Design</h4>
+                        <p>Selection of the set of methods and Composite Indicators applicable on a HST scale, based on the results of literature and context analyses.</p>
+                    </div>
+                    <div class="objective-card">
+                        <div class="objective-card-icon">
+                            <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                        </div>
+                        <h4>Statistical Analysis</h4>
+                        <p>Analysis and interpretation of data through the application of multivariate statistical tools.</p>
+                    </div>
+                    <div class="objective-card">
+                        <div class="objective-card-icon">
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="22" y1="12" x2="18" y2="12"></line><line x1="6" y1="12" x2="2" y2="12"></line><line x1="12" y1="6" x2="12" y2="2"></line><line x1="12" y1="22" x2="12" y2="18"></line></svg>
+                        </div>
+                        <h4>Multi-Objective Optimization</h4>
+                        <p>Construction of optimal solution for increasing CE at HST level, through multi-objective optimisation techniques.</p>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 48px; margin-bottom: 32px;">Outcomes</h3>
+                
+                <div class="outcomes-list">
+                    <div class="outcome-card">
+                        <div class="outcome-content">
+                            <h4>1. Municipal Circularity Economy Index (MCEI)</h4>
+                            <p>
+                                Building on the RA2 literature review, a composite circular economy index was developed specifically for HST assessment. The framework started from the Municipality Indicator of Circular Economy (MICE) by Ghinoi et al. (2024), which was expanded and integrated with additional domains from complementary studies. The final structure comprises six assessment domains: Green Enterprise, Sustainable Mobility, Biodiversity and Resource Saving, Water Management, Collected Waste, and DECI (Digitalization, Efficiency, Competition, and Innovation). Each domain aggregates specific indicators drawn from reliable Italian databases including ISTAT, Catasto Rifiuti, Open Civitas, and Open Coesione. A two-stage selection methodology was employed, combining "top-down" approaches from established international frameworks with "bottom-up" contextual filtering based on Taurasi's metabolic profile, resulting in a final set of 17 indicators that balance academic robustness with practical relevance for HST contexts.
+                            </p>
+                        </div>
+                        <div class="outcome-visual">
+                            <img src="images/ra/ra4-1.png" alt="MCEI Framework Structure and Domain Architecture">
+                            <div class="outcome-caption">Figure 1: MCEI Framework Structure and Domain Architecture</div>
+                        </div>
+                    </div>
+
+                    <div class="outcome-card">
+                        <div class="outcome-content">
+                            <h4>2. PCA-Based Weighting Methodology</h4>
+                            <p>
+                                Following OECD (2008) methodology, three phases were implemented: 
+								normalization, weighting, and aggregation. Data were normalized using 
+								z-score standardization, calculated as the difference between each value 
+								and the average value divided by the standard deviation. Weight assignment 
+								was performed through Principal Component Analysis (PCA), using Kaiser's 
+								criterion to select eigenvalues greater than one, ensuring cumulative 
+								variance explanation exceeding 60%. Varimax rotation was applied to enhance 
+								factor interpretability. Weights were computed according to Arbolino et al. 
+								(2024) as the ratio of percentual variance explained by each factor over 
+								cumulative explained variance, multiplied by component scores. The composite 
+								index was constructed using Simple Additive Weighting (SAW). Descriptive statistics for Taurasi (2018-2022, N=5) revealed heterogeneous variability across indicators: water-related indicators showed minimal variation (e.g., water input per capita SD=0.0028), while public funds for environmental projects exhibited substantial variability (SD=601.74). The MCEI showed consistent improvement from 2018 to 2021, with slight decrease in 2022. Domain analysis revealed "Water management" and "DECI" reaching maximum values in 2022, 
+								while "Collected waste" experienced a 10-point decrease after peaking in 2021.
+                            </p>
+                        </div>
+                        <div class="outcome-visual">
+                            <img src="images/ra/ra4-2.png" alt="PCA Factor Loadings and Weighting Structure">
+                            <div class="outcome-caption">Figure 2: PCA Factor Loadings and Weighting Structure</div>
+                        </div>
+                    </div>
+
+                    <div class="outcome-card">
+                        <div class="outcome-content">
+                            <h4>3. Multi-Criteria Optimization Model</h4>
+                            <p>
+A linear integer programming model, solvable using the simplex algorithm (Dantzig and Thapa, 2003), was developed for optimal intervention selection. Decision variables are represented by CE interventions analyzed in previous activities, each assuming binary values (0=absent, 1=present in action plan). The model generates four scenarios compared to an unrealizable "ideal scenario" where all objectives achieve optimal values simultaneously. The four feasible scenarios are: "Best Compromise" (minimizing distance from ideal solution), "Economic" (maximizing aggregated Net Present Value), "Environmental" (maximizing environmental benefits), and "Social" (maximizing social benefits). This iterative approach strengthens the interactive dimension of decision-making: the decision-maker defines targets, the analyst applies the model to assess alternative impacts, and final choices reflect both priorities and model results. Each iteration yields either a Pareto-optimal solution or enables further refinement through additional constraints. Results are presented with deviation (Δ) from ideal vectors, highlighting necessary trade-offs when optimizing from economic, environmental, and social perspectives simultaneously.                            </p>
+                        </div>
+                        <div class="outcome-visual">
+                            <img src="images/ra/ra4-3.png" alt="Multi-Objective Optimization Results Comparison">
+                            <div class="outcome-caption">Figure 3: Multi-Objective Optimization Results Comparison</div>
+                        </div>
+                    </div>
+                </div>
+
+                
+
+                <!-- Navigation between RAs -->
+                <div style="display: flex; justify-content: space-between; margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--gray-200);">
+                    <a href="ra2.html" style="text-decoration: none;">
+                        <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--gray-500);">Previous</span>
+                        <p style="margin: 4px 0 0; font-weight: 600; color: var(--primary-600);">← RA2 — Circular Scenario</p>
+                    </a>
+                    <a href="ra4.html" style="text-align: right; text-decoration: none;">
+                        <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--gray-500);">Next</span>
+                        <p style="margin: 4px 0 0; font-weight: 600; color: var(--primary-600);">RA4 — DSS Development →</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo-text">H-SMA-CE</div>
+                    <p>
+                        Decision Support System for Circular Economy Transition in Historical Small Towns.
+                        A PRIN 2022 research project.
+                    </p>
+                    <div class="footer-funding">
+                        <div class="footer-funding-text">
+                            Funded by the European Union – NextGenerationEU under the Italian Ministry of University and Research (MUR) as part of the PRIN 2022 program.
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">Research</h4>
+                    <ul class="footer-links">
+                        <li><a href="ra1.html">RA1 – Context Analysis</a></li>
+                        <li><a href="ra2.html">RA2 – Circular Scenario</a></li>
+                        <li><a href="ra3.html">RA3 – Method & Modelling</a></li>
+                        <li><a href="ra4.html">RA4 – DSS Development</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="publications.html">Publications</a></li>
+                        <li><a href="conferences.html">Conferences</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="dss.html">DSS Tool</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">Contact</h4>
+                    <ul class="footer-links">
+                        <li><a href="contacts.html">Contact Us</a></li>
+                        <li><a href="index.html#team">Research Team</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024-2027 H-SMA-CE Project. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="privacy.html">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+    // Crea dinamicamente il modale nel DOM
+    const lightbox = document.createElement('div');
+    lightbox.id = 'lightbox';
+    lightbox.className = 'lightbox-modal';
+    lightbox.innerHTML = `
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" src="" alt="Full screen image">
+    `;
+    document.body.appendChild(lightbox);
+
+    const lightboxImg = lightbox.querySelector('.lightbox-content');
+    const closeBtn = lightbox.querySelector('.lightbox-close');
+
+    // Seleziona tutte le immagini dentro .outcome-visual
+    const images = document.querySelectorAll('.outcome-visual img');
+
+    // Aggiungi event listener a ogni immagine
+    images.forEach(img => {
+        img.addEventListener('click', e => {
+            e.stopPropagation();
+            lightboxImg.src = img.src;
+            lightboxImg.alt = img.alt;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    // Funzione per chiudere il lightbox
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+        setTimeout(() => {
+            lightboxImg.src = '';
+        }, 300);
+    }
+
+    // Chiudi cliccando sulla X
+    closeBtn.addEventListener('click', closeLightbox);
+
+    // Chiudi cliccando sullo sfondo scuro (ma non sull'immagine)
+    lightbox.addEventListener('click', e => {
+        if (e.target !== lightboxImg) {
+            closeLightbox();
+        }
+    });
+
+    // Chiudi con il tasto ESC
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+            closeLightbox();
+        }
+    });
+    </script>
+	
+	<!-- Tour Guide -->
+    <script>
+        window.TOUR_STEPS = [
+            {
+                target: '.ra-hero',
+                title: 'RA3 — Method & Modelling 📊',
+                content: 'Welcome to <strong>Research Activity 3</strong>! Here we develop the methodological framework: circularity indicators, weighting systems, and multi-objective optimization models.',
+                showArrow: false
+            },
+            {
+                target: '.features-grid',
+                title: 'Three Core Objectives',
+                content: 'RA3 develops: a <strong>Circularity Index System</strong> (MCEI) with 6 domains and 30 indicators, a <strong>PCA-based Weighting</strong> methodology, and a <strong>Multi-Criteria Optimization</strong> model for intervention selection.',
+                showArrow: false
+            },
+            {
+                target: '.outcomes-list',
+                title: 'Methodological Outcomes',
+                content: 'Explore <strong>3 key outcomes</strong>: the MCEI framework architecture, PCA weighting results for Taurasi (2018-2022), and optimization scenarios comparing economic, environmental, and social objectives.',
+                showArrow: false
+            },
+            {
+                target: '.outcome-card',
+                title: 'MCEI Framework',
+                content: 'The <strong>Municipal Circular Economy Index</strong> integrates 30 indicators across 6 domains: Green Enterprise, Sustainable Mobility, Biodiversity, Water Management, Waste Collection, and Digitalization.',
+                showArrow: false
+            },
+            {
+                target: '#navLinks',
+                title: 'Next Steps',
+                content: 'Continue to <strong>RA4</strong> to see how this methodology is implemented in the Decision Support System, or visit the <strong>DSS Demo</strong> to try it yourself! 🎯',
+                showArrow: true
+            }
+        ];
+    </script>
+    <script src="js/tour-guide.js"></script>
+</body>
+</html>

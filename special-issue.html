@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Issue | H-SMA-CE Project</title>
+    <meta name="description" content="Special Issue on Circular Economy Transition in Historical Small Towns - Sustainability Journal, MDPI">
+    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23163860'/%3E%3Ctext x='50' y='62' font-family='Georgia' font-size='32' fill='white' text-anchor='middle' font-weight='bold'%3EH%3C/text%3E%3C/svg%3E">
+    
+    <link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/tour-guide.css">
+    <style>
+        .si-hero {
+            background: linear-gradient(135deg, var(--primary-800) 0%, var(--primary-600) 100%);
+            padding: 180px 0 80px;
+            text-align: center;
+            position: relative;
+        }
+        .si-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .si-hero .container {
+            position: relative;
+            z-index: 1;
+        }
+        .si-hero h1 {
+            color: white;
+            margin-bottom: 16px;
+        }
+        .si-hero p {
+            color: var(--primary-200);
+            font-size: 1.15rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .si-badge {
+            display: inline-block;
+            background: var(--accent-gold);
+            color: var(--primary-900);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+        }
+        .si-journal-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 32px;
+            flex-wrap: wrap;
+        }
+        .si-journal-info span {
+            color: var(--primary-200);
+            font-size: 0.95rem;
+        }
+        .si-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .si-section {
+            margin-bottom: 48px;
+        }
+        .si-section h3 {
+            color: var(--primary-700);
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--primary-100);
+        }
+        .si-section p {
+            text-align: justify;
+            color: var(--gray-700);
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+        .si-keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 16px;
+        }
+        .si-keyword {
+            background: var(--primary-50);
+            color: var(--primary-700);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid var(--primary-100);
+        }
+        .si-editors {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 24px;
+        }
+        .si-editor-card {
+            background: var(--gray-50);
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid var(--gray-200);
+        }
+        .si-editor-card h4 {
+            color: var(--primary-700);
+            margin-bottom: 4px;
+        }
+        .si-editor-card p {
+            color: var(--gray-600);
+            font-size: 0.95rem;
+            margin: 0;
+            text-align: left;
+        }
+        .si-papers-list {
+            margin-top: 24px;
+        }
+        .si-paper {
+            background: white;
+            border: 1px solid var(--gray-200);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+            transition: box-shadow 0.2s;
+        }
+        .si-paper:hover {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        .si-paper h4 {
+            color: var(--primary-700);
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        .si-paper-authors {
+            color: var(--gray-600);
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+        .si-paper-meta {
+            color: var(--gray-500);
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+        .si-paper .publication-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--primary-600);
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-decoration: none;
+        }
+        .si-paper .publication-link:hover {
+            color: var(--primary-700);
+            text-decoration: underline;
+        }
+        .si-cta {
+            background: linear-gradient(135deg, var(--primary-700) 0%, var(--primary-600) 100%);
+            padding: 48px;
+            border-radius: 16px;
+            text-align: center;
+            margin-top: 48px;
+        }
+        .si-cta h3 {
+            color: white;
+            margin-bottom: 16px;
+            border: none;
+            padding: 0;
+        }
+        .si-cta p {
+            color: var(--primary-200);
+            margin-bottom: 24px;
+            text-align: center;
+        }
+        .si-cta .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--accent-gold);
+            color: var(--primary-900);
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .si-cta .btn:hover {
+            background: var(--accent-gold-light);
+            transform: translateY(-2px);
+        }
+        @media (max-width: 768px) {
+            .si-editors {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-logo-bar">
+    <div class="top-logo-bar-container">
+        <img src="images/logos/logo1.png" alt="Logo 1">
+        <span class="logo-divider"></span>
+        <img src="images/logos/logo2.png" alt="Logo 2">
+        <span class="logo-divider"></span>
+        <img src="images/logos/logo3.png" alt="Logo 3">
+		<span class="logo-divider"></span>
+        <img src="images/logos/logo4.png" alt="Logo 4">
+        <img src="images/logos/logo5.png" alt="Logo 5">
+    </div>
+</div>
+
+    <!-- =====================================================
+   NAVBAR CORRETTA - La X è FUORI da nav-links
+   Sostituisci la sezione nav nel tuo index.html
+   ===================================================== -->
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-main">
+                    <span class="logo-text">H-SMA-CE</span>
+                    <span class="logo-badge">PRIN 2022</span>
+                </div>
+                <div class="logo-codes">
+                    <span class="code-item">Project: 2022JZLL7J;</span>
+                    <span class="code-item">CUP UniMe: J53D23009390006</span>
+                    <span class="code-divider">-</span>
+                    <span class="code-item">CUP UniOr: C53D23004860006</span>
+                </div>
+            </a>
+            
+            <!-- MENU LINKS - senza il pulsante X dentro -->
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="#project">The Project</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">
+                        Research Activities
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="ra1.html">RA1 – Context Analysis</a>
+                        <a href="ra2.html">RA2 – Circular Scenario</a>
+                        <a href="ra3.html">RA3 – Method & Modelling</a>
+                        <a href="ra4.html">RA4 – DSS Development</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">
+                        Dissemination
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="publications.html">Publications</a>
+                        <a href="conferences.html">Conferences</a>
+                        <a href="events.html">Events & Missions</a>
+                    </div>
+                </li>
+                <li><a href="dss.html">DSS Demo</a></li>
+                <li><a href="special-issue.html">Special Issue</a></li> 
+            </ul>
+            
+            <!-- PULSANTE X - FUORI da nav-links, così non scorre -->
+            <button class="nav-close" id="navClose" aria-label="Close menu">&times;</button>
+            
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="si-hero">
+        <div class="container">
+            <span class="si-badge">Special Issue • Open Access</span>
+            <h1>A Decision Support System for Circular Economy Transition in Historical Small Towns</h1>
+            <p>A Special Issue of Sustainability (ISSN 2071-1050) published by MDPI</p>
+            <div class="si-journal-info">
+                <span><strong>Journal:</strong> Sustainability</span>
+                <span><strong>Publisher:</strong> MDPI</span>
+                <span><strong>Impact Factor:</strong> 3.3</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="section">
+        <div class="container">
+            <div class="si-content">
+                
+                <!-- Guest Editors -->
+                <div class="si-section">
+                    <h3>Guest Editors</h3>
+                    <div class="si-editors">
+                        <div class="si-editor-card">
+                            <h4>Prof. Dr. Giuseppe Ioppolo</h4>
+                            <p>University of Messina, Italy</p>
+                        </div>
+                        <div class="si-editor-card">
+                            <h4>Prof. Dr. Roberta Arbolino</h4>
+                            <p>University of Naples "L'Orientale", Italy</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- About -->
+                <div class="si-section">
+                    <h3>About this Special Issue</h3>
+                    <p>
+                        This Special Issue is part of the PRIN 2022 Project "H-SMA-CE: A Decision Support System for Circular Economy Transition" (CUP: J53D23009390006 — CI: 2022JZLL7J).
+                    </p>
+                    <p>
+                        It aims at gathering scientific contributions in order to define a framework for promoting the exploration of the theme of circular economies in historical small towns, with a view to optimizing waste and energy flow management and enhancing local features and particularities. Currently, whilst different CE models have been proposed, they are difficult to apply in real-life contexts. Among the main issues are problems linked to the lack of integration (e.g., including context, models, indicators, solutions, strategy) and dynamism in the used approaches. Here, the static view includes an inventory (collection of qualitative and quantitative data on input and output flows), and the design and assessment of methods and tools (e.g., life cycle-based ones), operating according to a "reference flow" of a supply chain (Kennedy et al., 2007). Other studies deal with the construction of indicators, though with serious gaps at both the micro- and meso-level.
+                    </p>
+                    <p>
+                        This Special Issue seeks papers providing an in-depth analysis of the literature concerning circular economies (CEs), urban metabolism (UM), urban symbiosis (US) methods/tools, best practices, and circularity metrics. Furthermore, it seeks contributions on territorial context considering the flows, chains, and actors involved in a representative HST. Contributions should feature relevant, state-of-the-art evidence.
+                    </p>
+                    <p>
+                        Case studies carrying out circular economy interventions, focused on waste flows and their potential use for energy generation, as well as their average costs and benefits, will be considered (performed on the reference HST). Papers should highlight proposals for optimal interventions and the definition of a set of CE indexes which allow for the identification of circularity gaps.
+                    </p>
+                    <p>
+                        Finally, papers presenting innovative models and simulations, specifically those given through a spreadsheet-based DSS model, and other systems are also welcome.
+                    </p>
+                </div>
+
+                <!-- Keywords -->
+                <div class="si-section">
+                    <h3>Keywords</h3>
+                    <div class="si-keywords">
+                        <span class="si-keyword">Circular Economy</span>
+                        <span class="si-keyword">Urban Circular Metabolism</span>
+                        <span class="si-keyword">Sustainability Assessment</span>
+                        <span class="si-keyword">Sustainable Investment</span>
+                        <span class="si-keyword">Historical Small Town</span>
+                        <span class="si-keyword">Borgo</span>
+                    </div>
+                </div>
+
+                <!-- Published Papers -->
+                <div class="si-section">
+                    <h3>Published Papers (3)</h3>
+                    <div class="si-papers-list">
+                        <div class="si-paper">
+                            <h4>Trade Openness and the Energy–Carbon Nexus: Policy Implications for Emerging and Advanced Economies</h4>
+                            <p class="si-paper-authors">Derindag, O.F. & Aldawsari, S.H.</p>
+                            <p class="si-paper-meta">Sustainability 2025, 17(23), 10762 • Published: 1 December 2025</p>
+                            <a href="https://doi.org/10.3390/su172310762" target="_blank" class="publication-link">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                    <polyline points="15 3 21 3 21 9"/>
+                                    <line x1="10" y1="14" x2="21" y2="3"/>
+                                </svg>
+                                View Article
+                            </a>
+                        </div>
+                        
+                        <div class="si-paper">
+                            <h4>Sustainable Cultural Heritage Tourism: An Extended ECM Analysis of Destination Performance on Long-Term Tourist Loyalty</h4>
+                            <p class="si-paper-authors">Li, H. & Du, Y.</p>
+                            <p class="si-paper-meta">Sustainability 2025, 17(17), 7571 • Published: 22 August 2025</p>
+                            <a href="https://doi.org/10.3390/su17177571" target="_blank" class="publication-link">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                    <polyline points="15 3 21 3 21 9"/>
+                                    <line x1="10" y1="14" x2="21" y2="3"/>
+                                </svg>
+                                View Article
+                            </a>
+                        </div>
+                        
+                        <div class="si-paper">
+                            <h4>Unveiling Taurasi's Hidden Potential: A Wine Culture-Centered Framework for Sustainable Development and Circular Economy Transition in Historic Small Towns</h4>
+                            <p class="si-paper-authors">Ciliberto, C., Calabrò, G., Caristi, G., Arbolino, R. & Ioppolo, G.</p>
+                            <p class="si-paper-meta">Sustainability 2025, 17(13), 5704 • Published: 20 June 2025</p>
+                            <a href="https://doi.org/10.3390/su17135704" target="_blank" class="publication-link">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                    <polyline points="15 3 21 3 21 9"/>
+                                    <line x1="10" y1="14" x2="21" y2="3"/>
+                                </svg>
+                                View Article
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA -->
+                <div class="si-cta">
+                    <h3>View Full Special Issue</h3>
+                    <p>Access all papers and submission guidelines on the MDPI website</p>
+                    <a href="https://www.mdpi.com/journal/sustainability/special_issues/F2324F8U24" target="_blank" class="btn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                            <polyline points="15 3 21 3 21 9"/>
+                            <line x1="10" y1="14" x2="21" y2="3"/>
+                        </svg>
+                        Visit MDPI Special Issue Page
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo-text">H-SMA-CE</div>
+                    <p>
+                        Decision Support System for Circular Economy Transition in Historical Small Towns.
+                        A PRIN 2022 research project.
+                    </p>
+                    <div class="footer-funding">
+                        <div class="footer-funding-text">
+                            Funded by the European Union – NextGenerationEU under the Italian Ministry of University and Research (MUR) as part of the PRIN 2022 program.
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">Research</h4>
+                    <ul class="footer-links">
+                        <li><a href="ra1.html">RA1 – Context Analysis</a></li>
+                        <li><a href="ra2.html">RA2 – Circular Scenario</a></li>
+                        <li><a href="ra3.html">RA3 – Method & Modelling</a></li>
+                        <li><a href="ra4.html">RA4 – DSS Development</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="publications.html">Publications</a></li>
+                        <li><a href="conferences.html">Conferences</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="dss.html">DSS Tool</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">Contact</h4>
+                    <ul class="footer-links">
+                        <li><a href="contacts.html">Contact Us</a></li>
+                        <li><a href="index.html#team">Research Team</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024-2027 H-SMA-CE Project. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="privacy.html">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+	
+	<!-- Tour Guide -->
+    <script>
+        window.TOUR_STEPS = [
+            {
+                target: '.si-hero',
+                title: 'Special Issue 📰',
+                content: 'Welcome! This page presents our <strong>Special Issue</strong> in the MDPI journal <em>Sustainability</em>, dedicated to Circular Economy Transition in Historical Small Towns.',
+                showArrow: false
+            },
+            {
+                target: '.si-editors',
+                title: 'Guest Editors',
+                content: 'The Special Issue is edited by <strong>Prof. Giuseppe Ioppolo</strong> (Messina) and <strong>Prof. Roberta Arbolino</strong> (Orientale) — the Principal Investigators of the H-SMA-CE project.',
+                showArrow: false
+            },
+            {
+                target: '.si-keywords',
+                title: 'Research Themes',
+                content: 'Key topics include <strong>Circular Economy</strong>, <strong>Urban Metabolism</strong>, <strong>Sustainability Assessment</strong>, and <strong>Historical Small Towns</strong> (Borghi). Papers welcome on CE methods, tools, and case studies.',
+                showArrow: false
+            },
+            {
+                target: '.si-papers-list',
+                title: 'Published Papers',
+                content: 'Currently <strong>3 papers published</strong>, including our own research on Taurasi\'s wine culture and sustainable development framework. Click "View Article" to read the full text on MDPI.',
+                showArrow: false
+            },
+            {
+                target: '.si-cta',
+                title: 'Submit Your Research! ✍️',
+                content: 'The Special Issue is <strong>open for submissions</strong>. Visit the MDPI page for author guidelines and deadlines. Contribute to the growing body of CE research for heritage contexts!',
+                showArrow: false
+            },
+            {
+                target: '#navLinks',
+                title: 'Explore the Project',
+                content: 'Check out our <strong>Publications</strong> for all H-SMA-CE outputs, or visit <strong>Research Activities</strong> to understand the methodology behind our papers. 🔬',
+                showArrow: true
+            }
+        ];
+    </script>
+    <script src="js/tour-guide.js"></script>
+</body>
+</html>
