@@ -728,6 +728,8 @@
         
         .poster-image {
             width: 100%;
+            max-width: 220px;
+            margin: 0 auto 12px;
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 4px 20px rgba(0,0,0,0.1);
@@ -980,8 +982,26 @@
             .modal-body-poster {
                 position: static;
                 order: -1;
-                max-width: 300px;
+                max-width: 100%;
                 margin: 0 auto 24px;
+            }
+
+            .poster-container {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                justify-content: center;
+            }
+
+            .poster-container h4 {
+                width: 100%;
+                margin-bottom: 0;
+            }
+
+            .poster-image {
+                flex: 1 1 calc(50% - 5px);
+                max-width: calc(50% - 5px);
+                margin: 0;
             }
         }
         
@@ -1554,7 +1574,9 @@
                         <h4>Event Poster</h4>
                         <div class="poster-image">
                           <img src="images/events/thumbs/kickoff-poster.jpg" data-full="images/events/posters/kickoff-poster.jpg" alt="Kick-off Meeting Poster" loading="lazy">
-							
+                        </div>
+                        <div class="poster-image">
+                          <img src="images/posters2/kickoff-poster.jpg" data-full="images/posters2/kickoff-poster.jpg" alt="Kick-off Meeting Poster 2" loading="lazy">
                         </div>
                     </div>
                 </div>
@@ -1698,6 +1720,9 @@
                         <div class="poster-image">
                             <img src="images/events/thumbs/diss-feb24-poster.jpg" data-full="images/events/posters/diss-feb24-poster.jpg" alt="Dissemination Week Feb 2024 Poster" loading="lazy">
                         </div>
+                        <div class="poster-image">
+                            <img src="images/posters2/diss-feb24-poster.jpg" data-full="images/posters2/diss-feb24-poster.jpg" alt="Dissemination Week Feb 2024 Poster 2" loading="lazy">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1796,7 +1821,9 @@
                         <div class="poster-image">
                             
                            <img src="images/events/thumbs/research-jan25-poster.jpg" data-full="images/events/posters/research-jan25-poster.jpg" alt="Research Mission Jan 2025 Poster" loading="lazy">
-						   
+                        </div>
+                        <div class="poster-image">
+                            <img src="images/posters2/research-jan25-poster.jpg" data-full="images/posters2/research-jan25-poster.jpg" alt="Research Mission Jan 2025 Poster 2" loading="lazy">
                         </div>
                     </div>
                 </div>
@@ -1968,6 +1995,9 @@
                         <div class="poster-image">
                             <img src="images/events/thumbs/diss-jun25-poster.jpg" data-full="images/events/posters/diss-jun25-poster.jpg" alt="Dissemination Week Jun 2025 Poster" loading="lazy">
                         </div>
+                        <div class="poster-image">
+                            <img src="images/posters2/diss-jun25-poster.jpg" data-full="images/posters2/diss-jun25-poster.jpg" alt="Dissemination Week Jun 2025 Poster 2" loading="lazy">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2063,7 +2093,10 @@
                     <div class="poster-container">
                         <h4>Event Poster</h4>
                         <div class="poster-image">
-                            <img src="images/events/thumbs/research-sep25-poster.jpg" data-full="images/events/posters/research-sep25-poster.jpg" alt="Research Mission Sep 2025 Poster" loading="lazy"> 
+                            <img src="images/events/thumbs/research-sep25-poster.jpg" data-full="images/events/posters/research-sep25-poster.jpg" alt="Research Mission Sep 2025 Poster" loading="lazy">
+                        </div>
+                        <div class="poster-image">
+                            <img src="images/posters2/research-sep25-poster.jpg" data-full="images/posters2/research-sep25-poster.jpg" alt="Research Mission Sep 2025 Poster 2" loading="lazy">
                         </div>
                     </div>
                 </div>
@@ -2201,6 +2234,9 @@
                         <h4>Event Poster</h4>
                         <div class="poster-image">
                             <img src="images/events/thumbs/workshop-dic-poster.jpg" data-full="images/events/posters/workshop-dic-poster.jpg" alt="Workshop Dic Poster" loading="lazy">
+                        </div>
+                        <div class="poster-image">
+                            <img src="images/posters2/workshop-dic-poster.jpg" data-full="images/posters2/workshop-dic-poster.jpg" alt="Workshop Dic Poster 2" loading="lazy">
                         </div>
                     </div>
                 </div>
