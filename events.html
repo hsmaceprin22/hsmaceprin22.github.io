@@ -425,6 +425,11 @@
             background: rgba(201, 162, 39, 0.2);
             color: var(--accent-gold-dark);
         }
+
+        .event-year.y2026 {
+            background: rgba(39, 162, 80, 0.2);
+            color: #1a7a3a;
+        }
         
         /* Event Type Badge */
         .event-type {
@@ -457,6 +462,11 @@
         
         .event-type.conference {
             background: linear-gradient(135deg, var(--primary-700), var(--primary-500));
+            color: white;
+        }
+
+        .event-type.final {
+            background: linear-gradient(135deg, #1a7a3a, #27a250);
             color: white;
         }
         
@@ -1456,7 +1466,54 @@
                 </div>
             </div>
         </div>
-        
+
+       <!-- Event 7: Final Meeting Feb 2026 -->
+        <div class="timeline-event left">
+            <div class="event-content">
+                <div class="event-card napoli" data-modal="modal-final-meeting">
+                    <span class="event-date">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                            <line x1="16" y1="2" x2="16" y2="6"/>
+                            <line x1="8" y1="2" x2="8" y2="6"/>
+                            <line x1="3" y1="10" x2="21" y2="10"/>
+                        </svg>
+                        25 February 2026
+                        <span class="event-year y2026">2026</span>
+                    </span>
+                    <span class="event-type final">🏁 Final Meeting</span>
+                    <h3>Final Meeting — Unlocking Circular Futures for Italy's Historical Small Towns</h3>
+                    <span class="event-location">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        Naples — Palazzo Giusso
+                    </span>
+                    <p>The final event of the H-SMA-CE project, presenting outcomes on integrating circular economy models within historical small towns, featuring the official launch of the Decision Support System and the project website.</p>
+                    <span class="event-cta">
+                        Explore this event
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                            <polyline points="12 5 19 12 12 19"/>
+                        </svg>
+                    </span>
+                </div>
+            </div>
+            <div class="event-marker">
+                <div class="marker-dot napoli">🏁</div>
+            </div>
+            <div class="event-image">
+                <div class="event-image-container">
+                    <img src="images/facciata.jpg" alt="Palazzo Giusso, Naples - Final Meeting February 2026">
+                    <span class="event-image-city">
+                        <span class="city-dot napoli"></span>
+                        Naples
+                    </span>
+                </div>
+            </div>
+        </div>
+
     </div>
 </section>
 
@@ -2247,6 +2304,123 @@
                 <div class="modal-gallery-grid">
                     <div class="modal-gallery-item">
                         <img src="images/events/thumbs/dic1.jpg" data-full="images/events/dic1.jpg" alt="Workshop December 2025" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal: Final Meeting Feb 2026 -->
+<div class="event-modal" id="modal-final-meeting">
+    <div class="event-modal-content">
+        <button class="event-modal-close">&times;</button>
+        <div class="event-modal-header">
+            <span class="event-type final">🏁 Final Meeting</span>
+            <h2>Final Meeting — Unlocking Circular Futures for Italy's Historical Small Towns</h2>
+            <div class="event-modal-meta">
+                <span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                        <line x1="16" y1="2" x2="16" y2="6"/>
+                        <line x1="8" y1="2" x2="8" y2="6"/>
+                        <line x1="3" y1="10" x2="21" y2="10"/>
+                    </svg>
+                    25 February 2026
+                </span>
+                <span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                        <circle cx="12" cy="10" r="3"/>
+                    </svg>
+                    Palazzo Giusso, Room 4.17, Naples
+                </span>
+                <span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                    9:00 AM – 1:00 PM
+                </span>
+            </div>
+        </div>
+        <div class="event-modal-body">
+            <div class="modal-body-layout">
+                <div class="modal-body-content">
+                    <h4>About the Final Meeting</h4>
+                    <p>
+                        The concluding event of the H-SMA-CE project presents the final outcomes of the research, focusing on the integration of circular economy models within historical small towns. The meeting features the official presentation of the Decision Support System (DSS) — a data-driven tool designed to optimize sustainable investments and governance for Italian «Borghi» — as well as the official project website.
+                    </p>
+
+                    <h4>Programme</h4>
+                    <ul>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                            <div><strong>9:30</strong> — Institutional Welcome — Prof. Giuseppe Ioppolo, Prof.ssa Roberta Arbolino</div>
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                            <div><strong>10:00</strong> — Opening Session: <em>Unlocking Circular Futures for Italy's Historical Small Towns</em> — Prof.ssa Grazia Calabrò, Representatives from the Municipality of Taurasi</div>
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                            <div><strong>11:00</strong> — Discussion Round</div>
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                            <div><strong>11:30</strong> — Roundtable: <em>The DSS Roundtable: Co-creating the future of decisions</em> — Official presentation of the DSS and the project website — Prof. Giuseppe Caristi, Prof. Antonio Lopes, Taurasi Mayor</div>
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                            <div><strong>13:00</strong> — Closing Remarks — Prof. Giuseppe Ioppolo, Prof.ssa Roberta Arbolino</div>
+                        </li>
+                    </ul>
+
+                    <h4>Venue</h4>
+                    <p>
+                        Palazzo Giusso, Room 4.17 — Largo San Giovanni Maggiore 30, Naples.
+                    </p>
+                </div>
+
+                <div class="modal-body-poster">
+                    <div class="poster-container">
+                        <h4>Event Poster</h4>
+                        <div class="poster-image">
+                            <img src="images/events/posters/final.jpg" data-full="images/events/posters/final.jpg" alt="Final Meeting Poster" loading="lazy">
+                        </div>
+                        <div class="poster-image">
+                            <img src="images/posters2/final.jpg" data-full="images/posters2/final.jpg" alt="Final Meeting Poster 2" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-gallery">
+                <h4>Photo Gallery</h4>
+                <div class="modal-gallery-grid">
+                    <div class="modal-gallery-item">
+                        <img src="images/events/final/1one.jpeg" data-full="images/events/final/1one.jpeg" alt="Final Meeting February 2026" loading="lazy">
+                    </div>
+                    <div class="modal-gallery-item">
+                        <img src="images/events/final/2two.jpeg" data-full="images/events/final/2two.jpeg" alt="Final Meeting February 2026" loading="lazy">
+                    </div>
+                    <div class="modal-gallery-item">
+                        <img src="images/events/final/3three.jpeg" data-full="images/events/final/3three.jpeg" alt="Final Meeting February 2026" loading="lazy">
                     </div>
                 </div>
             </div>
